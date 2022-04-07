@@ -3,21 +3,21 @@ Progetto minimo: Luoghi di interesse di Genova
 Progetto massimo: Gestore di luoghi di interesse citta e musei 
 
 ---------------------
-##Acronimi
+## Acronimi
 - LDI: luoghi di interesse/opere in caso di museo
 
-##Feature minime
+## Feature minime
 - scansione QR
 - lista LDI
 - interfaccia admin per aggiungere LDI
 - scheda per ogni LDI
 - filtri di ricerca e ordinamento
 
-##Feature intermedie
+## Feature intermedie
 - app android/ios
 - mappa 2d con LDI pin
 
-##Feature massime
+## Feature massime
 - gestore di più citta/mostre
 - riconoscimento opere tramite fotocamera
 - realta aumentata LDI
