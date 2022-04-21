@@ -7,6 +7,8 @@ Progetto massimo: Gestore di luoghi di interesse citta e musei
 ## Link 
 - [Figma](https://www.figma.com/file/aaOVFK4E8qBMN9gNkanj5b/Last?node-id=0%3A1)
 - [Monday](https://spinny-group.monday.com/workspaces/1432451)
+- [instascan](https://github.com/schmich/instascan)
+
 
 ## Acronimi
 - LDI: luoghi di interesse/opere in caso di museo

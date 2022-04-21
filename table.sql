@@ -1,3 +1,5 @@
+CREATE DATABASE Last;
+USE Last;
 CREATE TABLE LDI(
     `id` INTEGER PRIMARY KEY,
     `name` varchar(255),
