@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="divWrapper">
-        <a href="#" class="camera"><img src="img/icon/camButton.svg" alt=""></a>
+        <a href="#" class="camera"><img src="img/icon/camButton.svg" alt="" class="icon"></a>
         <nav class="bottomNav">
             <div class="insideNav">
             <img src="img/icon/searchOff.svg" alt="" class="icon">

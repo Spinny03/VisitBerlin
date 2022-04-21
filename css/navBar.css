@@ -49,5 +49,11 @@ body{
     border: 8px solid #F5F5F5;
 }
 
+.icon{
+    transition: 100ms ease-in;
+}
+
 .icon:hover{
+    fill:black;
+    transform: scale(1.3);
 }
