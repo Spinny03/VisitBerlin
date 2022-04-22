@@ -1,10 +1,15 @@
+/*@import url('http://fonts.cdnfonts.com/css/abyssinica-sil');*/
+
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,500&display=swap');
+
 body{
     margin: 0;
     background-color: #F5F5F5;
+    font-family: 'Lora', sans-serif;
 }
 
 .divWrapper{
-    position: absolute;
+    position: sticky;
     bottom: 0;
     width: 100%;
     display: flex;
@@ -46,7 +51,7 @@ body{
     display: flex;
     align-items: center;
     justify-content: space-around;
-    border: 8px solid #F5F5F5;
+    border: 8px solid rgba(255, 255, 255, .5);;
 }
 
 .icon{
