@@ -14,7 +14,12 @@
     <div class="cardsContainer">
         <div class="card">
             <div class="imageGallery">
-
+                <div class="big image" style="background-image: url('img/berlinPhotosProva/1.jpg');">
+                </div>
+                <div class="small image" style="background-image: url('img/berlinPhotosProva/2.jpg');">
+                </div>
+                <div class="small image" style="background-image: url('img/berlinPhotosProva/3.avif');">
+                </div>
             </div>
             <div class="cardBottom">
                 <span class="cardTitle">paintings</span>
@@ -22,26 +27,41 @@
         </div>
         <div class="card">
             <div class="imageGallery">
-
+                <div class="big image" style="background-image: url('img/berlinPhotosProva/1.jpg');">
+                </div>
+                <div class="small image" style="background-image: url('img/berlinPhotosProva/2.jpg');">
+                </div>
+                <div class="small image" style="background-image: url('img/berlinPhotosProva/3.avif');">
+                </div>
             </div>
             <div class="cardBottom">
-                <span class="cardTitle">OpereProva</span>
+                <span class="cardTitle">paintings</span>
             </div>
         </div>
         <div class="card">
             <div class="imageGallery">
-
+                <div class="big image" style="background-image: url('img/berlinPhotosProva/1.jpg');">
+                </div>
+                <div class="small image" style="background-image: url('img/berlinPhotosProva/2.jpg');">
+                </div>
+                <div class="small image" style="background-image: url('img/berlinPhotosProva/3.avif');">
+                </div>
             </div>
             <div class="cardBottom">
-                <span class="cardTitle">OpereProva</span>
+                <span class="cardTitle">paintings</span>
             </div>
         </div>
         <div class="card">
             <div class="imageGallery">
-
+                <div class="big image" style="background-image: url('img/berlinPhotosProva/1.jpg');">
+                </div>
+                <div class="small image" style="background-image: url('img/berlinPhotosProva/2.jpg');">
+                </div>
+                <div class="small image" style="background-image: url('img/berlinPhotosProva/3.avif');">
+                </div>
             </div>
             <div class="cardBottom">
-                <span class="cardTitle">OpereProva</span>
+                <span class="cardTitle">paintings</span>
             </div>
         </div>
     </div>
