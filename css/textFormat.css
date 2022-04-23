@@ -2,3 +2,10 @@
     margin-left: 1rem;
     font-weight: 500;
 }
+
+.smallText{
+    font-weight: 400;
+    font-size: 0.9rem;
+    color: #979EA6;
+    margin-top: 3px;
+}

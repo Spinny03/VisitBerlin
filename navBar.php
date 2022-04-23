@@ -11,6 +11,44 @@
 </head>
 <body>
 
+    <div class="leftScrollMenu">
+        <div class="item">
+            <div class="menuImage image" style="background-image: url('img/berlinPhotosProva/1.jpg');">
+            </div>
+            <div class="bottomText">
+                <span class="smallText">WW1</span>
+            </div>
+        </div>
+        <div class="item">
+            <div class="menuImage image" style="background-image: url('img/berlinPhotosProva/2.jpg');">
+            </div>
+            <div class="bottomText">
+                <span class="smallText">ciaoo</span>
+            </div>
+        </div>
+        <div class="item">
+            <div class="menuImage image" style="background-image: url('img/berlinPhotosProva/1.jpg');">
+            </div>
+            <div class="bottomText">
+                <span class="smallText">ciaoo</span>
+            </div>
+        </div>
+        <div class="item">
+            <div class="menuImage image" style="background-image: url('img/berlinPhotosProva/2.jpg');">
+            </div>
+            <div class="bottomText">
+                <span class="smallText">ciaoo</span>
+            </div>
+        </div>
+        <div class="item">
+            <div class="menuImage image" style="background-image: url('img/berlinPhotosProva/1.jpg');">
+            </div>
+            <div class="bottomText">
+                <span class="smallText">ciaoo</span>
+            </div>
+        </div>
+    </div>
+
     <div class="cardsContainer">
         <div class="card">
             <div class="imageGallery">
