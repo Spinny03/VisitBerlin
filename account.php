@@ -6,6 +6,9 @@
         exit("Connessione fallita: " . $conn->connect_error);
     }
     $conn->query("USE Last");
+    $data = $conn->query('SELECT * FROM username WHERE email ="'.$_SESSION["user"].'";');
+    $data = mysqli_fetch_assoc($data); 
+    $link = "assets/icon/profileOff.svg";
 ?>
 
 <!DOCTYPE html>
@@ -85,8 +88,8 @@
                 <a href="index.php"><img src="assets/icon/boardsOff.svg" alt="" class="icon"></a>
                 </div>
                 <div class="insideNav">
-                <a href="#"><img src="assets/icon/preferOff.svg" alt="" class="icon"></a>
-                <a href="#"><img src="assets/icon/profileOn.svg" alt="" class="icon"></a>
+                <a href="liked.php"><img src="assets/icon/preferOff.svg" alt="" class="icon"></a>
+                <a href="account.php"><img src="assets/icon/profileOn.svg" alt="" class="icon"></a>
                 </div>
             </nav>
         </div>

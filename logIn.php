@@ -9,7 +9,7 @@
     }
 ?>
 <!DOCTYPE html>
-<<html lang="it">
+<html lang="it">
     <head>
         <meta name="viewport" content="width=device-width" />
         <link rel="stylesheet" href="css/styles.css">
@@ -39,7 +39,6 @@
         ?>
         <div class="container">
             <div class="left">
-                <img src="images/logo.png" alt="logo" id="logo">
                 <div class="log">
                     <h1>Accedi</h1>
                     <span>Accedi con i dati che hai inserito durante la registrazione.</span>

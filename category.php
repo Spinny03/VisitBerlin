@@ -50,7 +50,7 @@
                             </div>
                         </div>
                         <div class="cardBottom">
-                            <span class="cardTitle">paintings</span>
+                            <span class="cardTitle">DOVREBBERO ESSERE SOLO IMAGINI </span>
                         </div>
                     </div>';
                 }

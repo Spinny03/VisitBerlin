@@ -26,7 +26,7 @@
     
     if($psw == $checkPsw){
         $conn->query("INSERT INTO username (email, pasw) VALUES ('".$email."', '".hash("sha256",$psw)."');");
-        header("Location: ../index.php");
+        header("Location: ../logIn.php");
     }
     else{
         $_SESSION["check"] = true;

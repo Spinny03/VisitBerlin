@@ -35,7 +35,7 @@
                             </div>
                         </div>
                         <div class="cardBottom">
-                            <span class="cardTitle">paintings</span>
+                            <span class="cardTitle">DOVREBBERO ESSERE SOLO IMAGINI </span>
                         </div>
                     </div>';
                 }
@@ -50,7 +50,7 @@
                 <a href="index.php"><img src="assets/icon/boardsOff.svg" alt="" class="icon"></a>
                 </div>
                 <div class="insideNav">
-                <a href="#"><img src="assets/icon/preferON.svg" alt="" class="icon"></a>
+                <a href="liked.php"><img src="assets/icon/preferON.svg" alt="" class="icon"></a>
                 <a href="account.php"><img src="assets/icon/profileOff.svg" alt="" class="icon"></a>
                 </div>
             </nav>
