@@ -1,88 +1,31 @@
 <?php 
     session_start(); 
-    if(empty($_SESSION["user"]) && empty($_COOKIE["user"])){
-        header("Location: index.php");
-        exit();
-    }
-    if(empty($_SESSION["user"])){
-        if(isset($_COOKIE["user"])){
-            $_SESSION["user"] = $_COOKIE["user"];
-        }
-    }
-    
+
     $conn = new mysqli("localhost", "root", "");  
     if ($conn->connect_error){
         exit("Connessione fallita: " . $conn->connect_error);
     }
-    $conn->query("USE Il_Pescaggio");
-    $bag = $conn->query('SELECT SUM(quantity) FROM cart WHERE idUser="'.$_SESSION["user"].'" AND cart.catering = 0;');
-    $bag = mysqli_fetch_assoc($bag); 
-    $data = $conn->query('SELECT * FROM username WHERE email ="'.$_SESSION["user"].'";');
-    $data = mysqli_fetch_assoc($data); 
-    if(empty($data["photoLink"])){
-        $link = "images/icons/profile.png";
-    }
-    else{
-        $link = "images/userPhoto/".$data["photoLink"];
-    }
-    if(isset($_SESSION["emailFail"]) && $_SESSION["emailFail"]){
-        echo'<style>
-                input[name="email"]{
-                    background-color: rgba(255, 78, 113, 0.7);
-                }
-            </style>';
-        $_SESSION["emailFail"] = False;
-    }
-    if(!isset($_SESSION["bigNews"]) || $_SESSION["bigNews"] != "news"){
-        $bigNews = $conn->query('SELECT notice FROM username WHERE email="'.$_SESSION["user"].'";');
-        $bigNews = mysqli_fetch_assoc($bigNews); 
-        if($bigNews["notice"] == 1){
-            $_SESSION["bigNews"] = "news";
-        }
-    }
+    $conn->query("USE Last");
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="it">
     <head>
-        <meta name="viewport" content="width=device-width" />
-        <link rel="stylesheet" href="css/profileStyles.css">
-        <link rel="stylesheet" href="css/navBarStyles.css">
-        <link rel="stylesheet" href="css/formStyles.css">
-        <link rel="stylesheet" href="css/scrollBarStyles.css">
-        <script src="js/navbarRes.js" defer></script>
-        <script src="js/footer.js" defer></script>
-        
-        <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/navBar.css">
+        <link rel="stylesheet" href="css/cardsMenu.css">
+        <link rel="stylesheet" href="css/textFormat.css">
         <title>PROFILO</title>
     </head>
-    <body onload="footerHeight()" onresize="footerHeight()">
-        <?php 
-            $photo = $conn->query('SELECT photoLink FROM username WHERE email="'.$_SESSION["user"].'";');
-            $photo = mysqli_fetch_assoc($photo); 
-            if(!empty($photo["photoLink"])){
-                echo'<style>
-                        a[id="profileBtn"]{
-                            background: url("images/userPhoto/'.$photo["photoLink"].'");
-                        }
-                    </style>';
-            }
-            else{
-                echo'<style>
-                        a[id="profileBtn"]{
-                            background: url("images/icons/profile.png");
-                        }
-                    </style>';
-            }
-        ?>
+    <body>
         <div class="container" style="min-height: 100vh;">
             <div class="title">
                 <h2>Impostazioni Account</h2>
             </div>
 
             <div class="pSettings">
-
-                
                 <form id="pform" action="access/photoDB.php" method="POST" enctype="multipart/form-data">
                     <img width="200" height="200" src="<?php echo $link; ?>" class="profilePhotoBig">
                     <label class="photoBtn" for="apply"><input class="inPhoto" type="file" name="pfile" id="apply" accept="image/*">Modifica</label>
@@ -134,6 +77,19 @@
                 </form>
             </div>
         </div> 
+        <div class="divWrapper">
+            <a href="#" class="camera"><img src="assets/icon/camButton.svg" alt="" class="icon"></a>
+            <nav class="bottomNav">
+                <div class="insideNav">
+                <a href="#"><img src="assets/icon/searchOff.svg" alt="" class="icon"></a>
+                <a href="index.php"><img src="assets/icon/boardsOff.svg" alt="" class="icon"></a>
+                </div>
+                <div class="insideNav">
+                <a href="#"><img src="assets/icon/preferOff.svg" alt="" class="icon"></a>
+                <a href="#"><img src="assets/icon/profileOn.svg" alt="" class="icon"></a>
+                </div>
+            </nav>
+        </div>
     </body>
     <?php $conn->close(); ?>
 </html>

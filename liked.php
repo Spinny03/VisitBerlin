@@ -15,29 +15,28 @@
         <link rel="stylesheet" href="css/navBar.css">
         <link rel="stylesheet" href="css/cardsMenu.css">
         <link rel="stylesheet" href="css/textFormat.css">
-        <title>HOME</title>
+        <title>Preferiti</title>
     </head>
     <body>
-        <h1>Boards</h1>
-        <h2>Following galleries to power up your art careere</h2>
+        <h1>Preferiti</h1>
+        <h2>Le tue opere preferite</h2>
+
         <div class="cardsContainer">
             <?php 
                 for($i=0; $i<20; $i++){
                     echo  '
                     <div class="card">
-                        <a href="category.php">
-                            <div class="imageGallery">
-                                <div class="big image" style="background-image: url(assets/berlinPhotosProva/1.jpg);">
-                                </div>
-                                <div class="small image" style="background-image: url(assets/berlinPhotosProva/2.jpg);">
-                                </div>
-                                <div class="small image" style="background-image: url(assets/berlinPhotosProva/3.avif);">
-                                </div>
+                        <div class="imageGallery">
+                            <div class="big image" style="background-image: url(assets/berlinPhotosProva/1.jpg);">
                             </div>
-                            <div class="cardBottom">
-                                <span class="cardTitle">paintings</span>
+                            <div class="small image" style="background-image: url(assets/berlinPhotosProva/2.jpg);">
                             </div>
-                        </a>
+                            <div class="small image" style="background-image: url(assets/berlinPhotosProva/3.avif);">
+                            </div>
+                        </div>
+                        <div class="cardBottom">
+                            <span class="cardTitle">paintings</span>
+                        </div>
                     </div>';
                 }
             ?>
@@ -48,15 +47,14 @@
             <nav class="bottomNav">
                 <div class="insideNav">
                 <a href="#"><img src="assets/icon/searchOff.svg" alt="" class="icon"></a>
-                <a href="#"><img src="assets/icon/boardsON.svg" alt="" class="icon"></a>
+                <a href="index.php"><img src="assets/icon/boardsOff.svg" alt="" class="icon"></a>
                 </div>
                 <div class="insideNav">
-                <a href="liked.php"><img src="assets/icon/preferOff.svg" alt="" class="icon"></a>
+                <a href="#"><img src="assets/icon/preferON.svg" alt="" class="icon"></a>
                 <a href="account.php"><img src="assets/icon/profileOff.svg" alt="" class="icon"></a>
                 </div>
             </nav>
         </div>
 
-</body>
+    </body>
 </html>
-

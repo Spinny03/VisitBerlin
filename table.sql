@@ -9,6 +9,11 @@ CREATE TABLE LDI(
     `value` varchar(255)
 );
 
+CREATE TABLE tipo(
+    `id` INTEGER PRIMARY KEY,
+    `name` varchar(255)
+);
+
 CREATE TABLE username(
     `email` varchar(255) PRIMARY KEY,
     `firstName` varchar(255),

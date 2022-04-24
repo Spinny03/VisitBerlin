@@ -9,7 +9,7 @@
     }
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="it">
     <head>
     <meta name="viewport" content="width=device-width" />
         <link rel="stylesheet" href="css/formStyles.css">
