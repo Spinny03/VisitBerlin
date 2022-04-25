@@ -20,7 +20,7 @@
         <link rel="stylesheet" href="css/navBar.css">
         <link rel="stylesheet" href="css/cardsMenu.css">
         <link rel="stylesheet" href="css/textFormat.css">
-        <title>HOME</title>
+        <title>Home</title>
     </head>
     <body>
         <h1>Boards</h1>

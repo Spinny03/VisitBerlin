@@ -22,7 +22,7 @@
         <link rel="stylesheet" href="css/navBar.css">
         <link rel="stylesheet" href="css/cardsMenu.css">
         <link rel="stylesheet" href="css/textFormat.css">
-        <title><?php echo "ciao";?></title>
+        <title>Mappa</title>
     </head>
     <body>
         <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
@@ -31,14 +31,12 @@
 
         <script> 
             element = document.getElementById('osm-map');
-            //se cambia risoluzione si deve ricaricare la pagina 52.514103540169955, 13.37873063528018
+            //se cambia risoluzione si deve ricaricare la pagina
             element.style = 'height:'.concat(window.innerHeight, 'px;');;
             var map = L.map(element);
-            L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-                attribution: ''
-            }).addTo(map);
+            L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {}).addTo(map);
             var target = L.latLng('52.52081982659567', '13.408958613189439');
-            map.setView(target, 14);
+            map.setView(target, 15);
             L.marker(target).addTo(map);
             var target = L.latLng('52.514103540169955', '13.37873063528018');
             L.marker(target).addTo(map);
