@@ -1,8 +1,5 @@
 CREATE DATABASE Last;
-
 USE Last;
-
-
 CREATE TABLE LDI(
     `id` int PRIMARY KEY AUTO_INCREMENT,
     `name` varchar(255),
@@ -11,14 +8,10 @@ CREATE TABLE LDI(
     `type` varchar(255),
     `value` varchar(255)
 );
-
-
 CREATE TABLE tipo(
     `id` int PRIMARY KEY AUTO_INCREMENT,
     `name` varchar(255)
 );
-
-
 CREATE TABLE username(
     `email` varchar(255) PRIMARY KEY,
     `firstName` varchar(255),
@@ -28,6 +21,20 @@ CREATE TABLE username(
     `pasw` varchar(255) NOT NULL
 );
 
+CREATE TABLE preferiti(
+    `email` varchar(255) PRIMARY KEY,
+    `firstName` varchar(255),
+    `surname` varchar(255),
+    `registrationDate` timestamp,
+    `notice` TINYINT(1),
+    `pasw` varchar(255) NOT NULL
+);
+
+CREATE TABLE preferiti(
+    `email` int NOT NULL REFERENCES username(email) ,
+    `idLDI` int NOT NULL REFERENCES LDI(id),
+    primary key(`email`, `idLDI`)
+);
 
 INSERT INTO `tipo`(`name`) VALUES (`dipinto`);
 INSERT INTO `tipo`(`name`) VALUES (`memoriale`);

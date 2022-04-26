@@ -63,7 +63,7 @@
         </div>
 
         <div class="divWrapper">
-            <a href="#" class="camera"><img src="assets/icon/camButton.svg" alt="" class="icon"></a>
+            <a href="camera.php" class="camera"><img src="assets/icon/camButton.svg" alt="" class="icon"></a>
             <nav class="bottomNav">
                 <div class="insideNav">
                 <a href="map.php"><img src="assets/icon/searchOff.svg" alt="" class="icon"></a>
