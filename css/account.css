@@ -1,0 +1,44 @@
+.pSettings{
+    margin: 5px;
+}
+
+#pform{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.profileInfo{
+    display: flex;
+    align-items: left;
+    justify-content: center;
+    flex-direction: column;
+}
+
+input{
+    width: 90%;
+    background-color: transparent;
+    border: 0;
+    font-size: 1rem;
+    font-family: 'lora';
+    color: black;
+}
+
+button{
+    /*width: 20%;*/
+    padding: 5px 20px 5px 20px;
+    border-radius: 5px;
+    border: 0px;
+    background-color: orange;
+}
+
+.data{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+label{
+    font-weight: 400;
+    color: grey;
+}
