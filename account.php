@@ -27,6 +27,7 @@
         <link rel="stylesheet" href="css/cardsMenu.css">
         <link rel="stylesheet" href="css/textFormat.css">
         <link rel="stylesheet" href="css/account.css">
+        <link rel="stylesheet" href="css/components.css">
         <title>PROFILO</title>
     </head>
     <body>
@@ -36,9 +37,8 @@
                 <div class="pSettings">
                     <form id="pform" action="access/photoDB.php" method="POST" enctype="multipart/form-data">
                         <img width="200" height="200" src="'.$link.'" class="profilePhotoBig">
-                        <label class="photoBtn" for="apply"><input class="inPhoto" type="file" name="pfile" id="apply" accept="image/*">Modifica
-                            <button type="submit" name="change" value="False" class="photoBtn removeBtn">Rimuovi</button>
-                        </label>
+                        <label class="photoBtn" for="apply" style="font-size:14px"><input class="inPhoto" type="file" name="pfile" id="apply" accept="image/*">Modifica</label>
+                        <button type="submit" name="change" value="False" class="photoBtn">Rimuovi</button>
                         
                     </form>
                     <script>
@@ -74,7 +74,26 @@
                                 }
         echo '              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
                         </div>
-                        <div style="margin-top:5px;"> 
+                        <span class="choice">Notifiche email
+                            <label class="switch">
+                                <input type="checkbox" checked>
+                                <span class="slider round"></span>
+                            </label>
+                        </span>
+                        <span class="choice">Posizione durante ultilizzo app: 
+                            <label class="switch">
+                                <input type="checkbox" checked>
+                                <span class="slider round"></span>
+                            </label>
+                        </span>
+                        <span class="choice">Modalità notte
+                            <label class="switch">
+                                <input type="checkbox" checked>
+                                <span class="slider round"></span>
+                            </label>
+                        </span>
+
+                        <div class="btnDiv"> 
                             <button type="submit" name="change" value="False" class="logbtn">Annulla modifiche</button>
                             <button type="submit" name="change" value="True" class="logbtn">Salva le modifiche</button>
                             <button type="submit" name="change" value="logOUT" class="removeBtn genBtn">Esci</button>

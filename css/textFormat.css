@@ -9,3 +9,12 @@
     color: #979EA6;
     margin-top: 3px;
 }
+::placeholder {
+    color: black;
+    opacity: 1;
+    font-weight: lighter;
+}
+
+h2{
+    margin-left: 5px;
+}

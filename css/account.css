@@ -1,3 +1,11 @@
+* {
+    box-sizing: border-box;
+}
+
+body{
+    margin-bottom: 100px;
+}
+
 .pSettings{
     margin: 5px;
 }
@@ -8,6 +16,11 @@
     justify-content: center;
     flex-direction: column;
 }
+
+/*.profilePhotoBig{
+    border: 1px solid black;
+    border-radius: 5px;
+}*/
 
 .profileInfo{
     display: flex;
@@ -23,6 +36,30 @@ input{
     font-size: 1rem;
     font-family: 'lora';
     color: black;
+    font-weight: bold;
+}
+
+.photoBtn{
+    margin-top: 15px;
+    width: 200px;
+    background: linear-gradient(147.72deg, #FFAC5F 1.97%, #FF4D3C 92.47%);
+    color: black;
+    padding: 10px 16px;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 8px;
+    font-family: 'lora';
+}
+
+.inPhoto {
+    border: 0;
+    clip: rect(1px, 1px, 1px, 1px);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
 }
 
 button{
@@ -30,15 +67,37 @@ button{
     padding: 5px 20px 5px 20px;
     border-radius: 5px;
     border: 0px;
-    background-color: orange;
+    background: linear-gradient(147.72deg, #FFAC5F 1.97%, #FF4D3C 92.47%);
+    padding: 10px 16px;
+    width: 60%;
+    font-family: 'lora';
 }
 
 .data{
-    margin-top: 5px;
-    margin-bottom: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 label{
     font-weight: 400;
     color: grey;
+}
+
+.btnDiv{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    border-top: 1px solid gray;
+    padding-top: 30px;
+}
+
+.choice{
+    margin: 20px 5px 20px 0px;
+    background: linear-gradient(147.72deg, #FFAC5F 1.97%, #FF4D3C 92.47%);
+    font-weight: bold;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
