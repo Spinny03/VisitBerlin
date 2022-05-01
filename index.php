@@ -53,7 +53,7 @@
             <nav class="bottomNav">
                 <div class="insideNav">
                 <a href="map.php"><img src="assets/icon/searchOff.svg" alt="" class="icon"></a>
-                <a href="index.php"><img src="assets/icon/boardsON.svg" alt="" class="icon"></a>
+                <a href="index.php"><img src="assets/icon/boardsOn.svg" alt="" class="icon"></a>
                 </div>
                 <div class="insideNav">
                 <a href="liked.php"><img src="assets/icon/preferOff.svg" alt="" class="icon"></a>

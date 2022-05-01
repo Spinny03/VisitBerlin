@@ -25,11 +25,11 @@
     }
     
     if($psw == $checkPsw){
-        if(!mail(
+        mail(
             $email,
             "Grazie per eserti registrato!",
             "Ciao!\n\nTi ringraziamo per esserti registrato su Last.\n\nGrazie,\n\nLast"	
-        ))
+        );
         $conn->query("INSERT INTO username (email, pasw) VALUES ('".$email."', '".hash("sha256",$psw)."');");
         header("Location: ../logIn.php");
     }

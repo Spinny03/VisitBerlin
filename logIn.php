@@ -59,7 +59,8 @@
                     </form>
                 </div>  
                 <div class="bottom">
-                        <span>Non hai un account? <a href="signUp.php" class="Link">Registrati</a></span>
+                    <span><a href="forgotPassw.php" class="Link">Password dimenticata?</a></span></br>
+                    <span>Non hai un account? <a href="signUp.php" class="Link">Registrati</a></span>
                 </div>
             </div>
             <div class="right">

@@ -46,7 +46,7 @@
             <a href="camera.php" class="camera"><img src="assets/icon/camButton.svg" alt="" class="icon"></a>
             <nav class="bottomNav">
                 <div class="insideNav">
-                <a href="map.php"><img src="assets/icon/searchON.svg" alt="" class="icon"></a>
+                <a href="map.php"><img src="assets/icon/searchOn.svg" alt="" class="icon"></a>
                 <a href="index.php"><img src="assets/icon/boardsOff.svg" alt="" class="icon"></a>
                 </div>
                 <div class="insideNav">
