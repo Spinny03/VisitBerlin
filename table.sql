@@ -5,8 +5,8 @@ CREATE TABLE LDI(
     `name` varchar(255),
     `description` varchar(255),
     `registrationDate` timestamp,
-    `type` varchar(255),
-    `value` varchar(255)
+    `lon` varchar(255),
+    `lat` varchar(255)
 );
 CREATE TABLE tipo(
     `id` int PRIMARY KEY AUTO_INCREMENT,
@@ -33,7 +33,9 @@ INSERT INTO `tipo`(`name`) VALUES (`memoriale`);
 INSERT INTO `tipo`(`name`) VALUES (`edificio`);
 INSERT INTO `tipo`(`name`) VALUES (`statua`);
 INSERT INTO `tipo`(`name`) VALUES (`museo`);
-INSERT INTO `ldi`(`name`, `description`, `registrationDate`, `type`, `value`) VALUES ([value-1],[value-2],[value-3],[value-4],[value-5],[value-6]);
+INSERT INTO `ldi`(`name`, `description`, `lon`, `lat`) VALUES ("Pergamonmuseum","Museo di Storia","52.52118763491666","13.396887102137438");
+INSERT INTO `ldi`(`name`, `description`, `lon`, `lat`) VALUES ("Memoriale per gli ebrei assassinati d'Europa","Memoriale ebrei","52.513960618478045","13.378650112228932");
+INSERT INTO `ldi`(`name`, `description`, `lon`, `lat`) VALUES ("Porta di Brandeburgo","Famosa porta du Berlino","52.516263438555185","13.377663294044417");
 
 
 Pergamonmuseum

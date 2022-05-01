@@ -34,11 +34,16 @@
             element.style = 'height:'.concat(window.innerHeight, 'px;');
             var map = L.map(element);
             L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {}).addTo(map);
-            var target = L.latLng('52.52081982659567', '13.408958613189439');
-            map.setView(target, 15);
-            L.marker(target).addTo(map);
-            var target = L.latLng('52.514103540169955', '13.37873063528018');
-            L.marker(target).addTo(map);
+            map.setView(['52.51715250163406', '13.389735939802097'], 14);
+            <?php 
+                $query = "SELECT * FROM ldi";
+                $result = $conn->query($query);
+                if($result->num_rows > 0){
+                    while($row = $result->fetch_assoc()){
+                        echo "L.marker(['".$row["lon"]."', '".$row["lat"]."']).addTo(map).bindPopup(`".$row["name"]."`);";
+                    }
+                }
+            ?>
             window.addEventListener('resize', function(event) {
                 element = document.getElementById('osm-map');
                 element.style = 'height:'.concat(window.innerHeight, 'px;');
