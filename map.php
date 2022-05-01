@@ -31,8 +31,7 @@
 
         <script> 
             element = document.getElementById('osm-map');
-            //se cambia risoluzione si deve ricaricare la pagina
-            element.style = 'height:'.concat(window.innerHeight, 'px;');;
+            element.style = 'height:'.concat(window.innerHeight, 'px;');
             var map = L.map(element);
             L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {}).addTo(map);
             var target = L.latLng('52.52081982659567', '13.408958613189439');
@@ -40,6 +39,10 @@
             L.marker(target).addTo(map);
             var target = L.latLng('52.514103540169955', '13.37873063528018');
             L.marker(target).addTo(map);
+            window.addEventListener('resize', function(event) {
+                element = document.getElementById('osm-map');
+                element.style = 'height:'.concat(window.innerHeight, 'px;');
+            }, true);
         </script>
         
         <div class="divWrapper">

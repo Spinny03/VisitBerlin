@@ -17,25 +17,26 @@ Progetto massimo: Gestore di luoghi di interesse citta e musei
 - LDI: luoghi di interesse/opere in caso di museo
 
 ## Feature minime
-- scansione QR
-- lista LDI
-- interfaccia admin per aggiungere LDI
-- scheda per ogni LDI
-- filtri di ricerca e ordinamento
+- [ ] scansione QR
+- [ ] lista LDI
+- [ ] interfaccia admin per aggiungere LDI
+- [ ] scheda per ogni LDI
+- [ ] filtri di ricerca e ordinamento
 
 ## Feature intermedie
-- app android/ios
-- mappa 2d con LDI pin
-- login utente per cronologia visite
-- email:
-  - riscontro registrazione
-  - recupero password
-  - notifiche novità
+- [ ] pagina di caricamento personalizzata
+- [ ] app android/ios
+- [X] mappa 2d con LDI pin
+- [X] login utente per cronologia visite
+- [ ] email:
+  - [X] riscontro registrazione
+  - [X] recupero password
+  - [ ] notifiche novità
 
 ## Feature massime
-- gestore di più citta/mostre
-- riconoscimento opere tramite fotocamera
-- realta aumentata LDI
-- mappa 3d della citta/struttura
-- creatore di percorsi di LDI in base alla posizione
+- [ ] gestore di più citta/mostre
+- [ ] riconoscimento opere tramite fotocamera
+- [ ] realta aumentata LDI
+- [ ] mappa 3d della citta/struttura
+- [ ] creatore di percorsi di LDI in base alla posizione
 
