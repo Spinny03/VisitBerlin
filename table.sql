@@ -6,11 +6,17 @@ CREATE TABLE LDI(
     `description` varchar(255),
     `registrationDate` timestamp,
     `lon` varchar(255),
-    `lat` varchar(255)
+    `lat` varchar(255),
+    `image` varchar(255)
 );
 CREATE TABLE tipo(
     `id` int PRIMARY KEY AUTO_INCREMENT,
     `name` varchar(255)
+);
+CREATE TABLE tipo_ldi(
+    `ldi_id` int REFERENCES LDI(id),
+    `tipo_id` int REFERENCES tipo(id),
+    PRIMARY KEY (`ldi_id`, `tipo_id`)
 );
 CREATE TABLE username(
     `email` varchar(255) PRIMARY KEY,
@@ -28,28 +34,69 @@ CREATE TABLE preferiti(
     primary key(`email`, `idLDI`)
 );
 
-INSERT INTO `tipo`(`name`) VALUES (`dipinto`);
-INSERT INTO `tipo`(`name`) VALUES (`memoriale`);
-INSERT INTO `tipo`(`name`) VALUES (`edificio`);
-INSERT INTO `tipo`(`name`) VALUES (`statua`);
-INSERT INTO `tipo`(`name`) VALUES (`museo`);
-INSERT INTO `ldi`(`name`, `description`, `lon`, `lat`) VALUES ("Pergamonmuseum","Museo di Storia","52.52118763491666","13.396887102137438");
-INSERT INTO `ldi`(`name`, `description`, `lon`, `lat`) VALUES ("Memoriale per gli ebrei assassinati d'Europa","Memoriale ebrei","52.513960618478045","13.378650112228932");
-INSERT INTO `ldi`(`name`, `description`, `lon`, `lat`) VALUES ("Porta di Brandeburgo","Famosa porta du Berlino","52.516263438555185","13.377663294044417");
-INSERT INTO `ldi`(`name`, `description`, `lon`, `lat`) VALUES ("Topografia del terrore","è un progetto nato a Berlino nel 1987 per documentare e ricercare il sistema del terrore instaurato dai nazionalsocialisti in Germania","52.50663393901613","13.383581631216389");
-INSERT INTO `ldi`(`name`, `description`, `lon`, `lat`) VALUES ("Duomo di Berlino","Memoriale ebrei","52.51911423602293","13.401001642425646");
-INSERT INTO `ldi`(`name`, `description`, `lon`, `lat`) VALUES ("Torre dell'acqua di Prenzlauer Berg","Famosa porta du Berlino","52.534187788678985","13.418663585412373");
+INSERT INTO `tipo`(`name`) VALUES ("Dipinti");
+INSERT INTO `tipo`(`name`) VALUES ("Memoriali");
+INSERT INTO `tipo`(`name`) VALUES ("Edifici");
+INSERT INTO `tipo`(`name`) VALUES ("Statue");
+INSERT INTO `tipo`(`name`) VALUES ("Musei");
+INSERT INTO `ldi`(`name`, `description`, `lon`, `lat`, `image`) VALUES ("Pergamonmuseum","Museo di Storia","52.52118763491666","13.396887102137438","1.jpg");
+INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (1,1);
+INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (1,2);
+INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (1,3);
+INSERT INTO `ldi`(`name`, `description`, `lon`, `lat`, `image`) VALUES ("Memoriale per gli ebrei assassinati d'Europa","Memoriale ebrei","52.513960618478045","13.378650112228932","2.jpg");
+INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (2,2);
+INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (2,3);
+INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (2,4);
+INSERT INTO `ldi`(`name`, `description`, `lon`, `lat`, `image`) VALUES ("Porta di Brandeburgo","Famosa porta du Berlino","52.516263438555185","13.377663294044417","3.jpg");
+INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (3,1);
+INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (3,3);
+INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (3,5);
+INSERT INTO `ldi`(`name`, `description`, `lon`, `lat`, `image`) VALUES ("Topografia del terrore","è un progetto nato a Berlino nel 1987 per documentare e ricercare il sistema del terrore instaurato dai nazionalsocialisti in Germania","52.50663393901613","13.383581631216389","4.jpg");
+INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (4,1);
+INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (4,3);
+INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (4,4);
+INSERT INTO `ldi`(`name`, `description`, `lon`, `lat`, `image`) VALUES ("Duomo di Berlino","Memoriale ebrei","52.51911423602293","13.401001642425646","5.jpg");
+INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (5,1);
+INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (5,4);
+INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (5,5);
+INSERT INTO `ldi`(`name`, `description`, `lon`, `lat`, `image`) VALUES ("Torre dell'acqua di Prenzlauer Berg","Torre","52.534187788678985","13.418663585412373","6.jpg");
+INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (6,1);
+INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (6,2);
+INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (6,5);
+INSERT INTO `ldi`(`name`, `description`, `lon`, `lat`, `image`) VALUES ("Monumento ai soldati polacchi e agli antifascisti tedeschi","Descrizione","52.52874531071378","13.437773436423308","7.jpg");
+INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (7,1);
+INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (7,2);
+INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (7,3);
+INSERT INTO `ldi`(`name`, `description`, `lon`, `lat`, `image`) VALUES ("Memoriale agli omosessuali perseguitati sotto il nazismo","Descrizione","52.513251728691856","13.376121538989821","8.jpg");
+INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (8,1);
+INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (8,2);
+INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (8,4);
+INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (8,5);
+INSERT INTO `ldi`(`name`, `description`, `lon`, `lat`, `image`) VALUES ("Tiergarten","Descrizione","52.5166195461566","13.371907227215877","9.jpg");
+INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (9,1);
+INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (9,3);
+INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (9,4);
+INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (9,5);
+INSERT INTO `ldi`(`name`, `description`, `lon`, `lat`, `image`) VALUES ("Museo del Muro","Museo dedidcato al ex muro di berlino","52.507394540273374","13.390616285939664","10.jpg");
+INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (10,3);
+INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (10,4);
+INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (10,5);
+
+
+
+
+
 
 Pergamonmuseum X
 Porta di Brandeburgo X
-Topographie des Terrors X
+Topografia del terrore X
 Duomo di Berlino X
-Wasserturm Prenzlauer Berg X
-Monument to the Polish soldiers and German anti-fascists
-Memoriale agli omosessuali perseguitati sotto il nazismo
-Memoriale sovietico (Tiergarten)
+Torre dell acqua di Prenzlauer Berg X
+Monumento ai soldati polacchi e agli antifascisti tedeschi X
+Memoriale agli omosessuali perseguitati sotto il nazismo X
+Memoriale sovietico (Tiergarten) X
+
 Memorial to the Victims of National Socialist 'Euthanasia' Killings
-Monument to the Polish soldiers and German anti-fascists
 Museo del Muro
 Muro di Berlino
 Checkpoint Charlie

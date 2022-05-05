@@ -27,23 +27,30 @@
         <h2>Following galleries to power up your art careere</h2>
         <div class="cardsContainer">
             <?php 
-                for($i=0; $i<20; $i++){
+                $sql = 'SELECT * FROM tipo;';
+                $tipo = $conn->query($sql); 
+                while($row = $tipo->fetch_assoc()){ 
+                    $sql = 'SELECT * FROM LDI, tipo_ldi WHERE LDI.id = tipo_ldi.ldi_id AND tipo_ldi.tipo_id ='.$row["id"].' ORDER BY RAND() LIMIT 3';
+                    $foto = $conn->query($sql);
+                    $rowIm1 = mysqli_fetch_array($foto);
+                    $rowIm2 = mysqli_fetch_array($foto);
+                    $rowIm3 = mysqli_fetch_array($foto);
                     echo  '
-                    <div class="card">
-                        <a href="category.php">
-                            <div class="imageGallery">
-                                <div class="big image" style="background-image: url(assets/berlinPhotosProva/1.jpg);">
-                                </div>
-                                <div class="small image" style="background-image: url(assets/berlinPhotosProva/2.jpg);">
-                                </div>
-                                <div class="small image" style="background-image: url(assets/berlinPhotosProva/3.avif);">
-                                </div>
-                            </div>
-                            <div class="cardBottom">
-                                <span class="cardTitle">paintings</span>
-                            </div>
-                        </a>
-                    </div>';
+                            <div class="card">
+                                <a href="category.php">
+                                    <div class="imageGallery">
+                                        <div class="big image" style="background-image: url(assets/berlinPhotosProva/'.$rowIm1["image"].');">
+                                        </div>
+                                        <div class="small image" style="background-image: url(assets/berlinPhotosProva/'.$rowIm2["image"].');">
+                                        </div>
+                                        <div class="small image" style="background-image: url(assets/berlinPhotosProva/'.$rowIm3["image"].');">
+                                        </div>
+                                    </div>
+                                    <div class="cardBottom">
+                                        <span class="cardTitle">'.$row["name"].'</span>
+                                    </div>
+                                </a>
+                            </div>';
                 }
             ?>
         </div>
