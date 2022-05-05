@@ -20,6 +20,7 @@
         <link rel="stylesheet" href="css/navBar.css">
         <link rel="stylesheet" href="css/cardsMenu.css">
         <link rel="stylesheet" href="css/textFormat.css">
+        <link rel="stylesheet" href="css/imageGallery.css">
         <title><?php echo "ciao";?></title>
     </head>
     <body>
@@ -41,25 +42,25 @@
             ?>
         </div>
 
-        <div class="cardsContainer">
-            <?php 
-                for($i=0; $i<20; $i++){
-                    echo  '
-                    <div class="card">
-                        <div class="imageGallery">
-                            <div class="big image" style="background-image: url(assets/berlinPhotosProva/1.jpg);">
-                            </div>
-                            <div class="small image" style="background-image: url(assets/berlinPhotosProva/2.jpg);">
-                            </div>
-                            <div class="small image" style="background-image: url(assets/berlinPhotosProva/3.avif);">
-                            </div>
-                        </div>
-                        <div class="cardBottom">
-                            <span class="cardTitle">DOVREBBERO ESSERE SOLO IMAGINI </span>
-                        </div>
-                    </div>';
-                }
-            ?>
+        <div class="imageGallery">
+                <div class="topImage image"  style="background-image: url(assets/berlinPhotosProva/1.jpg);">
+
+                </div>
+                <div class="left1 image"  style="background-image: url(assets/berlinPhotosProva/1.jpg);">
+
+                </div> 
+                <div class="left2 image"  style="background-image: url(assets/berlinPhotosProva/1.jpg);">
+
+                </div>
+                <div class="bigRight image"  style="background-image: url(assets/berlinPhotosProva/1.jpg);">
+
+                </div>
+                <div class="bottomleft image"  style="background-image: url(assets/berlinPhotosProva/1.jpg);">
+
+                </div>
+                <div class="bottomRight image"  style="background-image: url(assets/berlinPhotosProva/1.jpg);">
+                    
+                </div>
         </div>
 
         <div class="divWrapper">

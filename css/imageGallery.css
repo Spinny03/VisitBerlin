@@ -1,0 +1,45 @@
+.imageGallery{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    background-color: transparent;
+    height: calc(2 * 100vw);
+    margin-bottom: 110px;
+    gap: 1rem;
+    width: calc(100vw - 10px);
+    margin: 0px 5px 110px 5px;
+    grid-template-areas: 
+    "a a"
+    "b c"
+    "d c"
+    "e f";
+}
+
+.imageGallery div{
+    border-radius: 1rem;
+}
+.imageGallery .topImage{
+    grid-area: a;
+}
+.imageGallery .left1{
+    grid-area: b;
+}
+.imageGallery .left2{
+    grid-area: d;
+}
+.imageGallery .bigRight{
+    grid-area: c;
+}
+.imageGallery .bottomLeft{
+    grid-area: e;
+}
+.imageGallery .bottomRight{
+    grid-area: f;
+}
+
+/*
+    "topImage topImage"
+    "left1 bigRight"
+    "left2 bigRight"
+    "bottomLeft bottomRight";
+*/
