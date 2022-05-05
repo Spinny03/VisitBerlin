@@ -36,13 +36,15 @@ INSERT INTO `tipo`(`name`) VALUES (`museo`);
 INSERT INTO `ldi`(`name`, `description`, `lon`, `lat`) VALUES ("Pergamonmuseum","Museo di Storia","52.52118763491666","13.396887102137438");
 INSERT INTO `ldi`(`name`, `description`, `lon`, `lat`) VALUES ("Memoriale per gli ebrei assassinati d'Europa","Memoriale ebrei","52.513960618478045","13.378650112228932");
 INSERT INTO `ldi`(`name`, `description`, `lon`, `lat`) VALUES ("Porta di Brandeburgo","Famosa porta du Berlino","52.516263438555185","13.377663294044417");
+INSERT INTO `ldi`(`name`, `description`, `lon`, `lat`) VALUES ("Topografia del terrore","è un progetto nato a Berlino nel 1987 per documentare e ricercare il sistema del terrore instaurato dai nazionalsocialisti in Germania","52.50663393901613","13.383581631216389");
+INSERT INTO `ldi`(`name`, `description`, `lon`, `lat`) VALUES ("Duomo di Berlino","Memoriale ebrei","52.51911423602293","13.401001642425646");
+INSERT INTO `ldi`(`name`, `description`, `lon`, `lat`) VALUES ("Torre dell'acqua di Prenzlauer Berg","Famosa porta du Berlino","52.534187788678985","13.418663585412373");
 
-
-Pergamonmuseum
-Porta di Brandeburgo
-Topographie des Terrors
-Duomo di Berlino
-Wasserturm Prenzlauer Berg
+Pergamonmuseum X
+Porta di Brandeburgo X
+Topographie des Terrors X
+Duomo di Berlino X
+Wasserturm Prenzlauer Berg X
 Monument to the Polish soldiers and German anti-fascists
 Memoriale agli omosessuali perseguitati sotto il nazismo
 Memoriale sovietico (Tiergarten)
