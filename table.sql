@@ -30,8 +30,8 @@ CREATE TABLE username(
 );
 CREATE TABLE preferiti(
     `email` int NOT NULL REFERENCES username(email) ,
-    `idLDI` int NOT NULL REFERENCES LDI(id),
-    primary key(`email`, `idLDI`)
+    `ldi_id` int NOT NULL REFERENCES LDI(id),
+    primary key(`email`, `ldi_id`)
 );
 
 INSERT INTO `tipo`(`name`) VALUES ("Dipinti");
@@ -83,7 +83,16 @@ INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (10,4);
 INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (10,5);
 
 
-
+INSERT INTO `preferiti`(`ldi_id`,`email`) VALUES (1,"filippo.spinella.2003@calvino.edu.it");
+INSERT INTO `preferiti`(`ldi_id`,`email`) VALUES (2,"filippo.spinella.2003@calvino.edu.it");
+INSERT INTO `preferiti`(`ldi_id`,`email`) VALUES (3,"filippo.spinella.2003@calvino.edu.it");
+INSERT INTO `preferiti`(`ldi_id`,`email`) VALUES (4,"filippo.spinella.2003@calvino.edu.it");
+INSERT INTO `preferiti`(`ldi_id`,`email`) VALUES (5,"filippo.spinella.2003@calvino.edu.it");
+INSERT INTO `preferiti`(`ldi_id`,`email`) VALUES (6,"filippo.spinella.2003@calvino.edu.it");
+INSERT INTO `preferiti`(`ldi_id`,`email`) VALUES (7,"filippo.spinella.2003@calvino.edu.it");
+INSERT INTO `preferiti`(`ldi_id`,`email`) VALUES (8,"filippo.spinella.2003@calvino.edu.it");
+INSERT INTO `preferiti`(`ldi_id`,`email`) VALUES (9,"filippo.spinella.2003@calvino.edu.it");
+INSERT INTO `preferiti`(`ldi_id`,`email`) VALUES (10,"filippo.spinella.2003@calvino.edu.it");
 
 
 

@@ -71,6 +71,7 @@
             </nav>
         </div>
 
-</body>
+    </body>
+    <?php $conn->close(); ?>
 </html>
 
