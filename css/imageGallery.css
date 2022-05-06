@@ -1,9 +1,9 @@
 .imageGallery{
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-rows: repeat(1, 1fr);;
     background-color: transparent;
-    height: calc(2 * 100vw);
+    /*height: calc(2 * 100vw);*/
     margin-bottom: 110px;
     gap: 1rem;
     width: calc(100vw - 10px);
@@ -15,8 +15,13 @@
     "e f";
 }
 
+.notFirst{
+    margin-top: -95px;
+}
+
 .imageGallery div{
     border-radius: 1rem;
+    min-height: 50vw;
 }
 .imageGallery .topImage{
     grid-area: a;
