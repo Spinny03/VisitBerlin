@@ -50,23 +50,21 @@
                 $result = $conn->query($query);
                 if($result->num_rows > 0){
                     $i = 0;
-                    $first = true;
                     $tipo = array("topImage image","left1 image","left2 image","bigRight image","bottomleft image","bottomRight image");
-                    // controllare chiusura div che non funziona mettere vincoli per i gli if
+                    echo '<div class="imageGallery">';
                     while($row = $result->fetch_assoc()){  
-                        if($first && $i==0){
-                            echo '<div class="imageGallery">';
-                            $first = false;
-                        }
-                        else{
+                        if($i==6){
                             echo '<div class="imageGallery notFirst">';
+                            $i=0;
                         }
                         echo '<div class="'.$tipo[$i].'" style="background-image: url(assets/berlinPhotosProva/'.$row["image"].');"></div>';
                         $i++;
-                        if($i==6 && $first){
+                        if($i==6){
                             echo '</div>';
-                            $i=0;
                         }
+                    }
+                    if($i<6){
+                        echo '</div>';
                     }
                 }
             ?>
