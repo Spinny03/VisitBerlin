@@ -29,28 +29,30 @@
             <?php 
                 $sql = 'SELECT * FROM tipo;';
                 $tipo = $conn->query($sql); 
-                while($row = $tipo->fetch_assoc()){ 
-                    $sql = 'SELECT * FROM LDI, tipo_ldi WHERE LDI.id = tipo_ldi.ldi_id AND tipo_ldi.tipo_id ='.$row["id"].' ORDER BY RAND() LIMIT 3';
-                    $foto = $conn->query($sql);
-                    $rowIm1 = mysqli_fetch_array($foto);
-                    $rowIm2 = mysqli_fetch_array($foto);
-                    $rowIm3 = mysqli_fetch_array($foto);
-                    echo  '
-                            <div class="card">
-                                <a href="category.php">
-                                    <div class="imageGallery">
-                                        <div class="big image" style="background-image: url(assets/berlinPhotosProva/'.$rowIm1["image"].');">
+                if($tipo->num_rows > 0){
+                    while($row = $tipo->fetch_assoc()){ 
+                        $sql = 'SELECT * FROM LDI, tipo_ldi WHERE LDI.id = tipo_ldi.ldi_id AND tipo_ldi.tipo_id ='.$row["id"].' ORDER BY RAND() LIMIT 3';
+                        $foto = $conn->query($sql);
+                        $rowIm1 = mysqli_fetch_array($foto);
+                        $rowIm2 = mysqli_fetch_array($foto);
+                        $rowIm3 = mysqli_fetch_array($foto);
+                        echo  '
+                                <div class="card">
+                                    <a href="category.php?categ='.$row["id"].'">
+                                        <div class="imageGallery">
+                                            <div class="big image" style="background-image: url(assets/berlinPhotosProva/'.$rowIm1["image"].');">
+                                            </div>
+                                            <div class="small image" style="background-image: url(assets/berlinPhotosProva/'.$rowIm2["image"].');">
+                                            </div>
+                                            <div class="small image" style="background-image: url(assets/berlinPhotosProva/'.$rowIm3["image"].');">
+                                            </div>
                                         </div>
-                                        <div class="small image" style="background-image: url(assets/berlinPhotosProva/'.$rowIm2["image"].');">
+                                        <div class="cardBottom">
+                                            <span class="cardTitle">'.$row["name"].'</span>
                                         </div>
-                                        <div class="small image" style="background-image: url(assets/berlinPhotosProva/'.$rowIm3["image"].');">
-                                        </div>
-                                    </div>
-                                    <div class="cardBottom">
-                                        <span class="cardTitle">'.$row["name"].'</span>
-                                    </div>
-                                </a>
-                            </div>';
+                                    </a>
+                                </div>';
+                    }
                 }
             ?>
         </div>

@@ -10,6 +10,8 @@
         exit("Connessione fallita: " . $conn->connect_error);
     }
     $conn->query("USE Last");
+    $query = "SELECT * FROM tipo WHERE tipo.id = ".$_GET["categ"];
+    $result = $conn->query($query);
 ?>
 <!DOCTYPE html>
 <html lang="it">
@@ -42,26 +44,32 @@
             ?>
         </div>
 
-        <div class="imageGallery">
-                <div class="topImage image"  style="background-image: url(assets/berlinPhotosProva/1.jpg);">
-
-                </div>
-                <div class="left1 image"  style="background-image: url(assets/berlinPhotosProva/1.jpg);">
-
-                </div> 
-                <div class="left2 image"  style="background-image: url(assets/berlinPhotosProva/1.jpg);">
-
-                </div>
-                <div class="bigRight image"  style="background-image: url(assets/berlinPhotosProva/1.jpg);">
-
-                </div>
-                <div class="bottomleft image"  style="background-image: url(assets/berlinPhotosProva/1.jpg);">
-
-                </div>
-                <div class="bottomRight image"  style="background-image: url(assets/berlinPhotosProva/1.jpg);">
-                    
-                </div>
-        </div>
+       
+            <?php
+                $query = "SELECT * FROM ldi,tipo_ldi WHERE ldi.id = tipo_ldi.ldi_id AND tipo_ldi.tipo_id = ".$_GET["categ"]." ORDER BY RAND()";
+                $result = $conn->query($query);
+                if($result->num_rows > 0){
+                    $i = 0;
+                    $first = true;
+                    $tipo = array("topImage image","left1 image","left2 image","bigRight image","bottomleft image","bottomRight image");
+                    // controllare chiusura div che non funziona mettere vincoli per i gli if
+                    while($row = $result->fetch_assoc()){  
+                        if($first && $i==0){
+                            echo '<div class="imageGallery">';
+                            $first = false;
+                        }
+                        else{
+                            echo '<div class="imageGallery notFirst">';
+                        }
+                        echo '<div class="'.$tipo[$i].'" style="background-image: url(assets/berlinPhotosProva/'.$row["image"].');"></div>';
+                        $i++;
+                        if($i==6 && $first){
+                            echo '</div>';
+                            $i=0;
+                        }
+                    }
+                }
+            ?>
 
         <div class="divWrapper">
             <a href="camera.php" class="camera"><img src="assets/icon/camButton.svg" alt="" class="icon"></a>
