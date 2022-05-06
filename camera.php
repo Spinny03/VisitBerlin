@@ -26,4 +26,5 @@
       });
     </script>
   </body>
+  <?php $conn->close(); ?>
 </html>

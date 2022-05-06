@@ -12,6 +12,14 @@
     $conn->query("USE Last");
     $query = "SELECT * FROM tipo WHERE tipo.id = ".$_GET["categ"];
     $result = $conn->query($query);
+    if(empty($_GET["categ"])){
+        header("Location: index.php");
+    }
+    else{
+        $query = "SELECT * FROM tipo WHERE tipo.id = ".$_GET["categ"];
+        $result = $conn->query($query);
+        $type = $result->fetch_assoc();
+    }
 ?>
 <!DOCTYPE html>
 <html lang="it">
@@ -23,11 +31,11 @@
         <link rel="stylesheet" href="css/cardsMenu.css">
         <link rel="stylesheet" href="css/textFormat.css">
         <link rel="stylesheet" href="css/imageGallery.css">
-        <title><?php echo "ciao";?></title>
+        <title><?php echo $type["name"];?></title>
     </head>
     <body>
         <a href="index.php"><img src="assets/icon/back.svg" alt=""></a>
-        <h1>Illustrations</h1>
+        <h1><?php echo $type["name"];?></h1>
         <h2>CURATED GALLERIES</h2>
         <div class="leftScrollMenu">
             <?php 
@@ -84,4 +92,5 @@
         </div>
 
     </body>
+    <?php $conn->close(); ?>
 </html>

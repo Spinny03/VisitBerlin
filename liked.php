@@ -14,38 +14,50 @@
 <!DOCTYPE html>
 <html lang="it">
     <head>
-        <meta charset="UTF-8">
+    <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="css/navBar.css">
         <link rel="stylesheet" href="css/cardsMenu.css">
         <link rel="stylesheet" href="css/textFormat.css">
+        <link rel="stylesheet" href="css/imageGallery.css">
         <title>Preferiti</title>
     </head>
     <body>
         <h1>Preferiti</h1>
         <h2>Le tue opere preferite</h2>
 
-        <div class="cardsContainer">
-            <?php 
-                for($i=0; $i<20; $i++){
-                    echo  '
-                    <div class="card">
-                        <div class="imageGallery">
-                            <div class="big image" style="background-image: url(assets/berlinPhotosProva/1.jpg);">
-                            </div>
-                            <div class="small image" style="background-image: url(assets/berlinPhotosProva/2.jpg);">
-                            </div>
-                            <div class="small image" style="background-image: url(assets/berlinPhotosProva/3.avif);">
-                            </div>
-                        </div>
-                        <div class="cardBottom">
-                            <span class="cardTitle">DOVREBBERO ESSERE SOLO IMAGINI </span>
-                        </div>
-                    </div>';
+            <?php
+            if(!empty($_SESSION["user"])){
+                $query = "SELECT * FROM ldi,preferiti WHERE ldi.id = preferiti.ldi_id AND email='".$_SESSION["user"]."' ORDER BY RAND()";
+                $result = $conn->query($query);
+                if($result->num_rows > 0){
+                    $i = 0;
+                    $tipo = array("topImage image","left1 image","left2 image","bigRight image","bottomleft image","bottomRight image");
+                    echo '<div class="imageGallery">';
+                    while($row = $result->fetch_assoc()){  
+                        if($i==6){
+                            echo '<div class="imageGallery notFirst">';
+                            $i=0;
+                        }
+                        echo '<div class="'.$tipo[$i].'" style="background-image: url(assets/berlinPhotosProva/'.$row["image"].');"></div>';
+                        $i++;
+                        if($i==6){
+                            echo '</div>';
+                        }
+                    }
+                    if($i<6){
+                        echo '</div>';
+                    }
                 }
+                else{
+                    echo '<h2>Non hai ancora aggiunto nessuna opere</h2>';
+                }
+            }
+            else{
+                echo "<h1>Non hai effetuato l'accesso</h1>";
+            }
             ?>
-        </div>
 
         <div class="divWrapper">
             <a href="camera.php" class="camera"><img src="assets/icon/camButton.svg" alt="" class="icon"></a>
@@ -62,4 +74,5 @@
         </div>
 
     </body>
+    <?php $conn->close(); ?>
 </html>
