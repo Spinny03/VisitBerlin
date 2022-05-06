@@ -12,10 +12,11 @@
 <html lang="it">
     <head>
     <meta name="viewport" content="width=device-width" />
-        <link rel="stylesheet" href="css/formStyles.css">
-        <link rel="stylesheet" href="css/styles.css">
-        <link rel="stylesheet" href="css/scrollBarStyles.css">
-        <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <link rel="stylesheet" href="css/navBar.css">
+        <link rel="stylesheet" href="css/cardsMenu.css">
+        <link rel="stylesheet" href="css/textFormat.css">
+        <link rel="stylesheet" href="css/account.css">
+        <link rel="stylesheet" href="css/components.css">
         <title>Last</title>
     </head>
     <body>
@@ -38,7 +39,6 @@
             }
         ?>
         <div class="container">
-            <div class="left">
                 <img src="images/logo.png" alt="logo" id="logo">
                 <div class="log">
                     <h1>Registrati</h1>
@@ -64,10 +64,19 @@
                 <div class="bottom">
                         <span>Sei già registrato? <a href="logIn.php" class="Link">Accedi</a></span>
                 </div>
-            </div>
-            <div class="right">
-
-            </div>
+        </div>
+        <div class="divWrapper">
+            <a href="camera.php" class="camera"><img src="assets/icon/camButton.svg" alt="" class="icon"></a>
+            <nav class="bottomNav">
+                <div class="insideNav">
+                <a href="map.php"><img src="assets/icon/searchOff.svg" alt="" class="icon"></a>
+                <a href="index.php"><img src="assets/icon/boardsOff.svg" alt="" class="icon"></a>
+                </div>
+                <div class="insideNav">
+                <a href="liked.php"><img src="assets/icon/preferOff.svg" alt="" class="icon"></a>
+                <a href="account.php"><img src="assets/icon/profileOn.svg" alt="" class="icon"></a>
+                </div>
+            </nav>
         </div>
     </body>
 </html>

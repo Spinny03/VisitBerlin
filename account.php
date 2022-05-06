@@ -47,7 +47,7 @@
                     }
                     </script>
 
-                    <form action="access/profileDB.php" method="POST" class="profileInfo">
+                    <form action="access/accountDB.php" method="POST" class="profileInfo">
                         <div class="data" id="p25">
                             <label for="name"><b>Nome</b></label>
                             <input type="text" placeholder="Mario" name="name"';
@@ -102,13 +102,25 @@
                 </div>';
            }
            else{
-                echo '              
-                <form action="logIn.php">
-                    <input type="submit" value="Accedi" />
-                </form>
-                <form action="signUp.php">
-                    <input type="submit" value="Registrati" />
-                </form>';
+                echo '
+                    <div class="loginDiv">              
+                        <form action="logIn.php">
+                            <input type="submit" value="Accedi" class="notLogged"/>
+                        </form>
+                        <form action="signUp.php">
+                            <input type="submit" value="Registrati" class="notLogged" />
+                        </form>
+                    </div>
+                    <div class="box">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>';
            }
         ?>
         <div class="divWrapper">
