@@ -15,7 +15,7 @@
         <link rel="stylesheet" href="css/navBar.css">
         <link rel="stylesheet" href="css/cardsMenu.css">
         <link rel="stylesheet" href="css/textFormat.css">
-        <link rel="stylesheet" href="css/account.css">
+        <link rel="stylesheet" href="css/loginRegister.css">
         <link rel="stylesheet" href="css/components.css">
         <link rel="icon" type="image/x-icon" href="images/favicon.ico">
         <title>Last</title>
@@ -40,7 +40,6 @@
             }
         ?>
         <div class="container">
-            <div class="left">
                 <div class="log">
                     <h1>Accedi</h1>
                     <span>Accedi con i dati che hai inserito durante la registrazione.</span>
@@ -64,10 +63,7 @@
                     <span><a href="forgotPassw.php" class="Link">Password dimenticata?</a></span></br>
                     <span>Non hai un account? <a href="signUp.php" class="Link">Registrati</a></span>
                 </div>
-            </div>
-            <div class="right">
-
-            </div>
+            
         </div>
         <div class="divWrapper">
             <a href="camera.php" class="camera"><img src="assets/icon/camButton.svg" alt="" class="icon"></a>

@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="css/navBar.css">
         <link rel="stylesheet" href="css/cardsMenu.css">
         <link rel="stylesheet" href="css/textFormat.css">
-        <link rel="stylesheet" href="css/account.css">
+        <link rel="stylesheet" href="css/loginRegister.css">
         <link rel="stylesheet" href="css/components.css">
         <title>Last</title>
     </head>
@@ -39,11 +39,11 @@
             }
         ?>
         <div class="container">
-                <img src="images/logo.png" alt="logo" id="logo">
                 <div class="log">
                     <h1>Registrati</h1>
                     <span>Inserire i tuoi dati personali per creare un nuovo account</span>
-                    <form action="access/signUpDB.php" method="POST">
+                
+                    <form action="access/signUpDB.php" method="POST" class="logForm">
                         
                         <label for="email"><b>Email</b></label>
                         <input type="text" placeholder="nome@esempio.com" name="email" 
@@ -65,6 +65,7 @@
                         <span>Sei già registrato? <a href="logIn.php" class="Link">Accedi</a></span>
                 </div>
         </div>
+
         <div class="divWrapper">
             <a href="camera.php" class="camera"><img src="assets/icon/camButton.svg" alt="" class="icon"></a>
             <nav class="bottomNav">

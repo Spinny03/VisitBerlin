@@ -31,10 +31,11 @@
         <link rel="stylesheet" href="css/cardsMenu.css">
         <link rel="stylesheet" href="css/textFormat.css">
         <link rel="stylesheet" href="css/imageGallery.css">
+        <link rel="stylesheet" href="css/components.css">
         <title><?php echo $type["name"];?></title>
     </head>
     <body>
-        <a href="index.php"><img src="assets/icon/back.svg" alt=""></a>
+        <a href="index.php"><img src="assets/icon/back.svg" alt="" class="backIcon"></a>
         <h1><?php echo $type["name"];?></h1>
         <h2>CURATED GALLERIES</h2>
         <div class="leftScrollMenu">
