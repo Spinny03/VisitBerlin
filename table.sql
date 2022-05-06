@@ -88,6 +88,7 @@ INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (10,5);
 
 
 Pergamonmuseum X
+Memoriale per gli ebrei assassinati dEuropa  X
 Porta di Brandeburgo X
 Topografia del terrore X
 Duomo di Berlino X
@@ -95,10 +96,10 @@ Torre dell acqua di Prenzlauer Berg X
 Monumento ai soldati polacchi e agli antifascisti tedeschi X
 Memoriale agli omosessuali perseguitati sotto il nazismo X
 Memoriale sovietico (Tiergarten) X
+Muro di Berlino X
 
 Memorial to the Victims of National Socialist 'Euthanasia' Killings
 Museo del Muro
-Muro di Berlino
 Checkpoint Charlie
 Palazzo del Reichstag
 Memorial to May 10, 1933 Nazi Book Burning
