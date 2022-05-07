@@ -35,12 +35,16 @@
             var map = L.map(element);
             L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {}).addTo(map);
             map.setView(['52.51715250163406', '13.389735939802097'], 14);
+            var greenIcon = L.icon({
+                iconUrl: 'assets/mapsIcon/3.svg',
+                iconSize:     [38, 95], // size of the icon
+            });
             <?php 
                 $query = "SELECT * FROM ldi";
                 $result = $conn->query($query);
                 if($result->num_rows > 0){
                     while($row = $result->fetch_assoc()){
-                        echo "L.marker(['".$row["lon"]."', '".$row["lat"]."']).addTo(map).bindPopup(`".$row["name"]."`);";
+                        echo "L.marker(['".$row["lon"]."', '".$row["lat"]."'],{icon: greenIcon}).addTo(map).bindPopup(`".$row["name"]."`);";
                     }
                 }
             ?>

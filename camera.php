@@ -1,30 +1,29 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <script src="html5-qrcode.min.js"></script>
     <title>Camera</title>
-    <script type="text/javascript" src="instascan.min.js"></script>
+
   </head>
   <body>
-    <video id="preview"></video>
-    <script type="text/javascript">
-      let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
-      scanner.addListener('scan', function (content) {
-        console.log(content);
-      });
-      Instascan.Camera.getCameras().then(function (cameras) {
-        if (cameras.length > 0) {
-          scanner.start(cameras[0]);
-        } else {
-          alert('No cameras found.');
-        }
-      }).catch(function (e) {
-        console.error(e);
-      });
+  <div id="qr-reader" style="width:100%;"></div>
+  <div id="qr-reader-results"></div>
+    <script>
+      var resultContainer = document.getElementById('qr-reader-results');
+      var lastResult, countResults = 0;
 
-      scanner.addListener('scan', function (c) {
-        document.getElementById('text').value = c;
-      });
+      function onScanSuccess(decodedText, decodedResult) {
+        if (decodedText !== lastResult) {
+            ++countResults;
+            lastResult = decodedText;
+            console.log(`Scan result ${decodedText}`, decodedResult);
+        }
+      }
+
+      var html5QrcodeScanner = new Html5QrcodeScanner(
+        "qr-reader", { fps: 10, qrbox: 250 });
+      html5QrcodeScanner.render(onScanSuccess);
+      
     </script>
   </body>
-  <?php $conn->close(); ?>
 </html>
