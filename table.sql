@@ -34,94 +34,90 @@ CREATE TABLE preferiti(
     primary key(`email`, `ldi_id`)
 );
 
-INSERT INTO `tipo`(`name`) VALUES ("Dipinti");
-INSERT INTO `tipo`(`name`) VALUES ("Memoriali");
-INSERT INTO `tipo`(`name`) VALUES ("Edifici");
-INSERT INTO `tipo`(`name`) VALUES ("Statue");
-INSERT INTO `tipo`(`name`) VALUES ("Musei");
+INSERT INTO `tipo`(`name`) VALUES ("StreetArts"); 
+INSERT INTO `tipo`(`name`) VALUES ("Memoriali"); 
+INSERT INTO `tipo`(`name`) VALUES ("Edifici"); 
+INSERT INTO `tipo`(`name`) VALUES ("Statue"); 
+INSERT INTO `tipo`(`name`) VALUES ("Musei"); 
+INSERT INTO `tipo`(`name`) VALUES ("Fontane"); 
 INSERT INTO `ldi`(`name`, `description`, `lon`, `lat`, `image`) VALUES ("Pergamonmuseum","Museo di Storia","52.52118763491666","13.396887102137438","1.jpg");
-INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (1,1);
-INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (1,2);
+INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (1,5);
 INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (1,3);
 INSERT INTO `ldi`(`name`, `description`, `lon`, `lat`, `image`) VALUES ("Memoriale per gli ebrei assassinati d'Europa","Memoriale ebrei","52.513960618478045","13.378650112228932","2.jpg");
-INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (2,1);
+INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (2,2);
 INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (2,3);
-INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (2,4);
 INSERT INTO `ldi`(`name`, `description`, `lon`, `lat`, `image`) VALUES ("Porta di Brandeburgo","Famosa porta du Berlino","52.516263438555185","13.377663294044417","3.jpg");
-INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (3,1);
 INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (3,3);
-INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (3,5);
 INSERT INTO `ldi`(`name`, `description`, `lon`, `lat`, `image`) VALUES ("Topografia del terrore","è un progetto nato a Berlino nel 1987 per documentare e ricercare il sistema del terrore instaurato dai nazionalsocialisti in Germania","52.50663393901613","13.383581631216389","4.jpg");
-INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (4,1);
+INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (4,2);
+INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (4,5);
 INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (4,3);
-INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (4,4);
 INSERT INTO `ldi`(`name`, `description`, `lon`, `lat`, `image`) VALUES ("Duomo di Berlino","Memoriale ebrei","52.51911423602293","13.401001642425646","5.jpg");
-INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (5,1);
-INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (5,4);
+INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (5,3);
 INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (5,5);
 INSERT INTO `ldi`(`name`, `description`, `lon`, `lat`, `image`) VALUES ("Torre dell'acqua di Prenzlauer Berg","Torre","52.534187788678985","13.418663585412373","6.jpg");
 INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (6,1);
-INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (6,2);
-INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (6,5);
 INSERT INTO `ldi`(`name`, `description`, `lon`, `lat`, `image`) VALUES ("Monumento ai soldati polacchi e agli antifascisti tedeschi","Descrizione","52.52874531071378","13.437773436423308","7.jpg");
-INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (7,1);
-INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (7,3);
+INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (7,2);
 INSERT INTO `ldi`(`name`, `description`, `lon`, `lat`, `image`) VALUES ("Memoriale agli omosessuali perseguitati sotto il nazismo","Descrizione","52.513251728691856","13.376121538989821","8.jpg");
-INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (8,1);
 INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (8,2);
-INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (8,4);
-INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (8,5);
-INSERT INTO `ldi`(`name`, `description`, `lon`, `lat`, `image`) VALUES ("Tiergarten","Descrizione","52.5166195461566","13.371907227215877","9.jpg");
-INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (9,1);
+INSERT INTO `ldi`(`name`, `description`, `lon`, `lat`, `image`) VALUES ("Memoriale sovietico (Tiergarten)","Descrizione","52.5166195461566","13.371907227215877","9.jpg");
+INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (9,2);
 INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (9,3);
-INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (9,4);
-INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (9,5);
-INSERT INTO `ldi`(`name`, `description`, `lon`, `lat`, `image`) VALUES ("Museo del Muro","Museo dedidcato al ex muro di berlino","52.507394540273374","13.390616285939664","10.jpg");
-INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (10,1);
-INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (10,3);
-INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (10,4);
+INSERT INTO `ldi`(`name`, `description`, `lon`, `lat`, `image`) VALUES ("Museo del Muro (East Side)","Museo dedidcato al ex muro di berlino","52.507394540273374","13.390616285939664","10.jpg");
+INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (10,2);
 INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (10,5);
-
-
+INSERT INTO `ldi`(`name`, `description`, `lon`, `lat`, `image`) VALUES ("Memoriale per le vittime degli omicidi nazionalsocialisti per 'eutanasia'","DESCRIZIONE","52.51055121632733","13.369435937906566","11.jpg");
+INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (11,2);
+INSERT INTO `ldi`(`name`, `description`, `lon`, `lat`, `image`) VALUES ("Muro di Berlino","DESCRIZIONE","52.50363265076556","13.443069460855533","12.jpg");
+INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (12,2);
+INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (12,4);
+INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (12,1);
+INSERT INTO `ldi`(`name`, `description`, `lon`, `lat`, `image`) VALUES ("Checkpoint Charlie","DESCRIZIONE","52.507440527747924","13.390380012509274","13.jpg");
+INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (13,2);
+INSERT INTO `ldi`(`name`, `description`, `lon`, `lat`, `image`) VALUES ("Palazzo del Reichstag","DESCRIZIONE","52.51862364553466","13.376084701564771","14.jpg");
+INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (14,3);
+INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (14,5);
+INSERT INTO `ldi`(`name`, `description`, `lon`, `lat`, `image`) VALUES ("Memoriale al 10 maggio 1933 incendio del libro nazista","DESCRIZIONE","52.51649783872776","13.393924576216783","15.jpg");
+INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (15,2);
+INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (15,1);
+INSERT INTO `ldi`(`name`, `description`, `lon`, `lat`, `image`) VALUES ("Castello di Charlottenburg","DESCRIZIONE","52.52091384333513","13.295687375418117","16.jpg");
+INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (16,3);
+INSERT INTO `ldi`(`name`, `description`, `lon`, `lat`, `image`) VALUES ("Kaiser-Wilhelm-Gedächtniskirche","DESCRIZIONE","52.5047321396465","13.335069812216597","17.jpg");
+INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (17,3);
+INSERT INTO `ldi`(`name`, `description`, `lon`, `lat`, `image`) VALUES ("Scultura 'Berlino'","DESCRIZIONE","52.50339467749301","13.338666588285806","18.jpg");
+INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (18,4);
+INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (18,1);
+INSERT INTO `ldi`(`name`, `description`, `lon`, `lat`, `image`) VALUES ("The Yellow Man (Os Gemeos)","DESCRIZIONE","52.50004721573544","13.440871821263118","19.jpg");
+INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (19,1);
+INSERT INTO `ldi`(`name`, `description`, `lon`, `lat`, `image`) VALUES ("Ponte Oberbaum","DESCRIZIONE","52.50172901005705","13.445570757855258","20.jpg");
+INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (20,3);
+INSERT INTO `ldi`(`name`, `description`, `lon`, `lat`, `image`) VALUES ("Scultura Galileo","DESCRIZIONE","52.50652644936063","13.372366952718885","21.jpg");
+INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (21,4);
+INSERT INTO `ldi`(`name`, `description`, `lon`, `lat`, `image`) VALUES ("Casa delle Culture del Mondo","DESCRIZIONE","52.51851738349084","13.364454982761172","22.jpg");
+INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (22,3);
+INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (22,5);
+INSERT INTO `ldi`(`name`, `description`, `lon`, `lat`, `image`) VALUES ("Fontana dell'amicizia delle nazioni","DESCRIZIONE","52.52198260072916","13.412765890990732","23.jpg");
+INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (23,6);
+INSERT INTO `ldi`(`name`, `description`, `lon`, `lat`, `image`) VALUES ("Ora mondiale di Urania","DESCRIZIONE","52.52115968180372","13.413303413852317","24.jpg");
+INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (24,4);
+INSERT INTO `ldi`(`name`, `description`, `lon`, `lat`, `image`) VALUES ("Fontana di Nettuno","DESCRIZIONE","52.51958096168126","13.406839350692549","25.jpg");
+INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (25,6);
+INSERT INTO `ldi`(`name`, `description`, `lon`, `lat`, `image`) VALUES ("Marx-Engels-Forum","DESCRIZIONE","52.5188087992573","13.403457024139026","26.jpg");
+INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (26,4);
+INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (26,2);
+INSERT INTO `ldi`(`name`, `description`, `lon`, `lat`, `image`) VALUES ("La Volksbühne","DESCRIZIONE","52.52680289731485","13.411739106632703","27.jpg");
+INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (27,2);
+INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (27,4);
+INSERT INTO `ldi`(`name`, `description`, `lon`, `lat`, `image`) VALUES ("Märchenbrunnen","DESCRIZIONE","52.52790475180105","13.426902299424047","28.jpg");
+INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (28,6);
 INSERT INTO `preferiti`(`ldi_id`,`email`) VALUES (1,"filippo.spinella.2003@calvino.edu.it");
 INSERT INTO `preferiti`(`ldi_id`,`email`) VALUES (2,"filippo.spinella.2003@calvino.edu.it");
 INSERT INTO `preferiti`(`ldi_id`,`email`) VALUES (3,"filippo.spinella.2003@calvino.edu.it");
-INSERT INTO `preferiti`(`ldi_id`,`email`) VALUES (4,"filippo.spinella.2003@calvino.edu.it");
-INSERT INTO `preferiti`(`ldi_id`,`email`) VALUES (5,"filippo.spinella.2003@calvino.edu.it");
+INSERT INTO `preferiti`(`ldi_id`,`email`) VALUES (13,"filippo.spinella.2003@calvino.edu.it");
+INSERT INTO `preferiti`(`ldi_id`,`email`) VALUES (8,"filippo.spinella.2003@calvino.edu.it");
 INSERT INTO `preferiti`(`ldi_id`,`email`) VALUES (6,"filippo.spinella.2003@calvino.edu.it");
 INSERT INTO `preferiti`(`ldi_id`,`email`) VALUES (7,"filippo.spinella.2003@calvino.edu.it");
-INSERT INTO `preferiti`(`ldi_id`,`email`) VALUES (8,"filippo.spinella.2003@calvino.edu.it");
+INSERT INTO `preferiti`(`ldi_id`,`email`) VALUES (17,"filippo.spinella.2003@calvino.edu.it");
 INSERT INTO `preferiti`(`ldi_id`,`email`) VALUES (9,"filippo.spinella.2003@calvino.edu.it");
-INSERT INTO `preferiti`(`ldi_id`,`email`) VALUES (10,"filippo.spinella.2003@calvino.edu.it");
-
-
-
-Pergamonmuseum X
-Memoriale per gli ebrei assassinati dEuropa  X
-Porta di Brandeburgo X
-Topografia del terrore X
-Duomo di Berlino X
-Torre dell acqua di Prenzlauer Berg X
-Monumento ai soldati polacchi e agli antifascisti tedeschi X
-Memoriale agli omosessuali perseguitati sotto il nazismo X
-Memoriale sovietico (Tiergarten) X
-Muro di Berlino X
-
-Memorial to the Victims of National Socialist 'Euthanasia' Killings
-Museo del Muro
-Checkpoint Charlie
-Palazzo del Reichstag
-Memorial to May 10, 1933 Nazi Book Burning
-Castello di Charlottenburg
-Kaiser-Wilhelm-Gedächtniskirche
-Skulptur "Berlin" Brigitte und Martin Matschinsky-Denninghoff
-The Yellow Man (Os Gemeos)
-Oberbaum Bridge
-Skulptur Galileo
-Haus der Kulturen der Welt
-Urania Weltzeituhr
-Brunnen der Völkerfreundschaft
-Fontana di Nettuno
-Marx-Engels-Forum
-Volksbühne am Rosa-Luxemburg-Platz
-
+INSERT INTO `preferiti`(`ldi_id`,`email`) VALUES (21,"filippo.spinella.2003@calvino.edu.it");
