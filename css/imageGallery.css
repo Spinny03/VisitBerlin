@@ -19,7 +19,7 @@
     margin-top: -95px;
 }
 
-.imageGallery div{
+.imageGallery a{
     border-radius: 1rem;
     min-height: 50vw;
     box-shadow: 0px 0px 10px 0px #b3b3b3;

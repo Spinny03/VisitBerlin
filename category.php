@@ -10,8 +10,6 @@
         exit("Connessione fallita: " . $conn->connect_error);
     }
     $conn->query("USE Last");
-    $query = "SELECT * FROM tipo WHERE tipo.id = ".$_GET["categ"];
-    $result = $conn->query($query);
     if(empty($_GET["categ"])){
         header("Location: index.php");
     }
@@ -66,7 +64,10 @@
                             echo '<div class="imageGallery notFirst">';
                             $i=0;
                         }
-                        echo '<div class="'.$tipo[$i].'" style="background-image: url(assets/berlinPhotosProva/'.$row["image"].');"></div>';
+                        echo '
+                        <a href="ldi.php?ldi='.$row["id"].'" class="'.$tipo[$i].'" style="background-image: url(assets/berlinPhotosProva/'.$row["image"].');">
+
+                        </a>';
                         $i++;
                         if($i==6){
                             echo '</div>';
