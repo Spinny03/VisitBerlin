@@ -39,10 +39,6 @@
             var map = L.map(element);
             L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {}).addTo(map);
             map.setView(['52.51715250163406', '13.389735939802097'], 14);
-            var greenIcon = L.icon({
-                iconUrl: 'assets/mapsIcon/3.svg',
-                iconSize:     [38, 95],
-            });
             <?php 
                 $query = "SELECT * FROM tipo";
                 $result = $conn->query($query);
@@ -50,7 +46,7 @@
                     while($row = $result->fetch_assoc()){
                         echo "
                         var Icon".$row["id"]." = L.icon({
-                            iconUrl: 'assets/mapsIcon/".$row["id"].".svg',
+                            iconUrl: 'assets/mapsIcon/".$row["image"]."',
                             iconSize:     [38, 95],
                         });";
                     }

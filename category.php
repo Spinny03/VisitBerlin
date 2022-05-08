@@ -11,12 +11,13 @@
     }
     $conn->query("USE Last");
     if(empty($_GET["categ"])){
-        header("Location: index.php");
+        $typeName = "Tutto";
     }
     else{
         $query = "SELECT * FROM tipo WHERE tipo.id = ".$_GET["categ"];
         $result = $conn->query($query);
         $type = $result->fetch_assoc();
+        $typeName = $type["name"];
     }
 ?>
 <!DOCTYPE html>
@@ -30,30 +31,48 @@
         <link rel="stylesheet" href="css/textFormat.css">
         <link rel="stylesheet" href="css/imageGallery.css">
         <link rel="stylesheet" href="css/components.css">
-        <title><?php echo $type["name"];?></title>
+        <script src="jquery-2.1.4.min.js"></script>
+        <title><?php echo $typeName;?></title>
     </head>
     <body>
         <a href="index.php"><img src="assets/icon/back.svg" alt="" class="backIcon"></a>
-        <h1><?php echo $type["name"];?></h1>
-        <h2>CURATED GALLERIES</h2>
+        <h1><?php echo $typeName;?></h1>
         <div class="leftScrollMenu">
             <?php 
-                for($i=0; $i<20; $i++){
-                    echo  '        
-                    <div class="item">
-                        <div class="menuImage image" style="background-image: url(assets/berlinPhotosProva/1.jpg);">
-                        </div>
-                        <div class="bottomText">
-                            <span class="smallText">WW1</span>
-                        </div>
-                    </div>';
+                if(empty($_GET["categ"])){
+                    $query = "SELECT * FROM tipo";
+                }
+                else{
+                    $query = "SELECT * FROM tipo WHERE id != ".$_GET["categ"];
+                }
+                $result = $conn->query($query);
+                if($result->num_rows > 0){
+                    while($row = $result->fetch_assoc()){ 
+                        $query = "SELECT * FROM ldi WHERE mainTipo = ".$row["id"]." ORDER BY RAND() LIMIT 1";
+                        $result1 = $conn->query($query);
+                        $rowIm1 = mysqli_fetch_array($result1);
+                        echo  ' 
+                        <a href="category.php?categ='.$row["id"].'">       
+                            <div class="item">
+                                <div class="menuImage image" style="background-image: url(assets/berlinPhotosProva/'.$rowIm1["image"].');">
+                                </div>
+                                <div class="bottomText">
+                                    <span class="smallText">'.$row["name"].'</span>
+                                </div>
+                            </div>
+                        </a>';
+                    }
                 }
             ?>
         </div>
-
-       
+   
             <?php
-                $query = "SELECT * FROM ldi,tipo_ldi WHERE ldi.id = tipo_ldi.ldi_id AND tipo_ldi.tipo_id = ".$_GET["categ"]." ORDER BY RAND()";
+                if(empty($_GET["categ"])){
+                    $query = "SELECT * FROM ldi";
+                }
+                else{
+                    $query = "SELECT * FROM ldi,tipo_ldi WHERE ldi.id = tipo_ldi.ldi_id AND tipo_ldi.tipo_id = ".$_GET["categ"];
+                }
                 $result = $conn->query($query);
                 if($result->num_rows > 0){
                     $i = 0;
@@ -92,6 +111,16 @@
                 </div>
             </nav>
         </div>
+
+    <div class="loader-wrapper">
+        <span class="loader"><span class="loader-inner"></span></span>
+    </div>
+
+    <script>
+        $(window).on("load",function(){
+          $(".loader-wrapper").fadeOut("slow");
+        });
+    </script>
 
     </body>
     <?php $conn->close(); ?>

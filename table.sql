@@ -12,7 +12,8 @@ CREATE TABLE LDI(
 );
 CREATE TABLE tipo(
     `id` int PRIMARY KEY AUTO_INCREMENT,
-    `name` varchar(255)
+    `name` varchar(255),
+    `image` varchar(255)
 );
 CREATE TABLE tipo_ldi(
     `ldi_id` int REFERENCES LDI(id),
@@ -35,12 +36,12 @@ CREATE TABLE preferiti(
     primary key(`email`, `ldi_id`)
 );
 
-INSERT INTO `tipo`(`name`) VALUES ("StreetArts"); 
-INSERT INTO `tipo`(`name`) VALUES ("Memoriali"); 
-INSERT INTO `tipo`(`name`) VALUES ("Edifici"); 
-INSERT INTO `tipo`(`name`) VALUES ("Statue"); 
-INSERT INTO `tipo`(`name`) VALUES ("Musei"); 
-INSERT INTO `tipo`(`name`) VALUES ("Fontane"); 
+INSERT INTO `tipo`(`name`, `image`) VALUES ("StreetArts", "1.svg"); 
+INSERT INTO `tipo`(`name`, `image`) VALUES ("Memoriali", "2.svg");
+INSERT INTO `tipo`(`name`, `image`) VALUES ("Edifici", "3.svg");
+INSERT INTO `tipo`(`name`, `image`) VALUES ("Statue", "4.svg");
+INSERT INTO `tipo`(`name`, `image`) VALUES ("Musei", "5.svg");
+INSERT INTO `tipo`(`name`, `image`) VALUES ("Fontane", "6.svg");
 INSERT INTO `ldi`(`name`, `description`, `lon`, `lat`, `image`,`mainTipo`) VALUES ("Pergamonmuseum","Museo di Storia","52.52118763491666","13.396887102137438","1.jpg","5");
 INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (1,5);
 INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (1,3);

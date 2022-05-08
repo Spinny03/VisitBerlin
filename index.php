@@ -27,10 +27,32 @@
         <title>Home</title>
     </head>
     <body>
-        <h1>Boards</h1>
-        <h2>Following galleries to power up your art careere</h2>
+        <h1>Categorie</h1>
         <div class="cardsContainer">
             <?php 
+                $sql = 'SELECT * FROM LDI ORDER BY RAND() LIMIT 3';
+                $all = $conn->query($sql);
+                $rowIm1 = mysqli_fetch_array($all);
+                $rowIm2 = mysqli_fetch_array($all);
+                $rowIm3 = mysqli_fetch_array($all);
+                if($all->num_rows > 0){
+                    echo  '
+                        <div class="card">
+                            <a href="category.php">
+                                <div class="imageGallery">
+                                    <div class="big image" style="background-image: url(assets/berlinPhotosProva/'.$rowIm1["image"].');">
+                                    </div>
+                                    <div class="small image" style="background-image: url(assets/berlinPhotosProva/'.$rowIm2["image"].');">
+                                    </div>
+                                    <div class="small image" style="background-image: url(assets/berlinPhotosProva/'.$rowIm3["image"].');">
+                                    </div>
+                                </div>
+                                <div  style="background-color: #ffab5c;"class="cardBottom">
+                                    <span class="cardTitle">Tutto</span>
+                                </div>
+                            </a>
+                        </div>';
+                }
                 $sql = 'SELECT * FROM tipo;';
                 $tipo = $conn->query($sql); 
                 if($tipo->num_rows > 0){
@@ -41,21 +63,21 @@
                         $rowIm2 = mysqli_fetch_array($foto);
                         $rowIm3 = mysqli_fetch_array($foto);
                         echo  '
-                                <div class="card">
-                                    <a href="category.php?categ='.$row["id"].'">
-                                        <div class="imageGallery">
-                                            <div class="big image" style="background-image: url(assets/berlinPhotosProva/'.$rowIm1["image"].');">
-                                            </div>
-                                            <div class="small image" style="background-image: url(assets/berlinPhotosProva/'.$rowIm2["image"].');">
-                                            </div>
-                                            <div class="small image" style="background-image: url(assets/berlinPhotosProva/'.$rowIm3["image"].');">
-                                            </div>
+                            <div class="card">
+                                <a href="category.php?categ='.$row["id"].'">
+                                    <div class="imageGallery">
+                                        <div class="big image" style="background-image: url(assets/berlinPhotosProva/'.$rowIm1["image"].');">
                                         </div>
-                                        <div class="cardBottom">
-                                            <span class="cardTitle">'.$row["name"].'</span>
+                                        <div class="small image" style="background-image: url(assets/berlinPhotosProva/'.$rowIm2["image"].');">
                                         </div>
-                                    </a>
-                                </div>';
+                                        <div class="small image" style="background-image: url(assets/berlinPhotosProva/'.$rowIm3["image"].');">
+                                        </div>
+                                    </div>
+                                    <div class="cardBottom">
+                                        <span class="cardTitle">'.$row["name"].'</span>
+                                    </div>
+                                </a>
+                            </div>';
                     }
                 }
             ?>

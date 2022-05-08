@@ -17,6 +17,6 @@
         $query = "SELECT * FROM ldi WHERE ldi.id = ".$_GET["ldi"];
         $result = $conn->query($query);
         $ldi = $result->fetch_assoc();
-        echo "<img src='assets/berlinPhotosProva/".$ldi["image"]."' alt=''>";
+        echo "<img style='height: 100%; width: 100%;' src='assets/berlinPhotosProva/".$ldi["image"]."' alt=''>";
     }
 ?>
