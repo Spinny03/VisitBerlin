@@ -2,11 +2,12 @@
 <html>
   <head>
     <script src="html5-qrcode.min.js"></script>
+    <link rel="stylesheet" href="css/camera.css">
     <title>Camera</title>
 
   </head>
   <body>
-  <div id="qr-reader" style="width:100%;"></div>
+  <div id="qr-reader" style="width:100%; height:100vh"></div>
   <div id="qr-reader-results"></div>
     <script>
       var resultContainer = document.getElementById('qr-reader-results');

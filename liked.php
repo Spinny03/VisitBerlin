@@ -40,7 +40,7 @@
                             echo '<div class="imageGallery notFirst">';
                             $i=0;
                         }
-                        echo '<div class="'.$tipo[$i].'" style="background-image: url(assets/berlinPhotosProva/'.$row["image"].');"></div>';
+                        echo '<a class="'.$tipo[$i].'" style="background-image: url(assets/berlinPhotosProva/'.$row["image"].');"></a>';
                         $i++;
                         if($i==6){
                             echo '</div>';
