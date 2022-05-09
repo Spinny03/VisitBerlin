@@ -12,6 +12,7 @@ CREATE TABLE LDI(
 );
 CREATE TABLE tipo(
     `id` int PRIMARY KEY AUTO_INCREMENT,
+    `description` varchar(255),
     `name` varchar(255),
     `image` varchar(255)
 );
@@ -28,20 +29,21 @@ CREATE TABLE username(
     `notte` TINYINT(1),
     `gps` TINYINT(1),
     `token` int, 
+    `image` varchar(255),
     `pasw` varchar(255) NOT NULL
 );
 CREATE TABLE preferiti(
-    `email` int NOT NULL REFERENCES username(email) ,
+    `email` varchar(255) NOT NULL REFERENCES username(email) ,
     `ldi_id` int NOT NULL REFERENCES LDI(id),
     primary key(`email`, `ldi_id`)
 );
 
-INSERT INTO `tipo`(`name`, `image`) VALUES ("StreetArts", "1.svg"); 
-INSERT INTO `tipo`(`name`, `image`) VALUES ("Memoriali", "2.svg");
-INSERT INTO `tipo`(`name`, `image`) VALUES ("Edifici", "3.svg");
-INSERT INTO `tipo`(`name`, `image`) VALUES ("Statue", "4.svg");
-INSERT INTO `tipo`(`name`, `image`) VALUES ("Musei", "5.svg");
-INSERT INTO `tipo`(`name`, `image`) VALUES ("Fontane", "6.svg");
+INSERT INTO `tipo`(`name`, `image`, `description`) VALUES ("StreetArts", "1.svg", "Arte di strada"); 
+INSERT INTO `tipo`(`name`, `image`, `description`) VALUES ("Memoriali", "2.svg", "Monumenti per ricordare le persone che hanno perso la vita"); 
+INSERT INTO `tipo`(`name`, `image`, `description`) VALUES ("Edifici", "3.svg", "Palazzi storici o con una particolare importanza");
+INSERT INTO `tipo`(`name`, `image`, `description`) VALUES ("Statue", "4.svg", "Statue in giro per le strade di Berlino"); 
+INSERT INTO `tipo`(`name`, `image`, `description`) VALUES ("Musei", "5.svg", "Musei di Berlino");
+INSERT INTO `tipo`(`name`, `image`, `description`) VALUES ("Fontane", "6.svg", "Fontane di Berlino");
 INSERT INTO `ldi`(`name`, `description`, `lon`, `lat`, `image`,`mainTipo`) VALUES ("Pergamonmuseum","Museo di Storia","52.52118763491666","13.396887102137438","1.jpg","5");
 INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (1,5);
 INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (1,3);

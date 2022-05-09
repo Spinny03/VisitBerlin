@@ -26,7 +26,7 @@
         <link rel="stylesheet" href="../css/textFormat.css">
         <link rel="stylesheet" href="../css/imageGallery.css">
         <link rel="stylesheet" href="../css/components.css">
-        <title>Document</title>
+        <title>Admin</title>
     </head>
     <body>
     <div class="leftScrollMenu">
@@ -64,23 +64,33 @@
                     $query = "SELECT * FROM ldi WHERE ldi.id = ".$_GET["ldi"];
                     $result = $conn->query($query);
                     $ldi = $result->fetch_assoc();    
-              }  
-            else{  
-            }       
+                    $img = "../assets/berlinPhotosProva/".$ldi["image"];
+                    $name = $ldi["name"];
+                    $id = $ldi["id"];
+                    $description = $ldi["description"];
+                  }  
+                else{  
+                    $img = "../assets/add.svg";
+                    $name = "";
+                    $id = -1;
+                    $description = "";
+                }       
         ?>
-        <form id="pform" action="editLdiDB.php" method="POST" enctype="multipart/form-data">
-            <input type="hidden" name="idDishP" value="<?php echo $dataID;?>">
-            <img width="200" height="200" src="../assets/berlinPhotosProva/<?php echo $ldi["image"]; ?>" class="profilePhotoBig">
+        <form id="pform" action="access/editLdiDB.php" method="POST" enctype="multipart/form-data">
+            <input type="hidden" name="idLdi" value="<?php echo $id;?>">
+            <img width="200" height="200" src="<?php echo $img; ?>" class="profilePhotoBig">
             <label class="photoBtn" for="apply"><input class="inPhoto" type="file" name="pfile" id="apply" accept="image/*">Modifica</label>
             <button type="submit" name="change" value="False" class="photoBtn removeBtn">Rimuovi</button>
         </form>
-        <form action="editLdiDB.php" method="get">
-            <input type="hidden" name="ldi" value="<?php echo $ldi["id"];?>">
-            <input type="text" name="name" value="<?php echo $ldi["name"];?>">
-            <input type="text" name="description" value="<?php echo $ldi["description"];?>">
-            <input type="text" name="image" value="<?php echo $ldi["image"];?>">
-            <input type="submit" value="Modifica">
+        <form action="access/editLdiD.php" method="POST">
+            <input type="hidden" name="ldi" value="<?php echo $id;?>">
+            <input type="text" name="name" value="<?php echo $name;?>">
+            <input type="text" name="description" value="<?php echo $description;?>">
+            <input type="submit" value="<?php if(!empty($_GET["ldi"])){echo "Modifica";}else{echo "Aggiungi";}?>">
+            
         </form>
-
+        <form action="access/editLdiD.php" method="POST">
+            <input type="submit" value="Elimina">
+        </form>
     </body>
 </html>

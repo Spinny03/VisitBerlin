@@ -26,7 +26,7 @@
         <link rel="stylesheet" href="../css/textFormat.css">
         <link rel="stylesheet" href="../css/imageGallery.css">
         <link rel="stylesheet" href="../css/components.css">
-        <title>Document</title>
+        <title>Admin</title>
     </head>
     <body>
     <div class="leftScrollMenu">
@@ -42,44 +42,51 @@
                             <span class="smallText">add</span>
                         </div>
                     </div>
-                    </a>';
+                </a>';
                 if($result->num_rows > 0){
                     while($row = $result->fetch_assoc()){
                         echo  '     
                         <a href="editType.php?Type='.$row["id"].'">   
                             <div class="item">
-                                <div class="menuImage image" style="background-image: url(../assets/berlinPhotosProva/'.$row["image"].');">
+                                <div class="menuImage image" style="background-image: url(../assets/mapsIcon/'.$row["image"].');">
                                 </div>
                                 <div class="bottomText">
                                     <span class="smallText">'.$row["name"].'</span>
                                 </div>
                             </div>
-                            </a>';
+                        </a>';
                     }
                 }
             ?>
         </div>
         <?php 
-              if(!empty($_GET["Type"])){
-                    $query = "SELECT * FROM tipo WHERE tipo.id = ".$_GET["ldi"];
-                    $result = $conn->query($query);
-                    $ldi = $result->fetch_assoc();    
+            if(!empty($_GET["Type"])){
+                $query = "SELECT * FROM tipo WHERE tipo.id = ".$_GET["Type"];
+                $result = $conn->query($query);
+                $type = $result->fetch_assoc();    
+                $img = "../assets/mapsIcon/".$type["image"];
+                $name = $type["name"];
+                $id = $type["id"];
+                $description = $type["description"];
               }  
             else{  
+                $img = "../assets/add.svg";
+                $name = "";
+                $id = null;
+                $description = "";
             }       
         ?>
-        <form id="pform" action="editTypeDB.php" method="POST" enctype="multipart/form-data">
-            <input type="hidden" name="idDishP" value="<?php echo $dataID;?>">
-            <img width="200" height="200" src="../assets/berlinPhotosProva/<?php echo $ldi["image"]; ?>" class="profilePhotoBig">
+        <form id="pform" action="access/editTypeDB.php" method="POST" enctype="multipart/form-data">
+            <input type="hidden" name="idType" value="<?php echo $id;?>">
+            <img width="200" height="200" src="<?php echo $img; ?>" class="profilePhotoBig">
             <label class="photoBtn" for="apply"><input class="inPhoto" type="file" name="pfile" id="apply" accept="image/*">Modifica</label>
             <button type="submit" name="change" value="False" class="photoBtn removeBtn">Rimuovi</button>
         </form>
-        <form action="editTypeDB.php" method="get">
-            <input type="hidden" name="ldi" value="<?php echo $ldi["id"];?>">
-            <input type="text" name="name" value="<?php echo $ldi["name"];?>">
-            <input type="text" name="description" value="<?php echo $ldi["description"];?>">
-            <input type="text" name="image" value="<?php echo $ldi["image"];?>">
-            <input type="submit" value="Modifica">
+        <form action="access/editTypeDB.php" method="POST">
+            <input type="hidden" name="ldi" value="<?php echo $id;?>">
+            <input type="text" name="name" value="<?php echo $name;?>">
+            <input type="text" name="description" value="<?php echo $description;?>">
+            <input type="submit" value="<?php if(!empty($_GET["Type"])){echo "Modifica";}else{echo "Aggiungi";}?>">
         </form>
 
     </body>
