@@ -40,7 +40,6 @@
     if(file_exists("../assets/berlinPhotosProva/new.gif")){
         $img = "../assets/berlinPhotosProva/new.gif";
     }
-        
         $name = "";
         $id = "new";
         $description = "";
@@ -48,6 +47,7 @@
         $lat = "";
         $mainTipo = "";
     }   
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -70,7 +70,7 @@
                 echo  '     
                 <a href="editLdi.php">   
                     <div class="item">
-                        <div class="menuImage image" style="background-image: url('.$img.');">
+                        <div class="menuImage image" style="background-image: url(../assets/add.svg);">
                         </div>
                         <div class="bottomText">
                             <span class="smallText">add</span>

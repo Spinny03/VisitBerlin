@@ -125,7 +125,7 @@
                     $del = "UPDATE ldi SET `image` = '' WHERE id = '".$_POST["idLdi"]."'";
                     $conn->query($del);
                 }
-                //header("Location: ../editLdi.php");
+                header("Location: ../editLdi.php");
                 $conn->close();
                 exit();
             }
@@ -166,7 +166,7 @@
             $oldname = "../../assets/berlinPhotosProva/".htmlspecialchars(basename( $_FILES["pfile"]["name"]));
             $newname = "../../assets/berlinPhotosProva/".$_POST["idLdi"] .".". $imageFileType;
             rename($oldname, $newname);
-            //header("Location: ../editLdi.php");
+            header("Location: ../editLdi.php");
             $conn->close();
             exit();
         }
@@ -193,7 +193,7 @@
             rename($oldname, $newname);
         }
     }
-    //header("Location: ../editLdi.php");
+    header("Location: ../editLdi.php");
     $conn->close();
     exit();
 ?>
