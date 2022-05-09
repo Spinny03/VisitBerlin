@@ -14,6 +14,40 @@
         exit("Connessione fallita: " . $conn->connect_error);
     }
     $conn->query("USE Last");
+    if(!empty($_GET["ldi"])){
+        $query = "SELECT * FROM ldi WHERE ldi.id = ".$_GET["ldi"];
+        $result = $conn->query($query);
+        $ldi = $result->fetch_assoc();    
+        $img = "../assets/berlinPhotosProva/".$ldi["image"];
+        $name = $ldi["name"];
+        $id = $ldi["id"];
+        $description = $ldi["description"];
+        $lon = $ldi["lon"];
+        $lat = $ldi["lat"];
+        $mainTipo = $ldi["mainTipo"];
+      }  
+    else{    
+    $img = "../assets/add.svg";          
+    if(file_exists("../assets/berlinPhotosProva/new.jpg")){
+        $img = "../assets/berlinPhotosProva/new.jpg";
+    }
+    if( file_exists("../assets/berlinPhotosProva/new.png")){
+        $img = "../assets/berlinPhotosProva/new.png";
+    }
+    if(file_exists("../assets/berlinPhotosProva/new.jpeg")){
+        $img = "../assets/berlinPhotosProva/new.jpeg";
+    }
+    if(file_exists("../assets/berlinPhotosProva/new.gif")){
+        $img = "../assets/berlinPhotosProva/new.gif";
+    }
+        
+        $name = "";
+        $id = "new";
+        $description = "";
+        $lon = "";
+        $lat = "";
+        $mainTipo = "";
+    }   
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,7 +70,7 @@
                 echo  '     
                 <a href="editLdi.php">   
                     <div class="item">
-                        <div class="menuImage image" style="background-image: url(../assets/add.svg);">
+                        <div class="menuImage image" style="background-image: url('.$img.');">
                         </div>
                         <div class="bottomText">
                             <span class="smallText">add</span>
@@ -59,35 +93,32 @@
                 }
             ?>
         </div>
-        <?php 
-              if(!empty($_GET["ldi"])){
-                    $query = "SELECT * FROM ldi WHERE ldi.id = ".$_GET["ldi"];
-                    $result = $conn->query($query);
-                    $ldi = $result->fetch_assoc();    
-                    $img = "../assets/berlinPhotosProva/".$ldi["image"];
-                    $name = $ldi["name"];
-                    $id = $ldi["id"];
-                    $description = $ldi["description"];
-                  }  
-                else{  
-                    $img = "../assets/add.svg";
-                    $name = "";
-                    $id = -1;
-                    $description = "";
-                }       
-        ?>
         <form id="pform" action="access/editLdiDB.php" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="idLdi" value="<?php echo $id;?>">
             <img width="200" height="200" src="<?php echo $img; ?>" class="profilePhotoBig">
             <label class="photoBtn" for="apply"><input class="inPhoto" type="file" name="pfile" id="apply" accept="image/*">Modifica</label>
             <button type="submit" name="change" value="False" class="photoBtn removeBtn">Rimuovi</button>
         </form>
-        <form action="access/editLdiD.php" method="POST">
+        <script>
+            document.getElementById("apply").onchange = function() {
+            document.getElementById("pform").submit();
+        }
+        </script>
+        <form action="access/editLdiDB.php" method="POST">
             <input type="hidden" name="ldi" value="<?php echo $id;?>">
             <input type="text" name="name" value="<?php echo $name;?>">
             <input type="text" name="description" value="<?php echo $description;?>">
-            <input type="submit" value="<?php if(!empty($_GET["ldi"])){echo "Modifica";}else{echo "Aggiungi";}?>">
-            
+            <input type="text" name="lon" value="<?php echo $lon;?>">
+            <input type="text" name="lat" value="<?php echo $lat;?>">
+            <input type="text" name="mainTipo" value="<?php echo $mainTipo;?>">
+                <?php 
+                    if(!empty($_GET["ldi"])){
+                        echo '<button type="submit" name="change" value="True" class="logbtn">Salva le modifiche</button>';
+                    }
+                    else{
+                        echo '<button style="background-color: green;" type="submit" name="change" value="add" class="logbtn">Aggiungi piatto</button>';
+                    }     
+                ?>       
         </form>
         <form action="access/editLdiD.php" method="POST">
             <input type="submit" value="Elimina">

@@ -6,123 +6,138 @@
     }
     $conn->query("USE Last");
     if(isset($_POST["del"])){
-        $delPhoto = 'SELECT photoLink FROM dish WHERE id = "'.$_POST["del"].'";';
+        echo "9";
+        $delPhoto = 'SELECT `image` FROM ldi WHERE id = "'.$_POST["del"].'";';
         $result = $conn->query($delPhoto); 
         $result = mysqli_fetch_assoc($result);
-        unlink("../../assets/berlinPhotosProva/".$result["photoLink"]);
+        unlink("../../assets/berlinPhotosProva/".$result["image"]);
         $sql = 'DELETE FROM ldi WHERE id = "'.$_POST["del"].'";';
         $conn->query($sql); 
     }
     elseif(isset($_POST["change"]) && $_POST["change"]  == "True"){
-        if(!empty($_POST["name"]) || !empty($_POST["price"]) || !empty($_POST["description"] || !empty($_POST["type"]))){
-            $delPhoto = 'SELECT photoLink FROM dish WHERE id = "'.$_POST["idDish"].'";';
+        echo "18";
+        if(!empty($_POST["name"])  || !empty($_POST["description"] || !empty($_POST["lon"]) || !empty($_POST["lat"]) || !empty($_POST["mainTipo"]))){
+            echo "20";
+            $delPhoto = 'SELECT `image` FROM ldi WHERE id = "'.$_POST["ldi"].'";';
             $result = $conn->query($delPhoto); 
             $result = mysqli_fetch_assoc($result);
             $sql = "";
             if(!empty($_POST["name"])){
-                $sql .= 'dishName = "'.$_POST["name"].'",';   
-            }
-
-            if(!empty($_POST["price"])){
-                $sql .= 'dishCost = "'.$_POST["price"].'",';
+                $sql .= 'name = "'.$_POST["name"].'",';   
             }
 
             if(!empty($_POST["description"])){
                 $sql .= 'description = "'.$_POST["description"].'",';
             }
 
-            if(!empty($_POST["type"])){
-                $sql .= 'dishType = "'.$_POST["type"].'",';
+            if(!empty($_POST["lon"])){
+                $sql .= 'lon = "'.$_POST["lon"].'",';
             }
 
-            $sql = substr($sql, 0, -1);
-            $conn->query('UPDATE dish SET photoLink="", visible = 0 WHERE id = "'.$_POST["idDish"].'";');
-            $conn->query('INSERT INTO dish SET '.$sql.' , visible = 1, photoLink = "'.$result["photoLink"].'";');
+            if(!empty($_POST["lat"])){
+                $sql .= 'lat = "'.$_POST["lat"].'",';
+            }
 
-            $id = 'SELECT id FROM dish WHERE photoLink = "'.$result["photoLink"].'";';
+            if(!empty($_POST["mainTipo"])){
+                $sql .= 'mainTipo = "'.$_POST["mainTipo"].'",';
+            }
+            $sql = substr($sql, 0, -1);
+            $conn->query('UPDATE ldi SET '.$sql.' WHERE id = "'.$_POST["ldi"].'";');
+
+            $id = 'SELECT id FROM ldi WHERE `image` = "'.$result["image"].'";';
             $id = $conn->query($id); 
             $id = mysqli_fetch_assoc($id);
 
-            $oldname = "../images/PhotoDishes/".$result["photoLink"];
-            $imageFileType = strtolower(pathinfo($result["photoLink"], PATHINFO_EXTENSION));
-            $newname = "../images/PhotoDishes/".$id["id"].".". $imageFileType;
+            $oldname = "../../assets/berlinPhotosProva/".$result["image"];
+            $imageFileType = strtolower(pathinfo($result["image"], PATHINFO_EXTENSION));
+            $newname = "../../assets/berlinPhotosProva/".$id["id"].".". $imageFileType;
             rename($oldname, $newname);
-            $conn->query('UPDATE dish SET photoLink="'.$id["id"].".". $imageFileType.'" WHERE id="'.$id["id"].'";');
+            $conn->query('UPDATE ldi SET `image` ="'.$id["id"].".". $imageFileType.'" WHERE id="'.$id["id"].'";');
         
         }
     }
     elseif(isset($_POST["change"]) && $_POST["change"] == "add"){
-        if(!empty($_POST["name"]) || !empty($_POST["price"]) || !empty($_POST["description"] || !empty($_POST["type"]))){
+        echo "60";
+        if(!empty($_POST["name"])  || !empty($_POST["description"] || !empty($_POST["lon"]) || !empty($_POST["lat"]) || !empty($_POST["mainTipo"]))){
+            echo "62";
             $sql = "";
             if(!empty($_POST["name"])){
-                $sql .= 'dishName = "'.$_POST["name"].'",';   
-            }
-
-            if(!empty($_POST["price"])){
-                $sql .= 'dishCost = "'.$_POST["price"].'",';
+                $sql .= 'name = "'.$_POST["name"].'",';   
             }
 
             if(!empty($_POST["description"])){
                 $sql .= 'description = "'.$_POST["description"].'",';
             }
 
-            if(!empty($_POST["type"])){
-                $sql .= 'dishType = "'.$_POST["type"].'",';
+            if(!empty($_POST["lon"])){
+                $sql .= 'lon = "'.$_POST["lon"].'",';
+            }
+
+            if(!empty($_POST["lat"])){
+                $sql .= 'lat = "'.$_POST["lat"].'",';
+            }
+
+            if(!empty($_POST["mainTipo"])){
+                $sql .= 'mainTipo = "'.$_POST["mainTipo"].'",';
             }
             $sql = substr($sql, 0, -1);
-            $conn->query("INSERT INTO dish SET visible = 1, ".$sql.";");
+            $conn->query("INSERT INTO ldi SET ".$sql.";");
 
             
-            $sql = 'SELECT id FROM dish WHERE '.$sql.';';
+            $sql = 'SELECT id FROM ldi WHERE '.$sql.';';
             $sql = str_replace(",", " AND ", $sql);
+            echo $sql;
             $result = $conn->query($sql);
             $result = mysqli_fetch_assoc($result);
 
-            if(file_exists("../images/PhotoDishes/new.jpg")){
-                $sql = 'UPDATE dish SET photoLink = "'.$result["id"].'.jpg" WHERE id = "'.$result["id"].'"';
+            if(file_exists("../../assets/berlinPhotosProva/new.jpg")){
+                $sql = 'UPDATE ldi SET `image` = "'.$result["id"].'.jpg" WHERE id = "'.$result["id"].'"';
                 $conn->query($sql);
-                rename('../images/PhotoDishes/new.jpg', '../images/PhotoDishes/'.$result["id"].'.jpg');
+                rename('../../assets/berlinPhotosProva/new.jpg', '../../assets/berlinPhotosProva/'.$result["id"].'.jpg');
             }
-            if( file_exists("../images/PhotoDishes/new.png")){
-                $sql = 'UPDATE dish SET photoLink = "'.$result["id"].'.png" WHERE id = "'.$result["id"].'"';
+            if( file_exists("../../assets/berlinPhotosProva/new.png")){
+                $sql = 'UPDATE ldi SET `image` = "'.$result["id"].'.png" WHERE id = "'.$result["id"].'"';
                 $conn->query($sql);
-                rename('../images/PhotoDishes/new.png', '../images/PhotoDishes/'.$result["id"].'.png');
+                rename('../../assets/berlinPhotosProva/new.png', '../../assets/berlinPhotosProva/'.$result["id"].'.png');
             }
-            if(file_exists("../images/PhotoDishes/new.jpeg")){
-                $sql = 'UPDATE dish SET photoLink = "'.$result["id"].'.jpeg" WHERE id = "'.$result["id"].'"';
+            if(file_exists("../../assets/berlinPhotosProva/new.jpeg")){
+                $sql = 'UPDATE ldi SET `image` = "'.$result["id"].'.jpeg" WHERE id = "'.$result["id"].'"';
                 $conn->query($sql);
-                rename('../images/PhotoDishes/new.jpeg', '../images/PhotoDishes/'.$result["id"].'.jpeg');
+                rename('../../assets/berlinPhotosProva/new.jpeg', '../../assets/berlinPhotosProva/'.$result["id"].'.jpeg');
             }
-            if(file_exists("../images/PhotoDishes/new.gif")){
-                $sql = 'UPDATE dish SET photoLink = "'.$result["id"].'.gif" WHERE id = "'.$result["id"].'"';
+            if(file_exists("../../assets/berlinPhotosProva/new.gif")){
+                $sql = 'UPDATE ldi SET `image` = "'.$result["id"].'.gif" WHERE id = "'.$result["id"].'"';
                 $conn->query($sql);
-                rename('../images/PhotoDishes/new.gif', '../images/PhotoDishes/'.$result["id"].'.gif');
+                rename('../../assets/berlinPhotosProva/new.gif', '../../assets/berlinPhotosProva/'.$result["id"].'.gif');
             }
         }
     }
-    elseif(isset($_POST["idDishP"])){ 
-        if($_POST["idDishP"] != "new"){ 
-            if($_POST["change"] == "False" ){
-                $old ="SELECT photoLink FROM dish WHERE id = '".$_POST["idDishP"]."'";
+    elseif(isset($_POST["idLdi"])){ 
+        echo "115";
+        if($_POST["idLdi"] != "new"){ 
+            echo "117";
+            if(!empty($_POST["change"]) && $_POST["change"] == "False" ){
+                $old ="SELECT `image` FROM ldi WHERE id = '".$_POST["idLdi"]."'";
                 $oldphoto = $conn->query($old);
                 $oldphoto = mysqli_fetch_assoc($oldphoto); 
-                if(!empty($oldphoto["photoLink"])){
-                    unlink("../images/PhotoDishes/".$oldphoto["photoLink"]);
-                    $del = "UPDATE dish SET photoLink = '' WHERE id = '".$_POST["idDishP"]."'";
+                if(!empty($oldphoto["image"])){
+                    unlink("../../assets/berlinPhotosProva/".$oldphoto["image"]);
+                    $del = "UPDATE ldi SET `image` = '' WHERE id = '".$_POST["idLdi"]."'";
                     $conn->query($del);
                 }
-                header("Location: ../dishs.php");
+                //header("Location: ../editLdi.php");
                 $conn->close();
                 exit();
             }
         
         
-            $target_dir = "../images/PhotoDishes/";
+            $target_dir = "../../assets/berlinPhotosProva/";
             $target_file = $target_dir . basename($_FILES["pfile"]["name"]);
             $uploadOk = 1;
             $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
             
             if(isset($_POST["submit"])) {
+                echo "139";
                 $check = getimagesize($_FILES["pfile"]["tmp_name"]);
                 if($check !== false) {
                     $uploadOk = 1;
@@ -136,48 +151,49 @@
             }
             
             if ($uploadOk != 0) {
-                $old = "SELECT photoLink FROM dish WHERE id = '".$_POST["idDishP"]."'";
+                $old = "SELECT `image` FROM ldi WHERE id = '".$_POST["idLdi"]."'";
                 $oldphoto = $conn->query($old);
                 $oldphoto = mysqli_fetch_assoc($oldphoto); 
-                if(!empty($oldphoto["photoLink"])){
-                    unlink("../images/PhotoDishes/".$oldphoto["photoLink"]);
+                if(!empty($oldphoto["image"])){
+                    unlink("../../assets/berlinPhotosProva/".$oldphoto["image"]);
                 }
                 if (move_uploaded_file($_FILES["pfile"]["tmp_name"], $target_file)) {
-                    $sql = "UPDATE dish SET photoLink = '".$_POST["idDishP"] .".". $imageFileType. "' WHERE id = '".$_POST["idDishP"]."'";
+                    $sql = "UPDATE ldi SET `image` = '".$_POST["idLdi"] .".". $imageFileType. "' WHERE id = '".$_POST["idLdi"]."'";
                     $conn->query($sql);
                 } 
             }
         
-            $oldname = "../images/PhotoDishes/".htmlspecialchars(basename( $_FILES["pfile"]["name"]));
-            $newname = "../images/PhotoDishes/".$_POST["idDishP"] .".". $imageFileType;
+            $oldname = "../../assets/berlinPhotosProva/".htmlspecialchars(basename( $_FILES["pfile"]["name"]));
+            $newname = "../../assets/berlinPhotosProva/".$_POST["idLdi"] .".". $imageFileType;
             rename($oldname, $newname);
-            header("Location: ../dishs.php");
+            //header("Location: ../editLdi.php");
             $conn->close();
             exit();
         }
         else{
-            if(file_exists("../images/PhotoDishes/new.jpg")){
-                unlink("../images/PhotoDishes/new.jpg");
+            echo "173";
+            if(file_exists("../../assets/berlinPhotosProva/new.jpg")){
+                unlink("../../assets/berlinPhotosProva/new.jpg");
             }
-            if( file_exists("../images/PhotoDishes/new.png")){
-                unlink("../images/PhotoDishes/new.png");
+            if( file_exists("../../assets/berlinPhotosProva/new.png")){
+                unlink("../../assets/berlinPhotosProva/new.png");
             }
-            if(file_exists("../images/PhotoDishes/new.jpeg")){
-                unlink("../images/PhotoDishes/new.jpeg");
+            if(file_exists("../../assets/berlinPhotosProva/new.jpeg")){
+                unlink("../../assets/berlinPhotosProva/new.jpeg");
             }
-            if(file_exists("../images/PhotoDishes/new.gif")){
-                unlink("../images/PhotoDishes/new.gif");
+            if(file_exists("../../assets/berlinPhotosProva/new.gif")){
+                unlink("../../assets/berlinPhotosProva/new.gif");
             }
-            $target_dir = "../images/PhotoDishes/";
+            $target_dir = "../../assets/berlinPhotosProva/";
             $target_file = $target_dir . basename($_FILES["pfile"]["name"]);
             $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
             move_uploaded_file($_FILES["pfile"]["tmp_name"], $target_file);
-            $oldname = "../images/PhotoDishes/".htmlspecialchars(basename( $_FILES["pfile"]["name"]));
-            $newname = "../images/PhotoDishes/new.". $imageFileType;
+            $oldname = "../../assets/berlinPhotosProva/".htmlspecialchars(basename( $_FILES["pfile"]["name"]));
+            $newname = "../../assets/berlinPhotosProva/new.". $imageFileType;
             rename($oldname, $newname);
         }
     }
-    header("Location: ../dishs.php");
+    //header("Location: ../editLdi.php");
     $conn->close();
     exit();
 ?>
