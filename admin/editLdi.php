@@ -55,6 +55,9 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+        <meta http-equiv="Pragma" content="no-cache" />
+        <meta http-equiv="Expires" content="0" />
         <link rel="stylesheet" href="../css/navBar.css">
         <link rel="stylesheet" href="../css/cardsMenu.css">
         <link rel="stylesheet" href="../css/textFormat.css">
@@ -116,12 +119,14 @@
                         echo '<button type="submit" name="change" value="True" class="logbtn">Salva le modifiche</button>';
                     }
                     else{
-                        echo '<button style="background-color: green;" type="submit" name="change" value="add" class="logbtn">Aggiungi piatto</button>';
+                        echo '<button style="background-color: green;" type="submit" name="change" value="add" class="logbtn">Aggiungi</button>';
                     }     
                 ?>       
         </form>
-        <form action="access/editLdiD.php" method="POST">
-            <input type="submit" value="Elimina">
+        <form action="access/editLdiDB.php" method="POST">
+            <button type="submit" class="itemNumber formBtn" name="del" value="<?php echo $id;?>" style="background-color: white; margin-left:10px;">
+                Elimina
+            </button>
         </form>
     </body>
 </html>

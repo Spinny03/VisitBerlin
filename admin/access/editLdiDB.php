@@ -13,6 +13,13 @@
         unlink("../../assets/berlinPhotosProva/".$result["image"]);
         $sql = 'DELETE FROM ldi WHERE id = "'.$_POST["del"].'";';
         $conn->query($sql); 
+        $sql = 'DELETE FROM preferiti WHERE ldi_id = "'.$_POST["del"].'";';
+        $conn->query($sql); 
+        $sql = 'DELETE FROM tipo_ldi WHERE ldi_id = "'.$_POST["del"].'";';
+        $conn->query($sql); 
+        header("Location: ../editLdi.php");
+        $conn->close();
+        exit();
     }
     elseif(isset($_POST["change"]) && $_POST["change"]  == "True"){
         echo "18";
@@ -53,7 +60,9 @@
             $newname = "../../assets/berlinPhotosProva/".$id["id"].".". $imageFileType;
             rename($oldname, $newname);
             $conn->query('UPDATE ldi SET `image` ="'.$id["id"].".". $imageFileType.'" WHERE id="'.$id["id"].'";');
-        
+            header("Location: ../editLdi.php?ldi=".$id["id"]);
+            $conn->close();
+            exit();
         }
     }
     elseif(isset($_POST["change"]) && $_POST["change"] == "add"){
@@ -95,20 +104,23 @@
                 $conn->query($sql);
                 rename('../../assets/berlinPhotosProva/new.jpg', '../../assets/berlinPhotosProva/'.$result["id"].'.jpg');
             }
-            if( file_exists("../../assets/berlinPhotosProva/new.png")){
+            elseif( file_exists("../../assets/berlinPhotosProva/new.png")){
                 $sql = 'UPDATE ldi SET `image` = "'.$result["id"].'.png" WHERE id = "'.$result["id"].'"';
                 $conn->query($sql);
                 rename('../../assets/berlinPhotosProva/new.png', '../../assets/berlinPhotosProva/'.$result["id"].'.png');
             }
-            if(file_exists("../../assets/berlinPhotosProva/new.jpeg")){
+            elseif(file_exists("../../assets/berlinPhotosProva/new.jpeg")){
                 $sql = 'UPDATE ldi SET `image` = "'.$result["id"].'.jpeg" WHERE id = "'.$result["id"].'"';
                 $conn->query($sql);
                 rename('../../assets/berlinPhotosProva/new.jpeg', '../../assets/berlinPhotosProva/'.$result["id"].'.jpeg');
             }
-            if(file_exists("../../assets/berlinPhotosProva/new.gif")){
+            elseif(file_exists("../../assets/berlinPhotosProva/new.gif")){
                 $sql = 'UPDATE ldi SET `image` = "'.$result["id"].'.gif" WHERE id = "'.$result["id"].'"';
                 $conn->query($sql);
                 rename('../../assets/berlinPhotosProva/new.gif', '../../assets/berlinPhotosProva/'.$result["id"].'.gif');
+            }
+            else{
+                $sql = 'UPDATE ldi SET `image` = "NoImg.png" WHERE id = "'.$result["id"].'"';
             }
         }
     }
@@ -125,7 +137,7 @@
                     $del = "UPDATE ldi SET `image` = '' WHERE id = '".$_POST["idLdi"]."'";
                     $conn->query($del);
                 }
-                header("Location: ../editLdi.php");
+                header("Location: ../editLdi.php?ldi=".$_POST["idLdi"]);
                 $conn->close();
                 exit();
             }
@@ -166,7 +178,7 @@
             $oldname = "../../assets/berlinPhotosProva/".htmlspecialchars(basename( $_FILES["pfile"]["name"]));
             $newname = "../../assets/berlinPhotosProva/".$_POST["idLdi"] .".". $imageFileType;
             rename($oldname, $newname);
-            header("Location: ../editLdi.php");
+            header("Location: ../editLdi.php?ldi=".$_POST["idLdi"]);
             $conn->close();
             exit();
         }
