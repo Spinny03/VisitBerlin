@@ -77,17 +77,33 @@
             }       
         ?>
         <form id="pform" action="access/editTypeDB.php" method="POST" enctype="multipart/form-data">
-            <input type="hidden" name="idType" value="<?php echo $id;?>">
+            <input type="hidden" name="idLdi" value="<?php echo $id;?>">
             <img width="200" height="200" src="<?php echo $img; ?>" class="profilePhotoBig">
             <label class="photoBtn" for="apply"><input class="inPhoto" type="file" name="pfile" id="apply" accept="image/*">Modifica</label>
             <button type="submit" name="change" value="False" class="photoBtn removeBtn">Rimuovi</button>
         </form>
+        <script>
+            document.getElementById("apply").onchange = function() {
+            document.getElementById("pform").submit();
+        }
+        </script>
         <form action="access/editTypeDB.php" method="POST">
             <input type="hidden" name="ldi" value="<?php echo $id;?>">
             <input type="text" name="name" value="<?php echo $name;?>">
             <input type="text" name="description" value="<?php echo $description;?>">
-            <input type="submit" value="<?php if(!empty($_GET["Type"])){echo "Modifica";}else{echo "Aggiungi";}?>">
+                <?php 
+                    if(!empty($_GET["Type"])){
+                        echo '<button type="submit" name="change" value="True" class="logbtn">Salva le modifiche</button>';
+                    }
+                    else{
+                        echo '<button style="background-color: green;" type="submit" name="change" value="add" class="logbtn">Aggiungi</button>';
+                    }     
+                ?>       
         </form>
-
+        <form action="access/editTypeDB.php" method="POST">
+            <button type="submit" class="itemNumber formBtn" name="del" value="<?php echo $id;?>" style="background-color: white; margin-left:10px;">
+                Elimina
+            </button>
+        </form>
     </body>
 </html>
