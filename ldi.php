@@ -28,14 +28,39 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="jquery-2.1.4.min.js"></script>
+
     <link rel="stylesheet" href="css/ldi.css">
     <title>Document</title>
 </head>
     <body style="background-image:url('assets/berlinPhotosProva/<?php echo $ldi["image"]?>');">
         <div class="hid-box">
             <div class="open">
-                <span>apri</span>
+                <span>Panoramica</span>
+            </div>
+            <div class="titleDiv">
+                <h2>TITOLONE</h2>
+            </div>
+            <div class="titleDiv">
+                <p>
+                    ciao la citta e molto belal
+                </p>
             </div>
         </div>
     </body>
+    <script>
+        aperto = true
+        $( ".hid-box" ).click(function() {
+            if(aperto){
+                $(".hid-box").css("top", "35%");
+                aperto = false
+            }
+            else{
+                $(".hid-box").css("top", "calc(100vh - 66px)");
+                aperto = true
+            }
+        });
+    </script>
+
 </html>
