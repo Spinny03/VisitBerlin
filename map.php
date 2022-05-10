@@ -32,11 +32,25 @@
         <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
         <link href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" rel="stylesheet"/>
         <div id="osm-map"></div>
-
+        <style>
+            .transparent-tooltip {
+                text-overflow: ellipsis;
+                overflow: hidden; 
+                width: 50px; 
+                height: 1em; 
+                white-space: nowrap;
+            }
+        </style>
         <script> 
             element = document.getElementById('osm-map');
             element.style = 'height:'.concat(window.innerHeight, 'px;');
-            var map = L.map(element);
+            var southWest = L.latLng(52.42791052543574, 13.243731349843626),
+                northEast = L.latLng(52.60222351729074, 13.555910816201685),
+                bounds = L.latLngBounds(southWest, northEast);
+            var map = L.map(element, {
+                    minZoom: 14,
+                    maxBounds: bounds
+                });
             L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {}).addTo(map);
             map.setView(['52.51715250163406', '13.389735939802097'], 14);
             <?php 
@@ -55,16 +69,39 @@
                 $result = $conn->query($query);
                 if($result->num_rows > 0){
                     while($row = $result->fetch_assoc()){
-                        echo "L.marker(['".$row["lon"]."', '".$row["lat"]."'],{icon: Icon".$row["mainTipo"]."}).addTo(map).bindPopup(`".$row["name"]."`);";
+                        echo "L.marker(
+                            ['".$row["lon"]."', '".$row["lat"]."'],
+                            {
+                                win_url: 'https://google.com',
+                                icon: Icon".$row["mainTipo"]."
+                            }
+                            ).addTo(map).on('click', function(e) {
+                                window.location.href = 'ldi.php?ldi=".$row["id"]."';
+                            }).bindTooltip(`".$row["name"]."`, {
+                                permanent: true, 
+                                direction : 'bottom',
+                                className: 'transparent-tooltip',
+                                offset: [0, 10]
+                              });
+                            ";
                     }
                 }
+
+                /*
+                .bindPopup('<img src=`".$row["image"]."`  width=`500` height=`600`>');
+                bindTooltip(`".$row["name"]."`, {
+                    permanent: true, 
+                    direction : 'bottom',
+                    className: 'transparent-tooltip',
+                    offset: [0, 10]
+                  })*/
             ?>
             window.addEventListener('resize', function(event) {
                 element = document.getElementById('osm-map');
                 element.style = 'height:'.concat(window.innerHeight, 'px;');
             }, true);
         </script>
-        
+
         <div class="divWrapper">
             <a href="camera.php" class="camera"><img src="assets/icon/camButton.svg" alt="" class="icon"></a>
             <nav class="bottomNav">
