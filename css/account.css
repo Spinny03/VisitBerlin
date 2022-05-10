@@ -131,6 +131,7 @@ label{
     height: 100px;
     background-color: rgba(159, 172, 180, 0.4);
     z-index: 0;
+    overflow: hidden;
 }
 
 .box div:nth-child(1){
