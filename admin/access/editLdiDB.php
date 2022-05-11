@@ -129,12 +129,13 @@
         if($_POST["idLdi"] != "new"){ 
             echo "117";
             if(!empty($_POST["change"]) && $_POST["change"] == "False" ){
+                echo "132";
                 $old ="SELECT `image` FROM ldi WHERE id = '".$_POST["idLdi"]."'";
                 $oldphoto = $conn->query($old);
                 $oldphoto = mysqli_fetch_assoc($oldphoto); 
-                if(!empty($oldphoto["image"])){
+                if(!empty($oldphoto["image"]) && $oldphoto["image"] != "NoImg.png"){
                     unlink("../../assets/berlinPhotosProva/".$oldphoto["image"]);
-                    $del = "UPDATE ldi SET `image` = '' WHERE id = '".$_POST["idLdi"]."'";
+                    $del = "UPDATE ldi SET `image` = 'NoImg.png' WHERE id = '".$_POST["idLdi"]."'";
                     $conn->query($del);
                 }
                 header("Location: ../editLdi.php?ldi=".$_POST["idLdi"]);
@@ -166,7 +167,7 @@
                 $old = "SELECT `image` FROM ldi WHERE id = '".$_POST["idLdi"]."'";
                 $oldphoto = $conn->query($old);
                 $oldphoto = mysqli_fetch_assoc($oldphoto); 
-                if(!empty($oldphoto["image"])){
+                if(!empty($oldphoto["image"]) && $oldphoto["image"] != "NoImg.png"){
                     unlink("../../assets/berlinPhotosProva/".$oldphoto["image"]);
                 }
                 if (move_uploaded_file($_FILES["pfile"]["tmp_name"], $target_file)) {
