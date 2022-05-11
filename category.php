@@ -18,6 +18,7 @@
         $result = $conn->query($query);
         $type = $result->fetch_assoc();
         $typeName = $type["name"];
+        $typeDescription = $type["description"];
     }
 ?>
 <!DOCTYPE html>
@@ -37,6 +38,7 @@
     <body>
         <a href="index.php"><img src="assets/icon/back.svg" alt="" class="backIcon"></a>
         <h1><?php echo $typeName;?></h1>
+        <h2><?php echo $typeDescription;?></h2>
         <div class="leftScrollMenu">
             <?php 
                 if(empty($_GET["categ"])){
@@ -50,11 +52,17 @@
                     while($row = $result->fetch_assoc()){ 
                         $query = "SELECT * FROM ldi WHERE mainTipo = ".$row["id"]." ORDER BY RAND() LIMIT 1";
                         $result1 = $conn->query($query);
-                        $rowIm1 = mysqli_fetch_array($result1);
+                        if($result1->num_rows > 0){
+                            $rowIm1 = mysqli_fetch_array($result1);
+                            $rowIm1 = $rowIm1["image"];
+                        }
+                        else{
+                            $rowIm1 = "NoImg.png";
+                        }
                         echo  ' 
                         <a href="category.php?categ='.$row["id"].'">       
                             <div class="item">
-                                <div class="menuImage image" style="background-image: url(assets/berlinPhotosProva/'.$rowIm1["image"].');">
+                                <div class="menuImage image" style="background-image: url(assets/berlinPhotosProva/'.$rowIm1.');">
                                 </div>
                                 <div class="bottomText">
                                     <span class="smallText">'.$row["name"].'</span>
@@ -95,6 +103,9 @@
                     if($i<6){
                         echo '</div>';
                     }
+                }
+                else{
+                    echo "<h1>Nessun luogo di interesse trovato</h1>";
                 }
             ?>
 

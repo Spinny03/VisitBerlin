@@ -32,19 +32,37 @@
             <?php 
                 $sql = 'SELECT * FROM LDI ORDER BY RAND() LIMIT 3';
                 $all = $conn->query($sql);
-                $rowIm1 = mysqli_fetch_array($all);
-                $rowIm2 = mysqli_fetch_array($all);
-                $rowIm3 = mysqli_fetch_array($all);
                 if($all->num_rows > 0){
+                    if($all->num_rows >= 1){
+                        $rowIm1 = mysqli_fetch_array($all);
+                        $rowIm1 = $rowIm1["image"];
+                    }
+                    else{
+                        $rowIm1 = "NoImg.png";
+                    }
+                    if($all->num_rows >= 2){
+                        $rowIm2 = mysqli_fetch_array($all);
+                        $rowIm2 = $rowIm2["image"];
+                    }
+                    else{
+                        $rowIm2 = "NoImg.png";
+                    }
+                    if($all->num_rows >= 3){
+                        $rowIm3 = mysqli_fetch_array($all);
+                        $rowIm3 = $rowIm3["image"];
+                    }
+                    else{
+                        $rowIm3 = "NoImg.png";
+                    }
                     echo  '
                         <div class="card">
                             <a href="category.php">
                                 <div class="imageGallery">
-                                    <div class="big image" style="background-image: url(assets/berlinPhotosProva/'.$rowIm1["image"].');">
+                                    <div class="big image" style="background-image: url(assets/berlinPhotosProva/'.$rowIm1.');">
                                     </div>
-                                    <div class="small image" style="background-image: url(assets/berlinPhotosProva/'.$rowIm2["image"].');">
+                                    <div class="small image" style="background-image: url(assets/berlinPhotosProva/'.$rowIm2.');">
                                     </div>
-                                    <div class="small image" style="background-image: url(assets/berlinPhotosProva/'.$rowIm3["image"].');">
+                                    <div class="small image" style="background-image: url(assets/berlinPhotosProva/'.$rowIm3.');">
                                     </div>
                                 </div>
                                 <div  style="background-color: #ffab5c;"class="cardBottom">
@@ -59,18 +77,43 @@
                     while($row = $tipo->fetch_assoc()){ 
                         $sql = 'SELECT * FROM LDI, tipo_ldi WHERE LDI.id = tipo_ldi.ldi_id AND tipo_ldi.tipo_id ='.$row["id"].' ORDER BY RAND() LIMIT 3';
                         $foto = $conn->query($sql);
-                        $rowIm1 = mysqli_fetch_array($foto);
-                        $rowIm2 = mysqli_fetch_array($foto);
-                        $rowIm3 = mysqli_fetch_array($foto);
+                        if($foto->num_rows > 0){
+                            if($foto->num_rows >= 1){
+                                $rowIm1 = mysqli_fetch_array($foto);
+                                $rowIm1 = $rowIm1["image"];
+                            }
+                            else{
+                                $rowIm1 = "NoImg.png";
+                            }
+                            if($foto->num_rows >= 2){
+                                $rowIm2 = mysqli_fetch_array($foto);
+                                $rowIm2 = $rowIm2["image"];
+                            }
+                            else{
+                                $rowIm2 = "NoImg.png";
+                            }
+                            if($foto->num_rows >= 3){
+                                $rowIm3 = mysqli_fetch_array($foto);
+                                $rowIm3 = $rowIm3["image"];
+                            }
+                            else{
+                                $rowIm3 = "NoImg.png";
+                            }
+                        }
+                        else{
+                            $rowIm1 = "NoImg.png";
+                            $rowIm2 = "NoImg.png";
+                            $rowIm3 = "NoImg.png";
+                        }
                         echo  '
                             <div class="card">
                                 <a href="category.php?categ='.$row["id"].'">
                                     <div class="imageGallery">
-                                        <div class="big image" style="background-image: url(assets/berlinPhotosProva/'.$rowIm1["image"].');">
+                                        <div class="big image" style="background-image: url(assets/berlinPhotosProva/'.$rowIm1.');">
                                         </div>
-                                        <div class="small image" style="background-image: url(assets/berlinPhotosProva/'.$rowIm2["image"].');">
+                                        <div class="small image" style="background-image: url(assets/berlinPhotosProva/'.$rowIm2.');">
                                         </div>
-                                        <div class="small image" style="background-image: url(assets/berlinPhotosProva/'.$rowIm3["image"].');">
+                                        <div class="small image" style="background-image: url(assets/berlinPhotosProva/'.$rowIm3.');">
                                         </div>
                                     </div>
                                     <div class="cardBottom">
