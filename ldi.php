@@ -35,7 +35,11 @@
     <title>Document</title>
 </head>
     <body style="background-image:url('assets/berlinPhotosProva/<?php echo $ldi["image"]?>');">
-        <div class="hid-box">
+    <!--    NON SO PERCHE MA ROMPE TUTTO -->
+        <p><button style="z-index: 100; height: 50px;" >Share</button></p>
+        <a style="z-index: 100; height: 200px;" href="map.php?ldi=<?php  echo $_GET["ldi"];?>" >Mappa!</a>
+    
+    <div class="hid-box">
             <div class="open">
                 <span>Panoramica</span>
             </div>
@@ -59,6 +63,23 @@
             else{
                 $(".hid-box").css("top", "calc(100vh - 66px)");
                 aperto = true
+            }
+        });
+
+        const shareData = {
+            title: 'MDN',
+            text: 'Learn web development on MDN!',
+            url: 'https://developer.mozilla.org'
+        }
+
+        const btn = document.querySelector('button');
+
+        btn.addEventListener('click', async () => {
+            try {
+            await navigator.share(shareData)
+            resultPara.textContent = 'MDN shared successfully'
+            } catch(err) {
+            resultPara.textContent = 'Error: ' + err
             }
         });
     </script>

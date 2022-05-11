@@ -52,8 +52,24 @@
                     maxBounds: bounds
                 });
             L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {}).addTo(map);
-            map.setView(['52.51715250163406', '13.389735939802097'], 14);
             <?php 
+                if(!empty($_GET["ldi"])){
+                    $id = $_GET["ldi"];
+                    $query = "SELECT * FROM ldi where id = ".$id."";
+                    $result = $conn->query($query);
+                    if($result->num_rows > 0){
+                        $row = $result->fetch_array();
+                        $lat = $row["lat"];
+                        $lng = $row["lon"];
+                        echo "map.setView(['".$lng."', '".$lat."'], 17);";
+                    }
+                    else{
+                        echo "map.setView(['52.51715250163406', '13.389735939802097'], 14);";
+                    }
+                }
+                else{
+                    echo "map.setView(['52.51715250163406', '13.389735939802097'], 14);";
+                }
                 $query = "SELECT * FROM tipo";
                 $result = $conn->query($query);
                 if($result->num_rows > 0){
