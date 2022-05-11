@@ -17,6 +17,11 @@
     if(!empty($_GET["ldi"])){
         $query = "SELECT * FROM ldi WHERE ldi.id = ".$_GET["ldi"];
         $result = $conn->query($query);
+        if($result->num_rows <= 0){
+            header("Location: editLdi.php");
+            $conn->close();
+            exit();
+        }
         $ldi = $result->fetch_assoc();    
         $img = "../assets/berlinPhotosProva/".$ldi["image"];
         $name = $ldi["name"];

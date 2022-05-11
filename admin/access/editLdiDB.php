@@ -10,7 +10,9 @@
         $delPhoto = 'SELECT `image` FROM ldi WHERE id = "'.$_POST["del"].'";';
         $result = $conn->query($delPhoto); 
         $result = mysqli_fetch_assoc($result);
-        unlink("../../assets/berlinPhotosProva/".$result["image"]);
+        if(!empty($oldphoto["image"]) && $result["image"] != "NoImg.png"){
+            unlink("../../assets/berlinPhotosProva/".$result["image"]);
+        }
         $sql = 'DELETE FROM ldi WHERE id = "'.$_POST["del"].'";';
         $conn->query($sql); 
         $sql = 'DELETE FROM preferiti WHERE ldi_id = "'.$_POST["del"].'";';
@@ -95,7 +97,6 @@
             
             $sql = 'SELECT id FROM ldi WHERE '.$sql.';';
             $sql = str_replace(",", " AND ", $sql);
-            echo $sql;
             $result = $conn->query($sql);
             $result = mysqli_fetch_assoc($result);
 
@@ -120,7 +121,9 @@
                 rename('../../assets/berlinPhotosProva/new.gif', '../../assets/berlinPhotosProva/'.$result["id"].'.gif');
             }
             else{
+                echo "122";
                 $sql = 'UPDATE ldi SET `image` = "NoImg.png" WHERE id = "'.$result["id"].'"';
+                $conn->query($sql);
             }
         }
     }

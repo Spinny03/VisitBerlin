@@ -10,22 +10,24 @@
         $delPhoto = 'SELECT `image` FROM tipo WHERE id = "'.$_POST["del"].'";';
         $result = $conn->query($delPhoto); 
         $result = mysqli_fetch_assoc($result);
-        unlink("../../assets/mapsIcon/".$result["image"]);
+        if(!empty($oldphoto["image"]) && $result["image"] != "NoImg.svg"){
+            unlink("../../assets/mapsIcon/".$result["image"]);
+        }
         $sql = 'DELETE FROM tipo WHERE id = "'.$_POST["del"].'";';
         $conn->query($sql); 
-        $sql = 'DELETE FROM preferiti WHERE  tipo_id = "'.$_POST["del"].'";';
+        $sql = 'DELETE FROM preferiti WHERE ldi_id = "'.$_POST["del"].'";';
         $conn->query($sql); 
-        $sql = 'DELETE FROM tipo_ldi WHERE  tipo_id = "'.$_POST["del"].'";';
+        $sql = 'DELETE FROM tipo_ldi WHERE ldi_id = "'.$_POST["del"].'";';
         $conn->query($sql); 
-        $sql = 'DELETE FROM ldi WHERE  mainTipo = "'.$_POST["del"].'";';
+        $sql = 'DELETE FROM ldi WHERE mainTipo = "'.$_POST["del"].'";';
         $conn->query($sql); 
-        //header("Location: ../editType.php");
+        header("Location: ../editType.php");
         $conn->close();
         exit();
     }
     elseif(isset($_POST["change"]) && $_POST["change"]  == "True"){
         echo "18";
-        if(!empty($_POST["name"])  || !empty($_POST["description"])){
+        if(!empty($_POST["name"])  || !empty($_POST["description"] )){
             echo "20";
             $delPhoto = 'SELECT `image` FROM tipo WHERE id = "'.$_POST["ldi"].'";';
             $result = $conn->query($delPhoto); 
@@ -38,7 +40,6 @@
             if(!empty($_POST["description"])){
                 $sql .= 'description = "'.$_POST["description"].'",';
             }
-
             $sql = substr($sql, 0, -1);
             $conn->query('UPDATE tipo SET '.$sql.' WHERE id = "'.$_POST["ldi"].'";');
 
@@ -51,14 +52,14 @@
             $newname = "../../assets/mapsIcon/".$id["id"].".". $imageFileType;
             rename($oldname, $newname);
             $conn->query('UPDATE tipo SET `image` ="'.$id["id"].".". $imageFileType.'" WHERE id="'.$id["id"].'";');
-            //header("Location: ../editType.php?Type=".$id["id"]);
+            header("Location: ../editType.php?ldi=".$id["id"]);
             $conn->close();
             exit();
         }
     }
     elseif(isset($_POST["change"]) && $_POST["change"] == "add"){
         echo "60";
-        if(!empty($_POST["name"])  || !empty($_POST["description"])){
+        if(!empty($_POST["name"])  || !empty($_POST["description"] )){
             echo "62";
             $sql = "";
             if(!empty($_POST["name"])){
@@ -68,10 +69,12 @@
             if(!empty($_POST["description"])){
                 $sql .= 'description = "'.$_POST["description"].'",';
             }
+            $sql = substr($sql, 0, -1);
+            $conn->query("INSERT INTO tipo SET ".$sql.";");
 
+            
             $sql = 'SELECT id FROM tipo WHERE '.$sql.';';
             $sql = str_replace(",", " AND ", $sql);
-            echo $sql;
             $result = $conn->query($sql);
             $result = mysqli_fetch_assoc($result);
 
@@ -96,7 +99,9 @@
                 rename('../../assets/mapsIcon/new.gif', '../../assets/mapsIcon/'.$result["id"].'.gif');
             }
             else{
-                $sql = 'UPDATE tipo SET `image` = "NoImg.png" WHERE id = "'.$result["id"].'"';
+                echo "122";
+                $sql = 'UPDATE tipo SET `image` = "NoImg.svg" WHERE id = "'.$result["id"].'"';
+                $conn->query($sql);
             }
         }
     }
@@ -105,15 +110,16 @@
         if($_POST["idLdi"] != "new"){ 
             echo "117";
             if(!empty($_POST["change"]) && $_POST["change"] == "False" ){
+                echo "132";
                 $old ="SELECT `image` FROM tipo WHERE id = '".$_POST["idLdi"]."'";
                 $oldphoto = $conn->query($old);
                 $oldphoto = mysqli_fetch_assoc($oldphoto); 
-                if(!empty($oldphoto["image"])){
+                if(!empty($oldphoto["image"]) && $oldphoto["image"] != "NoImg.svg"){
                     unlink("../../assets/mapsIcon/".$oldphoto["image"]);
-                    $del = "UPDATE tipo SET `image` = '' WHERE id = '".$_POST["idLdi"]."'";
+                    $del = "UPDATE tipo SET `image` = 'NoImg.svg' WHERE id = '".$_POST["idLdi"]."'";
                     $conn->query($del);
                 }
-                //header("Location: ../editType.php?Type=".$_POST["idLdi"]);
+                header("Location: ../editType.php?ldi=".$_POST["idLdi"]);
                 $conn->close();
                 exit();
             }
@@ -142,7 +148,7 @@
                 $old = "SELECT `image` FROM tipo WHERE id = '".$_POST["idLdi"]."'";
                 $oldphoto = $conn->query($old);
                 $oldphoto = mysqli_fetch_assoc($oldphoto); 
-                if(!empty($oldphoto["image"])){
+                if(!empty($oldphoto["image"]) && $oldphoto["image"] != "NoImg.svg"){
                     unlink("../../assets/mapsIcon/".$oldphoto["image"]);
                 }
                 if (move_uploaded_file($_FILES["pfile"]["tmp_name"], $target_file)) {
@@ -154,7 +160,7 @@
             $oldname = "../../assets/mapsIcon/".htmlspecialchars(basename( $_FILES["pfile"]["name"]));
             $newname = "../../assets/mapsIcon/".$_POST["idLdi"] .".". $imageFileType;
             rename($oldname, $newname);
-            //header("Location: ../editType.php?Type=".$_POST["idLdi"]);
+            header("Location: ../editType.php?ldi=".$_POST["idLdi"]);
             $conn->close();
             exit();
         }
@@ -181,7 +187,7 @@
             rename($oldname, $newname);
         }
     }
-    //header("Location: ../editType.php");
+    header("Location: ../editType.php");
     $conn->close();
     exit();
 ?>

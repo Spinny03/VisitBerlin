@@ -14,6 +14,39 @@
         exit("Connessione fallita: " . $conn->connect_error);
     }
     $conn->query("USE Last");
+    if(!empty($_GET["ldi"])){
+        $query = "SELECT * FROM tipo WHERE tipo.id = ".$_GET["ldi"];
+        $result = $conn->query($query);
+        if($result->num_rows <= 0){
+            header("Location: editType.php");
+            $conn->close();
+            exit();
+        }
+        $ldi = $result->fetch_assoc();    
+        $img = "../assets/mapsIcon/".$ldi["image"];
+        $name = $ldi["name"];
+        $id = $ldi["id"];
+        $description = $ldi["description"];
+      }  
+    else{    
+    $img = "../assets/add.svg";          
+    if(file_exists("../assets/mapsIcon/new.jpg")){
+        $img = "../assets/mapsIcon/new.jpg";
+    }
+    if( file_exists("../assets/mapsIcon/new.png")){
+        $img = "../assets/mapsIcon/new.png";
+    }
+    if(file_exists("../assets/mapsIcon/new.jpeg")){
+        $img = "../assets/mapsIcon/new.jpeg";
+    }
+    if(file_exists("../assets/mapsIcon/new.gif")){
+        $img = "../assets/mapsIcon/new.gif";
+    }
+        $name = "";
+        $id = "new";
+        $description = "";
+    }   
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,6 +54,9 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+        <meta http-equiv="Pragma" content="no-cache" />
+        <meta http-equiv="Expires" content="0" />
         <link rel="stylesheet" href="../css/navBar.css">
         <link rel="stylesheet" href="../css/cardsMenu.css">
         <link rel="stylesheet" href="../css/textFormat.css">
@@ -42,11 +78,11 @@
                             <span class="smallText">add</span>
                         </div>
                     </div>
-                </a>';
+                    </a>';
                 if($result->num_rows > 0){
                     while($row = $result->fetch_assoc()){
                         echo  '     
-                        <a href="editType.php?Type='.$row["id"].'">   
+                        <a href="editType.php?ldi='.$row["id"].'">   
                             <div class="item">
                                 <div class="menuImage image" style="background-image: url(../assets/mapsIcon/'.$row["image"].');">
                                 </div>
@@ -54,28 +90,11 @@
                                     <span class="smallText">'.$row["name"].'</span>
                                 </div>
                             </div>
-                        </a>';
+                            </a>';
                     }
                 }
             ?>
         </div>
-        <?php 
-            if(!empty($_GET["Type"])){
-                $query = "SELECT * FROM tipo WHERE tipo.id = ".$_GET["Type"];
-                $result = $conn->query($query);
-                $type = $result->fetch_assoc();    
-                $img = "../assets/mapsIcon/".$type["image"];
-                $name = $type["name"];
-                $id = $type["id"];
-                $description = $type["description"];
-              }  
-            else{  
-                $img = "../assets/add.svg";
-                $name = "";
-                $id = null;
-                $description = "";
-            }       
-        ?>
         <form id="pform" action="access/editTypeDB.php" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="idLdi" value="<?php echo $id;?>">
             <img width="200" height="200" src="<?php echo $img; ?>" class="profilePhotoBig">
@@ -92,7 +111,7 @@
             <input type="text" name="name" value="<?php echo $name;?>">
             <input type="text" name="description" value="<?php echo $description;?>">
                 <?php 
-                    if(!empty($_GET["Type"])){
+                    if(!empty($_GET["ldi"])){
                         echo '<button type="submit" name="change" value="True" class="logbtn">Salva le modifiche</button>';
                     }
                     else{
