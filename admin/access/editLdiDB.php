@@ -56,12 +56,13 @@
             $id = 'SELECT id FROM ldi WHERE `image` = "'.$result["image"].'";';
             $id = $conn->query($id); 
             $id = mysqli_fetch_assoc($id);
-
-            $oldname = "../../assets/berlinPhotosProva/".$result["image"];
-            $imageFileType = strtolower(pathinfo($result["image"], PATHINFO_EXTENSION));
-            $newname = "../../assets/berlinPhotosProva/".$id["id"].".". $imageFileType;
-            rename($oldname, $newname);
-            $conn->query('UPDATE ldi SET `image` ="'.$id["id"].".". $imageFileType.'" WHERE id="'.$id["id"].'";');
+            if(!empty($result["image"]) && $result["image"] != "NoImg.png"){
+                $oldname = "../../assets/berlinPhotosProva/".$result["image"];
+                $imageFileType = strtolower(pathinfo($result["image"], PATHINFO_EXTENSION));
+                $newname = "../../assets/berlinPhotosProva/".$id["id"].".". $imageFileType;
+                rename($oldname, $newname);
+                $conn->query('UPDATE ldi SET `image` ="'.$id["id"].".". $imageFileType.'" WHERE id="'.$id["id"].'";');
+            }
             header("Location: ../editLdi.php?ldi=".$id["id"]);
             $conn->close();
             exit();

@@ -46,12 +46,14 @@
             $id = 'SELECT id FROM tipo WHERE `image` = "'.$result["image"].'";';
             $id = $conn->query($id); 
             $id = mysqli_fetch_assoc($id);
-
-            $oldname = "../../assets/mapsIcon/".$result["image"];
-            $imageFileType = strtolower(pathinfo($result["image"], PATHINFO_EXTENSION));
-            $newname = "../../assets/mapsIcon/".$id["id"].".". $imageFileType;
-            rename($oldname, $newname);
-            $conn->query('UPDATE tipo SET `image` ="'.$id["id"].".". $imageFileType.'" WHERE id="'.$id["id"].'";');
+            
+            if(!empty($result["image"]) && $result["image"] != "NoImg.svg"){
+                $oldname = "../../assets/mapsIcon/".$result["image"];
+                $imageFileType = strtolower(pathinfo($result["image"], PATHINFO_EXTENSION));
+                $newname = "../../assets/mapsIcon/".$id["id"].".". $imageFileType;
+                rename($oldname, $newname);
+                $conn->query('UPDATE tipo SET `image` ="'.$id["id"].".". $imageFileType.'" WHERE id="'.$id["id"].'";');
+            }
             header("Location: ../editType.php?ldi=".$id["id"]);
             $conn->close();
             exit();
