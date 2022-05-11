@@ -72,7 +72,6 @@
                         echo "L.marker(
                             ['".$row["lon"]."', '".$row["lat"]."'],
                             {
-                                win_url: 'https://google.com',
                                 icon: Icon".$row["mainTipo"]."
                             }
                             ).addTo(map).on('click', function(e) {

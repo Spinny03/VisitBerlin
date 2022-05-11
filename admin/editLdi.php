@@ -100,6 +100,7 @@
                     }
                 }
             ?>
+
         </div>
         <form id="pform" action="access/editLdiDB.php" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="idLdi" value="<?php echo $id;?>">
@@ -116,8 +117,9 @@
             <input type="hidden" name="ldi" value="<?php echo $id;?>">
             <input type="text" name="name" value="<?php echo $name;?>">
             <input type="text" name="description" value="<?php echo $description;?>">
-            <input type="text" name="lon" value="<?php echo $lon;?>">
-            <input type="text" name="lat" value="<?php echo $lat;?>">
+            <input id = "lat" type="text" name="lon" value="<?php echo $lon;?>">
+            <input id = "lng" type="text" name="lat" value="<?php echo $lat;?>">
+
             <input type="text" name="mainTipo" value="<?php echo $mainTipo;?>">
                 <?php 
                     if(!empty($_GET["ldi"])){
@@ -133,5 +135,88 @@
                 Elimina
             </button>
         </form>
+        <p ></p>
+        <p ></p>
+        <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
+        <link href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" rel="stylesheet"/>
+        <div id="osm-map"></div>
+        <style>
+            .transparent-tooltip {
+                text-overflow: ellipsis;
+                overflow: hidden; 
+                width: 50px; 
+                height: 1em; 
+                white-space: nowrap;
+            }
+        </style>
+        <script> 
+            element = document.getElementById('osm-map');
+            //element.style = 'height:'.concat(window.innerHeight, 'px;');
+            element.style = 'height: 800px;';
+            var southWest = L.latLng(52.42791052543574, 13.243731349843626),
+                northEast = L.latLng(52.60222351729074, 13.555910816201685),
+                bounds = L.latLngBounds(southWest, northEast);
+            var map = L.map(element, {
+                    minZoom: 14,
+                    maxBounds: bounds
+                });
+            L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {}).addTo(map);
+            
+            <?php 
+             echo "map.setView(['".$lon."', '".$lat."'], 17)";
+                $query = "SELECT * FROM tipo where id = ".$mainTipo."";
+                $result = $conn->query($query);
+                $result = $result->fetch_array();
+                echo "
+                var Icon".$mainTipo." = L.icon({
+                    iconUrl: '../assets/mapsIcon/".$result["image"]."',
+                    iconSize:     [38, 95],
+                });";
+
+                echo " var marker = L.marker(
+                    ['".$lon."', '".$lat."'],
+                    {
+                        draggable:true,
+                        icon: Icon".$mainTipo."
+                    }
+                    ).addTo(map).bindTooltip(`".$name."`, {
+                        permanent: true, 
+                        direction : 'bottom',
+                        className: 'transparent-tooltip',
+                        offset: [0, 10]
+                        });
+                    ";
+
+
+                /*
+                .bindPopup('<img src=`".$row["image"]."`  width=`500` height=`600`>');
+                bindTooltip(`".$row["name"]."`, {
+                    permanent: true, 
+                    direction : 'bottom',
+                    className: 'transparent-tooltip',
+                    offset: [0, 10]
+                  })*/
+            ?>
+            marker.on('dragend', function(event){
+                //alert('drag ended');
+                var marker = event.target;
+                var location = marker.getLatLng();
+                var lat = location.lat;
+                var lon = location.lng;
+                addToTextBox(lat,lon);
+                //alert(lat);
+                //retrieved the position
+            });
+            function addToTextBox(lt,ln){
+                document.getElementById('lat').value = lt;
+                document.getElementById('lng').value = ln;
+                
+            }
+            /*
+            window.addEventListener('resize', function(event) {
+                element = document.getElementById('osm-map');
+                element.style = 'height:'.concat(window.innerHeight, 'px;');
+            }, true);*/
+        </script>
     </body>
 </html>
