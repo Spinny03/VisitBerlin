@@ -13,8 +13,17 @@
     if(!empty($_SESSION["user"])){
         $data = $conn->query('SELECT * FROM username WHERE email ="'.$_SESSION["user"].'";');
         $data = mysqli_fetch_assoc($data); 
+        if(!empty($data["image"])){
+        $link = "assets/userPhoto/".$data["image"];
+        }else{
+            $link = "assets/icon/profileOff.svg";
+        }
     }
-    $link = "assets/icon/profileOff.svg";
+    else{
+        $link = "assets/icon/profileOff.svg";
+    }
+    
+
 ?>
 
 <!DOCTYPE html>
