@@ -12,6 +12,7 @@
     $conn->query("USE Last");
     if(empty($_GET["categ"])){
         $typeName = "Tutto";
+        $typeDescription = "Tutte i luoghi di interesse";
     }
     else{
         $query = "SELECT * FROM tipo WHERE tipo.id = ".$_GET["categ"];
