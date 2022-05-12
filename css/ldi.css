@@ -10,7 +10,7 @@ body{
 
 .hid-box{
     background-color: white;
-    top: calc(100vh - 66px);
+    top: calc(100vh - 100px);
     position: relative;
     transition: all .4s ease-out;
     height: 100%;
@@ -46,13 +46,26 @@ body{
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    position: absolute;
-    width: calc(100% - 30px);
+    
+    
     gap: 15px;
-    margin: 0px 15px 0px 15px;
     height: 80px;
 }
 
+.outerTopDiv{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+    position: absolute;
+    width: calc(100% - 15px);
+}
+
 .backIcon{
-    margin-right: auto
+    margin-left: 15px;
+    z-index: 100000;
+}
+
+.hid-box h2{
+    text-align: center;
 }

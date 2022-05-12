@@ -37,11 +37,13 @@
     <body style="background-image:url('assets/berlinPhotosProva/<?php echo $ldi["image"]?>');">
     <!--    NON SO PERCHE MA ROMPE TUTTO spinella -->
     <!--    PERCHE SEI SCARSO barletta-->
-    <div class="topDiv">
-        <a href="index.php"><img src="assets/icon/back.svg" alt="" class="backIcon"></a>
-        <a href="#" ><img src="assets/icon/whiteLike.svg" style="height: 25px; width: 25px;" alt=""></a>
-        <a href="#" id="share"><img src="assets/icon/share.svg" style="height: 25px; width: 25px;" alt=""></a>
-        <a href="map.php?ldi=<?php  echo $_GET["ldi"];?>" ><img src="assets/mapsIcon/noImgWhite.svg" style="height: 25px; width: 25px;" alt=""></a>
+    <div class="outerTopDiv">
+            <a href="<?php  echo $_SERVER['HTTP_REFERER'];?>"><img src="assets/icon/back.svg" alt="" class="backIcon"></a>
+        <div class="topDiv"> 
+            <a href="access/ldiDB.php?ldi=<?php  echo $_GET["ldi"];?>" ><img src="assets/icon/whiteLike.svg" style="height: 25px; width: 25px;" alt=""></a>
+            <a href="#" id="share"><img src="assets/icon/share.svg" style="height: 25px; width: 25px;" alt=""></a>
+            <a href="map.php?ldi=<?php  echo $_GET["ldi"];?>" ><img src="assets/mapsIcon/noImgWhite.svg" style="height: 25px; width: 25px;" alt=""></a>
+        </div>
     </div>
 
     <div class="hid-box">
@@ -62,7 +64,7 @@
                 aperto = false
             }
             else{
-                $(".hid-box").css("top", "calc(100vh - 66px)");
+                $(".hid-box").css("top", "calc(100vh - 100px)");
                 aperto = true
             }
         });
