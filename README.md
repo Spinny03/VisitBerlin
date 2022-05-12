@@ -19,7 +19,8 @@ Progetto massimo: Gestore di luoghi di interesse citta e musei
 ## Feature minime
 - [ ] scansione QR
 - [X] lista LDI
-- [ ] interfaccia admin per aggiungere LDI
+- [X] interfaccia admin per aggiungere LDI
+- [X] interfaccia admin per aggiungere categorie
 - [ ] scheda per ogni LDI
 - [X] filtri di ricerca e ordinamento
 
