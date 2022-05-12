@@ -65,6 +65,7 @@
         <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
         <meta http-equiv="Pragma" content="no-cache" />
         <meta http-equiv="Expires" content="0" />
+        <script src="../jquery-2.1.4.min.js"></script>
         <link rel="stylesheet" href="../css/navBar.css">
         <link rel="stylesheet" href="../css/cardsMenu.css">
         <link rel="stylesheet" href="../css/textFormat.css">
@@ -238,20 +239,6 @@
                 document.getElementById('lng').value = ln;
                 
             }
-            $(function(){
-                // Initialize the map
-                var map = L.map('map').setView([38.487, -75.641], 8);
-                L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
-                    maxZoom: 18
-                }).addTo(map);
-                newMarkerGroup = new L.LayerGroup();
-                map.on('click', addMarker);
-            function addMarker(e){
-                // Add marker to map at click location; add popup window
-                var newMarker = new L.marker(e.latlng).addTo(map);
-            }
-            });
             
             /*
             window.addEventListener('resize', function(event) {
