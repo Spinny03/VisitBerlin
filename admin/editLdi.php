@@ -22,8 +22,9 @@
             header("Location: editLdi.php");
             $conn->close();
             exit();
-            $esiste = true;
+
         }
+        $esiste = true;
         $ldi = $result->fetch_assoc();    
         $img = "../assets/berlinPhotosProva/".$ldi["image"];
         $name = $ldi["name"];
@@ -65,6 +66,8 @@
         <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
         <meta http-equiv="Pragma" content="no-cache" />
         <meta http-equiv="Expires" content="0" />
+        <script type="text/javascript" src="../qrcode/jquery.min.js"></script>
+        <script type="text/javascript" src="../qrcode/qrcode.min.js"></script>
         <script src="../jquery-2.1.4.min.js"></script>
         <link rel="stylesheet" href="../css/navBar.css">
         <link rel="stylesheet" href="../css/cardsMenu.css">
@@ -115,7 +118,44 @@
             document.getElementById("apply").onchange = function() {
             document.getElementById("pform").submit();
         }
+
         </script>
+
+
+<!-- QRCode -->
+        <div id="qrcode" v-loading="PanoramaInfo.bgenerateing"></div>
+        <button id="download" onclick="myFunction()" >Download</button>
+        <script> 
+            <?php 
+            if($esiste){
+               echo 'var qrcode = new QRCode(document.getElementById("qrcode"), "http://localhost/Last/ldi.php?ldi='.$id.'")';
+            }
+
+            ?> 
+            function downloadURI(uri, name) {
+            var link = document.createElement("a");
+            link.download = name;
+            link.href = uri;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            delete link;
+            };
+            function myFunction() 
+            {
+                console.log('onload');
+                setTimeout(
+                    function ()
+                    {
+                        let dataUrl = document.querySelector('#qrcode').querySelector('img').src;
+                        downloadURI(dataUrl, 'qrcode.png');
+                    }
+                    ,1000);
+            };
+            </script>
+<!-- QRCode -->
+
+
         <form action="access/editLdiDB.php" method="POST">
             <input type="hidden" name="ldi" value="<?php echo $id;?>">
             <input type="text" name="name" value="<?php echo $name;?>">
