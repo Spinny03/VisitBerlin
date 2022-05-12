@@ -41,3 +41,18 @@ body{
     justify-content: center;
     padding-top: 5px;
 }
+
+.topDiv{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    position: absolute;
+    width: calc(100% - 30px);
+    gap: 15px;
+    margin: 0px 15px 0px 15px;
+    height: 80px;
+}
+
+.backIcon{
+    margin-right: auto
+}

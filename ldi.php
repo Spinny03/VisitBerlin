@@ -35,27 +35,28 @@
     <title>Document</title>
 </head>
     <body style="background-image:url('assets/berlinPhotosProva/<?php echo $ldi["image"]?>');">
-    <!--    NON SO PERCHE MA ROMPE TUTTO -->
-        <p><button style="z-index: 100; height: 50px;" >Share</button></p>
-        <a style="z-index: 100; height: 200px;" href="map.php?ldi=<?php  echo $_GET["ldi"];?>" >Mappa!</a>
-    
+    <!--    NON SO PERCHE MA ROMPE TUTTO spinella -->
+    <!--    PERCHE SEI SCARSO barletta-->
+    <div class="topDiv">
+        <a href="index.php"><img src="assets/icon/back.svg" alt="" class="backIcon"></a>
+        <a href="#" ><img src="assets/icon/whiteLike.svg" style="height: 25px; width: 25px;" alt=""></a>
+        <a href="#" id="share"><img src="assets/icon/share.svg" style="height: 25px; width: 25px;" alt=""></a>
+        <a href="map.php?ldi=<?php  echo $_GET["ldi"];?>" ><img src="assets/mapsIcon/noImgWhite.svg" style="height: 25px; width: 25px;" alt=""></a>
+    </div>
+
     <div class="hid-box">
             <div class="open">
                 <span>Panoramica</span>
             </div>
             <div class="titleDiv">
-                <h2>TITOLONE</h2>
-            </div>
-            <div class="titleDiv">
-                <p>
-                    ciao la citta e molto belal
-                </p>
+                <h2><?php echo strtoupper($ldi["name"])?></h2>
             </div>
         </div>
     </body>
+     
     <script>
         aperto = true
-        $( ".hid-box" ).click(function() {
+        $( ".open" ).click(function() {
             if(aperto){
                 $(".hid-box").css("top", "35%");
                 aperto = false
@@ -72,9 +73,7 @@
             url: 'https://developer.mozilla.org'
         }
 
-        const btn = document.querySelector('button');
-
-        btn.addEventListener('click', async () => {
+        $( "#share" ).click(async () => {
             try {
             await navigator.share(shareData)
             resultPara.textContent = 'MDN shared successfully'
