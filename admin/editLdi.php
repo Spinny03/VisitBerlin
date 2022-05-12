@@ -14,6 +14,7 @@
         exit("Connessione fallita: " . $conn->connect_error);
     }
     $conn->query("USE Last");
+    $esiste = false;
     if(!empty($_GET["ldi"])){
         $query = "SELECT * FROM ldi WHERE ldi.id = ".$_GET["ldi"];
         $result = $conn->query($query);
@@ -21,6 +22,7 @@
             header("Location: editLdi.php");
             $conn->close();
             exit();
+            $esiste = true;
         }
         $ldi = $result->fetch_assoc();    
         $img = "../assets/berlinPhotosProva/".$ldi["image"];
@@ -45,11 +47,11 @@
     if(file_exists("../assets/berlinPhotosProva/new.gif")){
         $img = "../assets/berlinPhotosProva/new.gif";
     }
-        $name = "";
+        $name = "Nuovo";
         $id = "new";
         $description = "";
-        $lon = "";
-        $lat = "";
+        $lon = "52.51715250163406";
+        $lat = "13.389735939802097";
         $mainTipo = "";
     }   
 
@@ -163,29 +165,53 @@
             L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {}).addTo(map);
             
             <?php 
+            
              echo "map.setView(['".$lon."', '".$lat."'], 17)";
-                $query = "SELECT * FROM tipo where id = ".$mainTipo."";
-                $result = $conn->query($query);
-                $result = $result->fetch_array();
-                echo "
-                var Icon".$mainTipo." = L.icon({
-                    iconUrl: '../assets/mapsIcon/".$result["image"]."',
-                    iconSize:     [38, 95],
-                });";
 
-                echo " var marker = L.marker(
-                    ['".$lon."', '".$lat."'],
-                    {
-                        draggable:true,
-                        icon: Icon".$mainTipo."
-                    }
-                    ).addTo(map).bindTooltip(`".$name."`, {
-                        permanent: true, 
-                        direction : 'bottom',
-                        className: 'transparent-tooltip',
-                        offset: [0, 10]
-                        });
-                    ";
+                if($esiste){
+                    $query = "SELECT * FROM tipo where id = ".$mainTipo."";
+                    $result = $conn->query($query);
+                    $result = $result->fetch_array();
+                    echo "
+                    var Icon".$mainTipo." = L.icon({
+                        iconUrl: '../assets/mapsIcon/".$result["image"]."',
+                        iconSize:     [38, 95],
+                    });";
+                    echo " var marker = L.marker(
+                        ['".$lon."', '".$lat."'],
+                        {
+                            draggable:true,
+                            icon: Icon".$mainTipo."
+                        }
+                        ).addTo(map).bindTooltip(`".$name."`, {
+                            permanent: true, 
+                            direction : 'bottom',
+                            className: 'transparent-tooltip',
+                            offset: [0, 10]
+                            });
+                        ";
+                }
+                else{
+                    echo "
+                        var IconNew = L.icon({
+                            iconUrl: '../assets/mapsIcon/noImg.svg',
+                            iconSize:     [38, 95],
+                        });";
+                    echo " var marker = L.marker(
+                        ['".$lon."', '".$lat."'],
+                        {
+                            draggable:true,
+                            icon: IconNew 
+                        }
+                        ).addTo(map).bindTooltip(`".$name."`, {
+                            permanent: true, 
+                            direction : 'bottom',
+                            className: 'transparent-tooltip',
+                            offset: [0, 10]
+                            });
+                        ";
+                }
+
 
 
                 /*
@@ -212,6 +238,21 @@
                 document.getElementById('lng').value = ln;
                 
             }
+            $(function(){
+                // Initialize the map
+                var map = L.map('map').setView([38.487, -75.641], 8);
+                L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
+                    maxZoom: 18
+                }).addTo(map);
+                newMarkerGroup = new L.LayerGroup();
+                map.on('click', addMarker);
+            function addMarker(e){
+                // Add marker to map at click location; add popup window
+                var newMarker = new L.marker(e.latlng).addTo(map);
+            }
+            });
+            
             /*
             window.addEventListener('resize', function(event) {
                 element = document.getElementById('osm-map');
