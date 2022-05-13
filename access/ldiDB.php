@@ -7,7 +7,10 @@
     }
     $conn->query("USE Last");
 
-    $sql = "INSERT INTO preferiti(`ldi_id`,`email`) VALUES (".$_GET["ldi"].",'".$_SESSION["user"]."');";
-    $conn->query($sql);
+
+    if(isset($_SESSION["user"])){
+        $sql = "INSERT INTO preferiti(`ldi_id`,`email`) VALUES (".$_GET["ldi"].",'".$_SESSION["user"]."');";
+        $conn->query($sql);
+    }
     header("Location: ".$_SERVER['HTTP_REFERER']."");
 ?>

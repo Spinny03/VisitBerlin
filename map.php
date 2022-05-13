@@ -12,6 +12,8 @@
         exit("Connessione fallita: " . $conn->connect_error);
     }
     $conn->query("USE Last");
+
+    $_SESSION["prevPage"] = $_SERVER['REQUEST_URI'];
 ?>
 <!DOCTYPE html>
 <html lang="it">

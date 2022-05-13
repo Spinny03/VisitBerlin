@@ -21,6 +21,8 @@
         $typeName = $type["name"];
         $typeDescription = $type["description"];
     }
+
+    $_SESSION["prevPage"] = $_SERVER['REQUEST_URI'];
 ?>
 <!DOCTYPE html>
 <html lang="it">

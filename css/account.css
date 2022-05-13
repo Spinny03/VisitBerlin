@@ -1,7 +1,4 @@
-* {
-    /*box-sizing: border-box;*/
-    overflow: hidden;
-}
+
 
 body{
     margin-bottom: 100px;
@@ -114,8 +111,6 @@ label{
     justify-content: center;
     align-items: center;
     margin: auto;
-    overflow: hidden;
-    overflow-x: hidden;
     gap: 20px;
 }
 
@@ -132,7 +127,6 @@ label{
     height: 100px;
     background-color: rgba(159, 172, 180, 0.4);
     z-index: 0;
-    overflow: hidden;
 }
 
 .box div:nth-child(1){

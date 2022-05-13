@@ -19,6 +19,7 @@
         $ldi = $result->fetch_assoc();
         //echo "<img style='height: 100%; width: 100%;' src='assets/berlinPhotosProva/".$ldi["image"]."' alt=''>";
     }
+
 ?>
 
 
@@ -38,7 +39,7 @@
     <!--    NON SO PERCHE MA ROMPE TUTTO spinella -->
     <!--    PERCHE SEI SCARSO barletta-->
     <div class="outerTopDiv">
-            <a href="<?php  echo $_SERVER['HTTP_REFERER'];?>"><img src="assets/icon/back.svg" alt="" class="backIcon"></a>
+            <a href="<?php  echo $_SESSION["prevPage"]?>"><img src="assets/icon/back.svg" alt="" class="backIcon"></a>
         <div class="topDiv"> 
             <a href="access/ldiDB.php?ldi=<?php  echo $_GET["ldi"];?>" ><img src="assets/icon/whiteLike.svg" style="height: 25px; width: 25px;" alt=""></a>
             <a href="#" id="share"><img src="assets/icon/share.svg" style="height: 25px; width: 25px;" alt=""></a>
