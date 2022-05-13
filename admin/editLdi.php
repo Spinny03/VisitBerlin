@@ -125,16 +125,20 @@
 
 
     <!-- QRCode -->
-            <div id="qrcode" v-loading="PanoramaInfo.bgenerateing"></div>
-            <button id="download" onclick="myFunction()" >Download</button>
+            <?php 
+                if($esiste){
+                    echo '
+                    <div id="qrcode" v-loading="PanoramaInfo.bgenerateing"></div>
+                    <button id="download" onclick="myFunction()" >Download</button>';
+                }
+            ?> 
             <script> 
                 <?php 
-                if($esiste){
-                echo 'var qrcode = new QRCode(document.getElementById("qrcode"), "http://localhost/Last/ldi.php?ldi='.$id.'")';
-                }
-
+                    if($esiste){
+                    echo 'var qrcode = new QRCode(document.getElementById("qrcode"), "http://localhost/Last/ldi.php?ldi='.$id.'")';
+                    }
                 ?> 
-                function downloadURI(uri, name) {
+                function downloadURI(uri, name){
                 var link = document.createElement("a");
                 link.download = name;
                 link.href = uri;
@@ -143,8 +147,7 @@
                 document.body.removeChild(link);
                 delete link;
                 };
-                function myFunction() 
-                {
+                function myFunction(){
                     console.log('onload');
                     setTimeout(
                         function ()
