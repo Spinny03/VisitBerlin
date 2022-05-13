@@ -12,6 +12,7 @@
     <head>
         <meta name="viewport" content="width=device-width" />
         <link rel="stylesheet" href="css/loginRegister.css">
+        <link rel="stylesheet" href="css/navBar.css">
         <link rel="icon" type="image/x-icon" href="images/favicon.ico">
         <title>Last</title>
     </head>
@@ -43,7 +44,21 @@
                     pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
                     <button type="submit" name="login" class="logbtn">Invia codice</button>
                 </form>
+                <a href="<?php echo $_SERVER["HTTP_REFERER"] ?>" class="Link">indietro</a>
             </div>  
+        </div>
+        <div class="divWrapper">
+            <a href="camera.php" class="camera"><img src="assets/icon/camButton.svg" alt="" class="icon"></a>
+            <nav class="bottomNav">
+                <div class="insideNav">
+                <a href="map.php"><img src="assets/icon/searchOff.svg" alt="" class="icon"></a>
+                <a href="index.php"><img src="assets/icon/boardsOff.svg" alt="" class="icon"></a>
+                </div>
+                <div class="insideNav">
+                <a href="liked.php"><img src="assets/icon/preferOff.svg" alt="" class="icon"></a>
+                <a href="account.php"><img src="assets/icon/profileOn.svg" alt="" class="icon"></a>
+                </div>
+            </nav>
         </div>
     </body>
 </html>

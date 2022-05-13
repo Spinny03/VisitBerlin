@@ -35,19 +35,19 @@
         $mainTipo = $ldi["mainTipo"];
       }  
     else{    
-    $img = "../assets/add.svg";          
-    if(file_exists("../assets/berlinPhotosProva/new.jpg")){
-        $img = "../assets/berlinPhotosProva/new.jpg";
-    }
-    if( file_exists("../assets/berlinPhotosProva/new.png")){
-        $img = "../assets/berlinPhotosProva/new.png";
-    }
-    if(file_exists("../assets/berlinPhotosProva/new.jpeg")){
-        $img = "../assets/berlinPhotosProva/new.jpeg";
-    }
-    if(file_exists("../assets/berlinPhotosProva/new.gif")){
-        $img = "../assets/berlinPhotosProva/new.gif";
-    }
+        $img = "../assets/add.svg";          
+        if(file_exists("../assets/berlinPhotosProva/new.jpg")){
+            $img = "../assets/berlinPhotosProva/new.jpg";
+        }
+        if( file_exists("../assets/berlinPhotosProva/new.png")){
+            $img = "../assets/berlinPhotosProva/new.png";
+        }
+        if(file_exists("../assets/berlinPhotosProva/new.jpeg")){
+            $img = "../assets/berlinPhotosProva/new.jpeg";
+        }
+        if(file_exists("../assets/berlinPhotosProva/new.gif")){
+            $img = "../assets/berlinPhotosProva/new.gif";
+        }
         $name = "Nuovo";
         $id = "new";
         $description = "";
@@ -74,6 +74,7 @@
         <link rel="stylesheet" href="../css/textFormat.css">
         <link rel="stylesheet" href="../css/imageGallery.css">
         <link rel="stylesheet" href="../css/components.css">
+        <link rel="stylesheet" href="css/editLdi.css">
         <title>Admin</title>
     </head>
     <body>
@@ -108,108 +109,110 @@
             ?>
 
         </div>
-        <form id="pform" action="access/editLdiDB.php" method="POST" enctype="multipart/form-data">
-            <input type="hidden" name="idLdi" value="<?php echo $id;?>">
-            <img width="200" height="200" src="<?php echo $img; ?>" class="profilePhotoBig">
-            <label class="photoBtn" for="apply"><input class="inPhoto" type="file" name="pfile" id="apply" accept="image/*">Modifica</label>
-            <button type="submit" name="change" value="False" class="photoBtn removeBtn">Rimuovi</button>
-        </form>
-        <script>
-            document.getElementById("apply").onchange = function() {
-            document.getElementById("pform").submit();
-        }
-
-        </script>
-
-
-<!-- QRCode -->
-        <div id="qrcode" v-loading="PanoramaInfo.bgenerateing"></div>
-        <button id="download" onclick="myFunction()" >Download</button>
-        <script> 
-            <?php 
-            if($esiste){
-               echo 'var qrcode = new QRCode(document.getElementById("qrcode"), "http://localhost/Last/ldi.php?ldi='.$id.'")';
+        <div class="ldiContainer">
+            <form id="pform" action="access/editLdiDB.php" method="POST" enctype="multipart/form-data">
+                <input type="hidden" name="idLdi" value="<?php echo $id;?>">
+                <img width="200" height="200" src="<?php echo $img; ?>" class="profilePhotoBig">
+                <label class="photoBtn" for="apply"><input class="inPhoto" type="file" name="pfile" id="apply" accept="image/*">Modifica</label>
+                <button type="submit" name="change" value="False" class="photoBtn removeBtn">Rimuovi</button>
+            </form>
+            <script>
+                document.getElementById("apply").onchange = function() {
+                document.getElementById("pform").submit();
             }
 
-            ?> 
-            function downloadURI(uri, name) {
-            var link = document.createElement("a");
-            link.download = name;
-            link.href = uri;
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            delete link;
-            };
-            function myFunction() 
-            {
-                console.log('onload');
-                setTimeout(
-                    function ()
-                    {
-                        let dataUrl = document.querySelector('#qrcode').querySelector('img').src;
-                        downloadURI(dataUrl, 'qrcode.png');
-                    }
-                    ,1000);
-            };
             </script>
-<!-- QRCode -->
 
 
-        <form action="access/editLdiDB.php" method="POST">
-            <input type="hidden" name="ldi" value="<?php echo $id;?>">
-            <input type="text" name="name" value="<?php echo $name;?>">
-            <input type="text" name="description" value="<?php echo $description;?>">
-            <input id = "lat" type="text" name="lon" value="<?php echo $lon;?>">
-            <input id = "lng" type="text" name="lat" value="<?php echo $lat;?>">
-
+    <!-- QRCode -->
+            <div id="qrcode" v-loading="PanoramaInfo.bgenerateing"></div>
+            <button id="download" onclick="myFunction()" >Download</button>
+            <script> 
                 <?php 
-                $query = "SELECT * FROM tipo;";
-                $result = $conn->query($query);
-                echo "<br><p>icon:</p>";
-                if($result->num_rows > 0){
-                    while($row = $result->fetch_assoc()){
-                        if($row["id"] == $mainTipo){
-                            echo '<input type="radio" name="mainTipo" value="'.$row["id"].'" checked required>'.$row["name"].'<br>';
-                        }else{
-                            echo '<input type="radio" name="mainTipo" value="'.$row["id"].'" required>'.$row["name"].'<br>';
-                        }
-                    }
+                if($esiste){
+                echo 'var qrcode = new QRCode(document.getElementById("qrcode"), "http://localhost/Last/ldi.php?ldi='.$id.'")';
                 }
-                echo "<br><p>Tipo:</p>";
+
+                ?> 
+                function downloadURI(uri, name) {
+                var link = document.createElement("a");
+                link.download = name;
+                link.href = uri;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                delete link;
+                };
+                function myFunction() 
+                {
+                    console.log('onload');
+                    setTimeout(
+                        function ()
+                        {
+                            let dataUrl = document.querySelector('#qrcode').querySelector('img').src;
+                            downloadURI(dataUrl, 'qrcode.png');
+                        }
+                        ,1000);
+                };
+                </script>
+    <!-- QRCode -->
+
+
+            <form action="access/editLdiDB.php" method="POST">
+                <input type="hidden" name="ldi" value="<?php echo $id;?>">
+                <input type="text" name="name" value="<?php echo $name;?>">
+                <input type="text" name="description" value="<?php echo $description;?>">
+                <input id = "lat" type="text" name="lon" value="<?php echo $lon;?>">
+                <input id = "lng" type="text" name="lat" value="<?php echo $lat;?>">
+
+                    <?php 
                     $query = "SELECT * FROM tipo;";
                     $result = $conn->query($query);
-
+                    echo "<br><p>icon:</p>";
                     if($result->num_rows > 0){
                         while($row = $result->fetch_assoc()){
-                            echo '<input type="checkbox" name="tipo[]" value="'.$row["id"].'"';
-                            if($id != "new"){
-                                $query1 = "SELECT * FROM tipo_ldi WHERE ldi_id = ".$id." AND tipo_id = ".$row["id"].";";
-                                $result12 = $conn->query($query1);
-                                if($result12->num_rows > 0){
-                                    echo 'checked';
-                                }
+                            if($row["id"] == $mainTipo){
+                                echo '<div><input type="radio" name="mainTipo" value="'.$row["id"].'" checked required>'.$row["name"].'<br></div>';
+                            }else{
+                                echo '<div><input type="radio" name="mainTipo" value="'.$row["id"].'" required>'.$row["name"].'<br></div>';
                             }
-                            echo '>'.$row["name"].'<br>';
-                            
                         }
                     }
-                    
+                    echo "<br><p>Tipo:</p>";
+                        $query = "SELECT * FROM tipo;";
+                        $result = $conn->query($query);
+
+                        if($result->num_rows > 0){
+                            while($row = $result->fetch_assoc()){
+                                echo '<div><input type="checkbox" name="tipo[]" value="'.$row["id"].'"';
+                                if($id != "new"){
+                                    $query1 = "SELECT * FROM tipo_ldi WHERE ldi_id = ".$id." AND tipo_id = ".$row["id"].";";
+                                    $result12 = $conn->query($query1);
+                                    if($result12->num_rows > 0){
+                                        echo 'checked';
+                                    }
+                                }
+                                echo '>'.$row["name"].'</div><br>';
+                                
+                            }
+                        }
+                        
 
 
-                    if(!empty($_GET["ldi"])){
-                        echo '<button type="submit" name="change" value="True" class="logbtn">Salva le modifiche</button>';
-                    }
-                    else{
-                        echo '<button style="background-color: green;" type="submit" name="change" value="add" class="logbtn">Aggiungi</button>';
-                    }     
-                ?>       
-        </form>
-        <form action="access/editLdiDB.php" method="POST">
-            <button type="submit" class="itemNumber formBtn" name="del" value="<?php echo $id;?>" style="background-color: white; margin-left:10px;">
-                Elimina
-            </button>
-        </form>
+                        if(!empty($_GET["ldi"])){
+                            echo '<button type="submit" name="change" value="True" class="logbtn">Salva le modifiche</button>';
+                        }
+                        else{
+                            echo '<button style="background-color: green;" type="submit" name="change" value="add" class="logbtn">Aggiungi</button>';
+                        }     
+                    ?>       
+            </form>
+            <form action="access/editLdiDB.php" method="POST">
+                <button type="submit" class="itemNumber formBtn" name="del" value="<?php echo $id;?>" style="background-color: white; margin-left:10px;">
+                    Elimina
+                </button>
+            </form>
+        </div>
         <p ></p>
         <p ></p>
         <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
@@ -239,7 +242,7 @@
             
             <?php 
             
-             echo "map.setView(['".$lon."', '".$lat."'], 17)";
+            echo "map.setView(['".$lon."', '".$lat."'], 17)";
 
                 if($esiste){
                     $query = "SELECT * FROM tipo where id = ".$mainTipo."";
@@ -294,7 +297,7 @@
                     direction : 'bottom',
                     className: 'transparent-tooltip',
                     offset: [0, 10]
-                  })*/
+                })*/
             ?>
             marker.on('dragend', function(event){
                 //alert('drag ended');
@@ -318,5 +321,6 @@
                 element.style = 'height:'.concat(window.innerHeight, 'px;');
             }, true);*/
         </script>
+        
     </body>
 </html>
