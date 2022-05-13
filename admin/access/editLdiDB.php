@@ -50,6 +50,19 @@
             if(!empty($_POST["mainTipo"])){
                 $sql .= 'mainTipo = "'.$_POST["mainTipo"].'",';
             }
+            $cut = "DELETE FROM tipo_ldi WHERE ldi_id = '".$_POST["ldi"]."';";
+            echo $cut;
+            $conn->query($cut);
+            if(isset($_POST["tipo"])){
+                foreach($_POST["tipo"] as $tipo){
+                    $add = "INSERT INTO tipo_ldi SET ldi_id = '".$_POST["ldi"]."', tipo_id = '".$tipo."';";
+                    echo $add;
+                    $conn->query($add);
+                }
+            }
+
+
+
             $sql = substr($sql, 0, -1);
             $conn->query('UPDATE ldi SET '.$sql.' WHERE id = "'.$_POST["ldi"].'";');
 
@@ -100,6 +113,14 @@
             $sql = str_replace(",", " AND ", $sql);
             $result = $conn->query($sql);
             $result = mysqli_fetch_assoc($result);
+
+            if(isset($_POST["tipo"])){
+                foreach($_POST["tipo"] as $tipo){
+                    $add = "INSERT INTO tipo_ldi SET ldi_id = '".$result["id"]."', tipo_id = '".$tipo."';";
+                    echo $add;
+                    $conn->query($add);
+                }
+            }
 
             if(file_exists("../../assets/berlinPhotosProva/new.jpg")){
                 $sql = 'UPDATE ldi SET `image` = "'.$result["id"].'.jpg" WHERE id = "'.$result["id"].'"';

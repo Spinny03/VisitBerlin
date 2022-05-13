@@ -163,8 +163,40 @@
             <input id = "lat" type="text" name="lon" value="<?php echo $lon;?>">
             <input id = "lng" type="text" name="lat" value="<?php echo $lat;?>">
 
-            <input type="text" name="mainTipo" value="<?php echo $mainTipo;?>">
                 <?php 
+                $query = "SELECT * FROM tipo;";
+                $result = $conn->query($query);
+                echo "<br><p>icon:</p>";
+                if($result->num_rows > 0){
+                    while($row = $result->fetch_assoc()){
+                        if($row["id"] == $mainTipo){
+                            echo '<input type="radio" name="mainTipo" value="'.$row["id"].'" checked required>'.$row["name"].'<br>';
+                        }else{
+                            echo '<input type="radio" name="mainTipo" value="'.$row["id"].'" required>'.$row["name"].'<br>';
+                        }
+                    }
+                }
+                echo "<br><p>Tipo:</p>";
+                    $query = "SELECT * FROM tipo;";
+                    $result = $conn->query($query);
+
+                    if($result->num_rows > 0){
+                        while($row = $result->fetch_assoc()){
+                            echo '<input type="checkbox" name="tipo[]" value="'.$row["id"].'"';
+                            if($id != "new"){
+                                $query1 = "SELECT * FROM tipo_ldi WHERE ldi_id = ".$id." AND tipo_id = ".$row["id"].";";
+                                $result12 = $conn->query($query1);
+                                if($result12->num_rows > 0){
+                                    echo 'checked';
+                                }
+                            }
+                            echo '>'.$row["name"].'<br>';
+                            
+                        }
+                    }
+                    
+
+
                     if(!empty($_GET["ldi"])){
                         echo '<button type="submit" name="change" value="True" class="logbtn">Salva le modifiche</button>';
                     }
