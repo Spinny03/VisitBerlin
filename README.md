@@ -11,6 +11,7 @@ Progetto massimo: Gestore di luoghi di interesse citta e musei
 - [mail](https://www.codingnepalweb.com/configure-xampp-to-send-mail-from-localhost/)
 - [mail-domain](https://www.youtube.com/watch?v=mG4nPsepI9o&ab_channel=CodeboardClub)
 - [load-page](https://redstapler.co/add-loading-animation-to-website/)
+- [camera identify](https://github.com/mapbox/pixelmatch)
 
 
 ## Acronimi

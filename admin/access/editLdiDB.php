@@ -108,6 +108,22 @@
             $sql = substr($sql, 0, -1);
             $conn->query("INSERT INTO ldi SET ".$sql.";");
 
+            //da provare a casa
+            $sql1 = "SELECT * From users WHERE newsletter = 1;";
+            $result = $conn->query($sql1);
+            while($row = mysqli_fetch_assoc($result)){
+                $to = $row["email"];
+                $subject = "Novità sulla città di Berlino";
+                $message = "Ciao ".$row["firstName"]." ".$row["surname"]."!\n\n";
+                $message .= "Abbiamo aggiunto: ".$_POST["name"].".\n\n";
+                $message .= "http://localhost/Last/ldi.php?ldi='.$id.'";
+                $message .= "Grazie per averci scelto!\n\n";
+                $message .= "Cordiali saluti,\n\n";
+                $message .= "Il team di Last";
+                $headers = "From: Last <filippospi03@gmail.com>";
+                mail($to, $subject, $message, $headers);
+            }
+
             
             $sql = 'SELECT id FROM ldi WHERE '.$sql.';';
             $sql = str_replace(",", " AND ", $sql);

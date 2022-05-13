@@ -71,9 +71,9 @@
         });
 
         const shareData = {
-            title: 'MDN',
-            text: 'Learn web development on MDN!',
-            url: 'https://developer.mozilla.org'
+            title: 'Last',
+            text: 'Viene a vedere questa opera su Last!',
+            url: "http://localhost/Last/ldi.php?ldi=<?php echo $_GET["ldi"];?>"
         }
 
         $( "#share" ).click(async () => {
