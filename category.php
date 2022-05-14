@@ -10,16 +10,20 @@
         exit("Connessione fallita: " . $conn->connect_error);
     }
     $conn->query("USE Last");
-    if(empty($_GET["categ"])){
+    if(empty($_GET["categ"]) && empty($_GET["query"])){
         $typeName = "Tutto";
         $typeDescription = "Tutte i luoghi di interesse";
     }
-    else{
+    elseif(!empty($_GET["categ"])){
         $query = "SELECT * FROM tipo WHERE tipo.id = ".$_GET["categ"];
         $result = $conn->query($query);
         $type = $result->fetch_assoc();
         $typeName = $type["name"];
         $typeDescription = $type["description"];
+    }
+    elseif(!empty($_GET["query"])){
+        $typeName = "Ricerca Personalizzata";
+        $typeDescription = "Risultati per: ".$_GET["query"]."";
     }
 
     $_SESSION["prevPage"] = $_SERVER['REQUEST_URI'];
@@ -77,8 +81,11 @@
             ?>
         </div>
    
-            <?php
-                if(empty($_GET["categ"])){
+            <?php                
+                if(!empty($_GET["query"])){
+                    $query = "SELECT * FROM ldi where `name` LIKE '%".$_GET["query"]."%'";
+                }
+                elseif(empty($_GET["categ"])){
                     $query = "SELECT * FROM ldi";
                 }
                 else{

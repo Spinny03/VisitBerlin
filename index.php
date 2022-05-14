@@ -10,6 +10,23 @@
         exit("Connessione fallita: " . $conn->connect_error);
     }
     $conn->query("USE Last");
+    if(isset($_POST["searchBtn"])){
+        $search_query = preg_replace("#[^a-z 0-9?!]#i", "", $_POST["searchbar"]);
+        $sql = "SELECT * FROM LDI WHERE `name` LIKE '%".$search_query."%'";
+        $result = $conn->query($sql);
+        if($result->num_rows == 1){
+            $row = $result->fetch_assoc();
+            header('location: ldi.php?ldi='.$row["id"].'');
+            $conn->close();
+            exit();
+        }
+        elseif($result->num_rows > 1){
+            header('location: category.php?query='.$search_query.'');
+            $conn->close();
+            exit();
+        }
+
+    }
 ?>
 <!DOCTYPE html>
 <html lang="it">
@@ -28,13 +45,6 @@
     </head>
     <body>
 <!-- barra di ricerca-->
-        <?php
-            if(isset($_POST["searchBtn"])){
-                $search_query = preg_replace("#[^a-z 0-9?!]#i", "", $_POST["searchbar"]);
-
-                header('location:search.php?query='.urlencode($search_query).'');
-            }
-        ?>
         <form class="searchBar" method="post">
             <div class="input-group">
                 <input type="text" class="form-control" id="searchbar" name="searchbar" placeholder="Search" autocomplete="off" required/>

@@ -61,7 +61,7 @@ if(isset($_POST["query"]))
 	}
 	else
 	{
-		$output .= '<a href="#" class="">No Result Found</a>';
+		$output .= '<a href="#" class="list-group-item">No Result Found</a>';
 	}
 	$output .= '</div>';
 

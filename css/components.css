@@ -118,11 +118,11 @@ button{
 
 .searchBar{
   min-width: 200px;
-  width: 50%;
+  width: 100%;
 }
 
 .countryList{
-  width: 50%;
+  width: 100%;
   min-width: 200px;
   position: absolute;
   z-index: 1001;
