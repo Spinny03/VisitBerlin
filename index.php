@@ -19,7 +19,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <script src="jquery-2.1.4.min.js"></script>
-
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
         <link rel="stylesheet" href="css/navBar.css">
         <link rel="stylesheet" href="css/cardsMenu.css">
         <link rel="stylesheet" href="css/textFormat.css">
@@ -27,6 +27,28 @@
         <title>Home</title>
     </head>
     <body>
+<!-- barra di ricerca-->
+        <?php
+            if(isset($_POST["searchBtn"])){
+                $search_query = preg_replace("#[^a-z 0-9?!]#i", "", $_POST["searchbar"]);
+
+                header('location:search.php?query='.urlencode($search_query).'');
+            }
+        ?>
+        <form class="navbar-form navbar-left" method="post">
+            <div class="input-group">
+                <input type="text" class="form-control" id="searchbar" name="searchbar" placeholder="Search" autocomplete="off" required/>
+                <div class="input-group-btn">
+                    <button class="btn btn-default" type="submit" name="searchBtn" id="searchBtn">
+                        <i class="glyphicon glyphicon-search"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="countryList" style="position: absolute;width: 235px;z-index: 1001;"></div>
+        </form>
+<!-- barra di ricerca-->
+
         <h1>Categorie</h1>
         <div class="cardsContainer">
             <?php 
@@ -145,7 +167,35 @@
     </div>
 
     <script>
-        $(window).on("load",function(){
+        // AJAX
+        $(document).ready(function(){
+        $('#searchbar').keyup(function(){
+
+            var query = $(this).val();
+            if(query != ''){
+                $.ajax({
+                    url:"searchAjax.php",
+                    method:"POST",
+                    data:{query:query},
+                    success:function(data){
+                        $('.countryList').html(data);
+                    }
+                });
+            }
+            else{
+                $('.countryList').html('');
+            }
+
+        });
+
+        $(document).on('click', '.list-group-item', function(){
+            $('#searchbar').val($.trim($(this).text()));
+            $('.countryList').html('');
+        });
+    });
+    // AJAX
+    
+    $(window).on("load",function(){
           $(".loader-wrapper").fadeOut("slow");
         });
     </script>
