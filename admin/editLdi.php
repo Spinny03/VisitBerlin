@@ -128,7 +128,7 @@
                 <input type="hidden" name="idLdi" value="<?php echo $id;?>">
                 <img width="200" height="200" src="<?php echo $img; ?>" class="profilePhotoBig">
                 <label class="photoBtn" for="apply"><input class="inPhoto" type="file" name="pfile" id="apply" accept="image/*">Modifica</label>
-                <button type="submit" name="change" value="False" class="photoBtn removeBtn">Rimuovi</button>
+                <button type="submit" name="change" value="False" class="photoBtn" style="border: 1px solid red;">Rimuovi</button>
             </form>
             <script>
                 document.getElementById("apply").onchange = function() {
@@ -141,8 +141,8 @@
             <form id="afile" action="access/editLdiDB.php" method="POST" enctype="multipart/form-data">
                 <input type="hidden" name="audio" value="<?php echo $id;?>">
                 <audio controls><source src="<?php echo $audio;?>" type="audio/mp3"><source src="<?php echo $audio;?>" type="audio/wav">Your browser does not support the audio element.</audio>
-                <label class="audioBtn" for="audioFile"><input type="file" name="afile" id="audioFile" accept="audio/mpeg*">Modifica</label>
-                <button type="submit" name="change" value="False" class="audioBtn removeBtn">Rimuovi</button>
+                <label for="audioFile"><input type="file" name="afile" id="audioFile" accept="audio/mpeg*" class="">Modifica</label>
+                <button type="submit" name="change" value="False" class="audioBtn" style="border: 1px solid red;">Rimuovi</button>
             </form>
             <script>
                 document.getElementById("audioFile").onchange = function() {
@@ -189,33 +189,33 @@
     <!-- QRCode -->
 
 
-            <form action="access/editLdiDB.php" method="POST">
+            <form action="access/editLdiDB.php" method="POST" class="innerForm">
                 <input type="hidden" name="ldi" value="<?php echo $id;?>">
                 <input type="text" name="name" value="<?php echo $name;?>">
-                <input type="text" name="description" value="<?php echo $description;?>">
+                <textarea name="description" value="<?php echo $description;?>" rows="10"></textarea>
                 <input id = "lat" type="text" name="lon" value="<?php echo $lon;?>">
                 <input id = "lng" type="text" name="lat" value="<?php echo $lat;?>">
 
                     <?php 
                     $query = "SELECT * FROM tipo;";
                     $result = $conn->query($query);
-                    echo "<br><p>icon:</p>";
+                    echo "<br><h3>Icon:</h3>";
                     if($result->num_rows > 0){
                         while($row = $result->fetch_assoc()){
                             if($row["id"] == $mainTipo){
-                                echo '<div><input type="radio" name="mainTipo" value="'.$row["id"].'" checked required>'.$row["name"].'<br></div>';
+                                echo '<div style="width:100%;"><input type="radio" name="mainTipo" value="'.$row["id"].'" checked required>'.$row["name"].'<br></div>';
                             }else{
-                                echo '<div><input type="radio" name="mainTipo" value="'.$row["id"].'" required>'.$row["name"].'<br></div>';
+                                echo '<div style="width:100%;"><input type="radio" name="mainTipo" value="'.$row["id"].'" required>'.$row["name"].'<br></div>';
                             }
                         }
                     }
-                    echo "<br><p>Tipo:</p>";
+                    echo "<br><h3>Tipo:</h3>";
                         $query = "SELECT * FROM tipo;";
                         $result = $conn->query($query);
 
                         if($result->num_rows > 0){
                             while($row = $result->fetch_assoc()){
-                                echo '<div><input type="checkbox" name="tipo[]" value="'.$row["id"].'"';
+                                echo '<div  style="width:100%;"><input type="checkbox" name="tipo[]" value="'.$row["id"].'"';
                                 if($id != "new"){
                                     $query1 = "SELECT * FROM tipo_ldi WHERE ldi_id = ".$id." AND tipo_id = ".$row["id"].";";
                                     $result12 = $conn->query($query1);
@@ -223,7 +223,7 @@
                                         echo 'checked';
                                     }
                                 }
-                                echo '>'.$row["name"].'</div><br>';
+                                echo '>'.$row["name"].'</div>';
                                 
                             }
                         }
@@ -231,15 +231,15 @@
 
 
                         if(!empty($_GET["ldi"])){
-                            echo '<button type="submit" name="change" value="True" class="logbtn">Salva le modifiche</button>';
+                            echo '<button type="submit" name="change" value="True" class="add">Salva le modifiche</button>';
                         }
                         else{
-                            echo '<button style="background-color: green;" type="submit" name="change" value="add" class="logbtn">Aggiungi</button>';
+                            echo '<button style="" type="submit" name="change" value="add" class="add">Aggiungi</button>';
                         }     
                     ?>       
             </form>
-            <form action="access/editLdiDB.php" method="POST">
-                <button type="submit" class="itemNumber formBtn" name="del" value="<?php echo $id;?>" style="background-color: white; margin-left:10px;">
+            <form action="access/editLdiDB.php" method="POST" style="width:80%;">
+                <button type="submit" class="del" name="del" value="<?php echo $id;?>" >
                     Elimina
                 </button>
             </form>

@@ -41,7 +41,7 @@ input{
 .photoBtn{
     margin-top: 15px;
     width: 200px;
-    background: linear-gradient(147.72deg, #FFAC5F 1.97%, #FF4D3C 92.47%);
+    background-color: #FFAC5F;
     color: black;
     padding: 10px 16px;
     text-align: center;
@@ -66,7 +66,7 @@ button{
     padding: 5px 20px 5px 20px;
     border-radius: 5px;
     border: 0px;
-    background: linear-gradient(147.72deg, #FFAC5F 1.97%, #FF4D3C 92.47%);
+    background-color: #FFAC5F;
     padding: 10px 16px;
     width: 60%;
     font-family: 'lora';
@@ -98,6 +98,7 @@ label{
     background: linear-gradient(147.72deg, #FFAC5F 1.97%, #FF4D3C 92.47%);
     font-weight: bold;
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
