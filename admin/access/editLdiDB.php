@@ -5,6 +5,7 @@
         exit("Connessione fallita: " . $conn->connect_error);
     }
     $conn->query("USE Last");
+    //cancella
     if(isset($_POST["del"])){
         echo "9";
         $delPhoto = 'SELECT `image` FROM ldi WHERE id = "'.$_POST["del"].'";';
@@ -23,6 +24,7 @@
         $conn->close();
         exit();
     }
+    //modifica
     elseif(isset($_POST["change"]) && $_POST["change"]  == "True"){
         echo "18";
         if(!empty($_POST["name"])  || !empty($_POST["description"] || !empty($_POST["lon"]) || !empty($_POST["lat"]) || !empty($_POST["mainTipo"]))){
@@ -81,6 +83,7 @@
             exit();
         }
     }
+    //aggiungi
     elseif(isset($_POST["change"]) && $_POST["change"] == "add"){
         echo "60";
         if(!empty($_POST["name"])  || !empty($_POST["description"] || !empty($_POST["lon"]) || !empty($_POST["lat"]) || !empty($_POST["mainTipo"]))){
@@ -163,8 +166,22 @@
                 $sql = 'UPDATE ldi SET `image` = "NoImg.png" WHERE id = "'.$result["id"].'"';
                 $conn->query($sql);
             }
+
+
+            if(file_exists("../../assets/audioLdi/new.mp3")){
+                $sql = 'UPDATE ldi SET `audio` = "'.$result["id"].'.mp3" WHERE id = "'.$result["id"].'"';
+                $conn->query($sql);
+                rename('../../assets/audioLdi/new.mp3', '../../assets/audioLdi/'.$result["id"].'.mp3');
+            }
+            elseif(file_exists("../../assets/audioLdi/new.wav")){
+                $sql = 'UPDATE ldi SET `audio` = "'.$result["id"].'.wav" WHERE id = "'.$result["id"].'"';
+                $conn->query($sql);
+                rename('../../assets/audioLdi/new.wav', '../../assets/audioLdi/'.$result["id"].'.wav');
+            }
+            
         }
     }
+    //imagine
     elseif(isset($_POST["idLdi"])){ 
         echo "115";
         if($_POST["idLdi"] != "new"){ 
@@ -244,6 +261,84 @@
             move_uploaded_file($_FILES["pfile"]["tmp_name"], $target_file);
             $oldname = "../../assets/berlinPhotosProva/".htmlspecialchars(basename( $_FILES["pfile"]["name"]));
             $newname = "../../assets/berlinPhotosProva/new.". $imageFileType;
+            rename($oldname, $newname);
+        }
+    }
+    //audio
+    elseif(isset($_POST["audio"])){ 
+        echo "256";
+        if($_POST["audio"] != "new"){ 
+            echo "258";
+            if(!empty($_POST["change"]) && $_POST["change"] == "False" ){
+                echo "260";
+                $old ="SELECT `audio` FROM ldi WHERE id = '".$_POST["audio"]."'";
+                $oldphoto = $conn->query($old);
+                $oldphoto = mysqli_fetch_assoc($oldphoto); 
+                if(!empty($oldphoto["audio"])){
+                    unlink("../../assets/audioLdi/".$oldphoto["audio"]);
+                    $del = "UPDATE ldi SET `audio` = null WHERE id = '".$_POST["audio"]."'";
+                    $conn->query($del);
+                }
+                header("Location: ../editLdi.php?ldi=".$_POST["audio"]);
+                $conn->close();
+                exit();
+            }
+        
+        
+            $target_dir = "../../assets/audioLdi/";
+            $target_file = $target_dir . basename($_FILES["afile"]["name"]);
+            $uploadOk = 1;
+            $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+            
+            if(isset($_POST["submit"])) {
+                echo "139";
+                $check = getimagesize($_FILES["afile"]["tmp_name"]);
+                if($check !== false) {
+                    $uploadOk = 1;
+                } else {
+                    $uploadOk = 0;
+                }
+            }
+            
+            if($imageFileType != "mp3" && $imageFileType != "wav" ) {
+                $uploadOk = 0;
+            }
+            
+            if ($uploadOk != 0) {
+                $old = "SELECT `audio` FROM ldi WHERE id = '".$_POST["audio"]."'";
+                $oldphoto = $conn->query($old);
+                $oldphoto = mysqli_fetch_assoc($oldphoto); 
+                if(!empty($oldphoto["audio"]) && $oldphoto["audio"] != "NoImg.png"){
+                    unlink("../../assets/audioLdi/".$oldphoto["audio"]);
+                }
+                if (move_uploaded_file($_FILES["afile"]["tmp_name"], $target_file)) {
+                    $sql = "UPDATE ldi SET `audio` = '".$_POST["audio"] .".". $imageFileType. "' WHERE id = '".$_POST["audio"]."'";
+                    $conn->query($sql);
+                } 
+            }
+        
+            $oldname = "../../assets/audioLdi/".htmlspecialchars(basename( $_FILES["afile"]["name"]));
+            $newname = "../../assets/audioLdi/".$_POST["audio"] .".". $imageFileType;
+            rename($oldname, $newname);
+            header("Location: ../editLdi.php?ldi=".$_POST["audio"]);
+            $conn->close();
+            exit();
+        }
+        else{
+            echo "173";
+            if(file_exists("../../assets/audioLdi/new.mp3")){
+                unlink("../../assets/audioLdi/new.mp3");
+            }
+            if( file_exists("../../assets/audioLdi/new.wav")){
+                unlink("../../assets/audioLdi/new.wav");
+            }
+
+            $target_dir = "../../assets/audioLdi/";
+            $target_file = $target_dir . basename($_FILES["afile"]["name"]);
+            $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+            move_uploaded_file($_FILES["afile"]["tmp_name"], $target_file);
+            $oldname = "../../assets/audioLdi/".htmlspecialchars(basename( $_FILES["afile"]["name"]));
+            $newname = "../../assets/audioLdi/new.". $imageFileType;
             rename($oldname, $newname);
         }
     }

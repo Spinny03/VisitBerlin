@@ -8,6 +8,7 @@ CREATE TABLE LDI(
     `lon` varchar(255),
     `lat` varchar(255),
     `image` varchar(255),
+    `audio` varchar(255),
     `mainTipo` int NOT NULL REFERENCES tipo(id)
 );
 CREATE TABLE tipo(

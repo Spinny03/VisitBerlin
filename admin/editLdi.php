@@ -27,6 +27,12 @@
         $esiste = true;
         $ldi = $result->fetch_assoc();    
         $img = "../assets/berlinPhotosProva/".$ldi["image"];
+        if(!empty($ldi["audio"])){
+            $audio = "../assets/audioLdi/".$ldi["audio"];
+        }
+        else{
+            $audio = "";
+        }
         $name = $ldi["name"];
         $id = $ldi["id"];
         $description = $ldi["description"];
@@ -35,7 +41,14 @@
         $mainTipo = $ldi["mainTipo"];
       }  
     else{    
-        $img = "../assets/add.svg";          
+        $img = "../assets/add.svg"; 
+        $audio = "";     
+        if(file_exists("../assets/audioLdi/new.mp3")){
+            $audio = "../assets/audioLdi/new.mp3";
+        }    
+        if(file_exists("../assets/audioLdi/new.wav")){
+            $audio = "../assets/audioLdi/new.wav";
+        } 
         if(file_exists("../assets/berlinPhotosProva/new.jpg")){
             $img = "../assets/berlinPhotosProva/new.jpg";
         }
@@ -54,6 +67,7 @@
         $lon = "52.51715250163406";
         $lat = "13.389735939802097";
         $mainTipo = "";
+
     }   
 
 ?>
@@ -123,6 +137,20 @@
 
             </script>
 
+<!-- mp3 audio file input -->
+            <form id="afile" action="access/editLdiDB.php" method="POST" enctype="multipart/form-data">
+                <input type="hidden" name="audio" value="<?php echo $id;?>">
+                <audio controls><source src="<?php echo $audio;?>" type="audio/mp3"><source src="<?php echo $audio;?>" type="audio/wav">Your browser does not support the audio element.</audio>
+                <label class="audioBtn" for="audioFile"><input type="file" name="afile" id="audioFile" accept="audio/mpeg*">Modifica</label>
+                <button type="submit" name="change" value="False" class="audioBtn removeBtn">Rimuovi</button>
+            </form>
+            <script>
+                document.getElementById("audioFile").onchange = function() {
+                document.getElementById("afile").submit();
+            }
+
+            </script>
+<!-- mp3 audio file input -->
 
     <!-- QRCode -->
             <?php 
