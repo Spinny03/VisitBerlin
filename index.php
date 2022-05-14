@@ -35,7 +35,7 @@
                 header('location:search.php?query='.urlencode($search_query).'');
             }
         ?>
-        <form class="navbar-form navbar-left" method="post">
+        <form class="searchBar" method="post">
             <div class="input-group">
                 <input type="text" class="form-control" id="searchbar" name="searchbar" placeholder="Search" autocomplete="off" required/>
                 <div class="input-group-btn">
@@ -45,7 +45,7 @@
                 </div>
             </div>
 
-            <div class="countryList" style="position: absolute;width: 235px;z-index: 1001;"></div>
+            <div class="countryList"></div>
         </form>
 <!-- barra di ricerca-->
 

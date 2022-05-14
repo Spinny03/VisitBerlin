@@ -11,10 +11,10 @@ function Get_user_avatar($id, $connect){
     if($statement->num_rows > 0){
         while($row = $statement->fetch_assoc()){
             if($row['image'] == ''){
-                return '<img src="assets/berlinPhotosProva/noImg.png" width="50" class="img-circle" />';
+                return '<img src="assets/berlinPhotosProva/noImg.png" width="50" class="" />';
             }
             else{
-                return '<img src="assets/berlinPhotosProva/'.$row['image'].'" width="50" class="img-circle" />';
+                return '<img src="assets/berlinPhotosProva/'.$row['image'].'" width="50" class="" />';
             }
         }
     }
@@ -53,18 +53,15 @@ if(isset($_POST["query"]))
 			$temp_text = $row["name"];
 			$temp_text = str_ireplace($search_array, $replace_array, $temp_text);
 			$output .= '
-			<a href="#" class="list-group-item">
-				' . $temp_text . '
-                <div class="pull-left">
-                    '.Get_user_avatar($row["id"], $conn).' &nbsp;
-                </div> 
+			<a href="#" class="list-group-item"><div style=""> 
+				' . $temp_text . '</div> 
 			</a>
 			';
 		}
 	}
 	else
 	{
-		$output .= '<a href="#" class="list-group-item">No Result Found</a>';
+		$output .= '<a href="#" class="">No Result Found</a>';
 	}
 	$output .= '</div>';
 
