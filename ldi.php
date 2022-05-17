@@ -17,6 +17,16 @@
         $query = "SELECT * FROM ldi WHERE ldi.id = ".$_GET["ldi"];
         $result = $conn->query($query);
         $ldi = $result->fetch_assoc();
+        if(!empty($_SESSION["user"])){
+            $query = "SELECT * FROM preferiti WHERE email = '".$_SESSION["user"]."' AND ldi_id = '".$_GET["ldi"]."';";
+            $result = $conn->query($query);
+            if($result->num_rows == 0){
+                $conLike = false;
+            }
+            else{
+                $conLike = true;
+            }
+        }
         //echo "<img style='height: 100%; width: 100%;' src='assets/berlinPhotosProva/".$ldi["image"]."' alt=''>";
     }
 
@@ -41,7 +51,16 @@
     <div class="outerTopDiv">
             <a href="<?php  echo $_SESSION["prevPage"]?>"><img src="assets/icon/back.svg" alt="" class="backIcon"></a>
         <div class="topDiv"> 
-            <a href="access/ldiDB.php?ldi=<?php  echo $_GET["ldi"];?>" ><img src="assets/icon/whiteLike.svg" style="height: 25px; width: 25px;" alt=""></a>
+            <form class="liked" method="post">
+            <?php
+            if(!$conLike) {
+              echo  '<a id="like" ><img id="likeImg" src="assets/icon/whiteLike.svg" style="height: 25px; width: 25px;" alt=""></a>';
+            }
+            else {
+              echo  '<a id="like" ><img id="likeImg" src="assets/icon/preferOn.svg" style="height: 25px; width: 25px;" alt=""></a>';
+            }
+           ?>
+                </form>
             <a href="#" id="share"><img src="assets/icon/share.svg" style="height: 25px; width: 25px;" alt=""></a>
             <a href="map.php?ldi=<?php  echo $_GET["ldi"];?>" ><img src="assets/mapsIcon/noImgWhite.svg" style="height: 25px; width: 25px;" alt=""></a>
         </div>
@@ -84,6 +103,28 @@
             resultPara.textContent = 'Error: ' + err
             }
         });
+
+        $('.liked').on('click', '#like', function(){
+            if(document.getElementById('likeImg').src.split(/(\\|\/)/g).pop() == 'whiteLike.svg'){
+            $.ajax({
+                    url:"access/ldiDB.php",
+                    method:"POST",
+                    data:{metti:"<?php echo $_GET["ldi"];?>"},
+                    success:function(data){
+                        document.getElementById('likeImg').src ='assets/icon/preferOn.svg';                    }
+                });
+            }
+            else{
+                $.ajax({
+                        url:"access/ldiDB.php",
+                        method:"POST",
+                        data:{togli:"<?php echo $_GET["ldi"];?>"},
+                        success:function(data){
+                            document.getElementById('likeImg').src ='assets/icon/whiteLike.svg';                    }
+                    });
+            }
+        });
+
     </script>
 
 </html>
