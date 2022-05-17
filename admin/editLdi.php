@@ -92,266 +92,271 @@
         <title>Admin</title>
     </head>
     <body>
-    <div class="leftScrollMenu">
-            <?php 
-                $query = "SELECT * FROM ldi";
-                $result = $conn->query($query);
-                echo  '     
-                <a href="editLdi.php">   
-                    <div class="item">
-                        <div class="menuImage image" style="background-image: url(../assets/add.svg);">
-                        </div>
-                        <div class="bottomText">
-                            <span class="smallText">add</span>
-                        </div>
-                    </div>
-                    </a>';
-                if($result->num_rows > 0){
-                    while($row = $result->fetch_assoc()){
-                        echo  '     
-                        <a href="editLdi.php?ldi='.$row["id"].'">   
-                            <div class="item">
-                                <div class="menuImage image" style="background-image: url(../assets/berlinPhotosProva/'.$row["image"].');">
-                                </div>
-                                <div class="bottomText">
-                                    <span class="smallText">'.$row["name"].'</span>
-                                </div>
-                            </div>
-                            </a>';
-                    }
-                }
-            ?>
-
-        </div>
-        <div class="ldiContainer">
-            <form id="pform" action="access/editLdiDB.php" method="POST" enctype="multipart/form-data">
-                <input type="hidden" name="idLdi" value="<?php echo $id;?>">
-                <img width="200" height="200" src="<?php echo $img; ?>" class="profilePhotoBig">
-                <label class="photoBtn" for="apply"><input class="inPhoto" type="file" name="pfile" id="apply" accept="image/*">Modifica</label>
-                <button type="submit" name="change" value="False" class="photoBtn" style="border: 1px solid red;">Rimuovi</button>
-            </form>
-            <script>
-                document.getElementById("apply").onchange = function() {
-                document.getElementById("pform").submit();
-            }
-
-            </script>
-
-<!-- mp3 audio file input -->
-            <form id="afile" action="access/editLdiDB.php" method="POST" enctype="multipart/form-data">
-                <input type="hidden" name="audio" value="<?php echo $id;?>">
-                <audio controls><source src="<?php echo $audio;?>" type="audio/mp3"><source src="<?php echo $audio;?>" type="audio/wav">Your browser does not support the audio element.</audio>
-                <label for="audioFile"><input type="file" name="afile" id="audioFile" accept="audio/mpeg*" class="">Modifica</label>
-                <button type="submit" name="change" value="False" class="audioBtn" style="border: 1px solid red;">Rimuovi</button>
-            </form>
-            <script>
-                document.getElementById("audioFile").onchange = function() {
-                document.getElementById("afile").submit();
-            }
-
-            </script>
-<!-- mp3 audio file input -->
-
-    <!-- QRCode -->
-            <?php 
-                if($esiste){
-                    echo '
-                    <div id="qrcode" v-loading="PanoramaInfo.bgenerateing"></div>
-                    <button id="download" onclick="myFunction()" >Download</button>';
-                }
-            ?> 
-            <script> 
+    <div class="left">
+        <div class="leftScrollMenu">
                 <?php 
-                    if($esiste){
-                    echo 'var qrcode = new QRCode(document.getElementById("qrcode"), "http://localhost/Last/ldi.php?ldi='.$id.'")';
-                    }
-                ?> 
-                function downloadURI(uri, name){
-                var link = document.createElement("a");
-                link.download = name;
-                link.href = uri;
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-                delete link;
-                };
-                function myFunction(){
-                    console.log('onload');
-                    setTimeout(
-                        function ()
-                        {
-                            let dataUrl = document.querySelector('#qrcode').querySelector('img').src;
-                            downloadURI(dataUrl, 'qrcode.png');
-                        }
-                        ,1000);
-                };
-                </script>
-    <!-- QRCode -->
-
-
-            <form action="access/editLdiDB.php" method="POST" class="innerForm">
-                <input type="hidden" name="ldi" value="<?php echo $id;?>">
-                <input type="text" name="name" value="<?php echo $name;?>">
-                <textarea name="description" value="<?php echo $description;?>" rows="10"></textarea>
-                <input id = "lat" type="text" name="lon" value="<?php echo $lon;?>">
-                <input id = "lng" type="text" name="lat" value="<?php echo $lat;?>">
-
-                    <?php 
-                    $query = "SELECT * FROM tipo;";
+                    $query = "SELECT * FROM ldi";
                     $result = $conn->query($query);
-                    echo "<br><h3>Icon:</h3>";
+                    echo  '     
+                    <a href="editLdi.php">   
+                        <div class="item">
+                            <div class="menuImage image" style="background-image: url(../assets/add.svg);">
+                            </div>
+                            <div class="bottomText">
+                                <span class="smallText">add</span>
+                            </div>
+                        </div>
+                        </a>';
                     if($result->num_rows > 0){
                         while($row = $result->fetch_assoc()){
-                            if($row["id"] == $mainTipo){
-                                echo '<div style="width:100%;"><input type="radio" name="mainTipo" value="'.$row["id"].'" checked required>'.$row["name"].'<br></div>';
-                            }else{
-                                echo '<div style="width:100%;"><input type="radio" name="mainTipo" value="'.$row["id"].'" required>'.$row["name"].'<br></div>';
-                            }
+                            echo  '     
+                            <a href="editLdi.php?ldi='.$row["id"].'">   
+                                <div class="item">
+                                    <div class="menuImage image" style="background-image: url(../assets/berlinPhotosProva/'.$row["image"].');">
+                                    </div>
+                                    <div class="bottomText">
+                                        <span class="smallText">'.$row["name"].'</span>
+                                    </div>
+                                </div>
+                                </a>';
                         }
                     }
-                    echo "<br><h3>Tipo:</h3>";
+                ?>
+
+            </div>
+            <div class="ldiContainer">
+                <form id="pform" action="access/editLdiDB.php" method="POST" enctype="multipart/form-data">
+                    <input type="hidden" name="idLdi" value="<?php echo $id;?>">
+                    <img width="200" height="200" src="<?php echo $img; ?>" class="profilePhotoBig">
+                    <label class="photoBtn" for="apply"><input class="inPhoto" type="file" name="pfile" id="apply" accept="image/*">Modifica</label>
+                    <button type="submit" name="change" value="False" class="photoBtn" style="border: 1px solid red;">Rimuovi</button>
+                </form>
+                <script>
+                    document.getElementById("apply").onchange = function() {
+                    document.getElementById("pform").submit();
+                }
+
+                </script>
+
+    <!-- mp3 audio file input -->
+                <form id="afile" action="access/editLdiDB.php" method="POST" enctype="multipart/form-data">
+                    <input type="hidden" name="audio" value="<?php echo $id;?>">
+                    <audio controls><source src="<?php echo $audio;?>" type="audio/mp3"><source src="<?php echo $audio;?>" type="audio/wav">Your browser does not support the audio element.</audio>
+                    <label for="audioFile"><input type="file" name="afile" id="audioFile" accept="audio/mpeg*" class="">Modifica</label>
+                    <button type="submit" name="change" value="False" class="audioBtn" style="border: 1px solid red;">Rimuovi</button>
+                </form>
+                <script>
+                    document.getElementById("audioFile").onchange = function() {
+                    document.getElementById("afile").submit();
+                }
+
+                </script>
+    <!-- mp3 audio file input -->
+
+        <!-- QRCode -->
+                <?php 
+                    if($esiste){
+                        echo '
+                        <div id="qrcode" v-loading="PanoramaInfo.bgenerateing"></div>
+                        <button id="download" onclick="myFunction()" >Download</button>';
+                    }
+                ?> 
+                <script> 
+                    <?php 
+                        if($esiste){
+                        echo 'var qrcode = new QRCode(document.getElementById("qrcode"), "http://localhost/Last/ldi.php?ldi='.$id.'")';
+                        }
+                    ?> 
+                    function downloadURI(uri, name){
+                    var link = document.createElement("a");
+                    link.download = name;
+                    link.href = uri;
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    delete link;
+                    };
+                    function myFunction(){
+                        console.log('onload');
+                        setTimeout(
+                            function ()
+                            {
+                                let dataUrl = document.querySelector('#qrcode').querySelector('img').src;
+                                downloadURI(dataUrl, 'qrcode.png');
+                            }
+                            ,1000);
+                    };
+                    </script>
+        <!-- QRCode -->
+
+
+                <form action="access/editLdiDB.php" method="POST" class="innerForm">
+                    <input type="hidden" name="ldi" value="<?php echo $id;?>">
+                    <input type="text" name="name" value="<?php echo $name;?>">
+                    <textarea name="description" value="<?php echo $description;?>" rows="10"></textarea>
+                    <input id = "lat" type="text" name="lon" value="<?php echo $lon;?>">
+                    <input id = "lng" type="text" name="lat" value="<?php echo $lat;?>">
+
+                        <?php 
                         $query = "SELECT * FROM tipo;";
                         $result = $conn->query($query);
-
+                        echo "<br><h3>Icon:</h3>";
                         if($result->num_rows > 0){
                             while($row = $result->fetch_assoc()){
-                                echo '<div  style="width:100%;"><input type="checkbox" name="tipo[]" value="'.$row["id"].'"';
-                                if($id != "new"){
-                                    $query1 = "SELECT * FROM tipo_ldi WHERE ldi_id = ".$id." AND tipo_id = ".$row["id"].";";
-                                    $result12 = $conn->query($query1);
-                                    if($result12->num_rows > 0){
-                                        echo 'checked';
-                                    }
+                                if($row["id"] == $mainTipo){
+                                    echo '<div style="width:100%;"><input type="radio" name="mainTipo" value="'.$row["id"].'" checked required>'.$row["name"].'<br></div>';
+                                }else{
+                                    echo '<div style="width:100%;"><input type="radio" name="mainTipo" value="'.$row["id"].'" required>'.$row["name"].'<br></div>';
                                 }
-                                echo '>'.$row["name"].'</div>';
-                                
                             }
                         }
-                        
+                        echo "<br><h3>Tipo:</h3>";
+                            $query = "SELECT * FROM tipo;";
+                            $result = $conn->query($query);
+
+                            if($result->num_rows > 0){
+                                while($row = $result->fetch_assoc()){
+                                    echo '<div  style="width:100%;"><input type="checkbox" name="tipo[]" value="'.$row["id"].'"';
+                                    if($id != "new"){
+                                        $query1 = "SELECT * FROM tipo_ldi WHERE ldi_id = ".$id." AND tipo_id = ".$row["id"].";";
+                                        $result12 = $conn->query($query1);
+                                        if($result12->num_rows > 0){
+                                            echo 'checked';
+                                        }
+                                    }
+                                    echo '>'.$row["name"].'</div>';
+                                    
+                                }
+                            }
+                            
 
 
-                        if(!empty($_GET["ldi"])){
-                            echo '<button type="submit" name="change" value="True" class="add">Salva le modifiche</button>';
-                        }
-                        else{
-                            echo '<button style="" type="submit" name="change" value="add" class="add">Aggiungi</button>';
-                        }     
-                    ?>       
-            </form>
-            <form action="access/editLdiDB.php" method="POST" style="width:80%;">
-                <button type="submit" class="del" name="del" value="<?php echo $id;?>" >
-                    Elimina
-                </button>
-            </form>
-        </div>
-        <p ></p>
-        <p ></p>
-        <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
-        <link href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" rel="stylesheet"/>
-        <div id="osm-map"></div>
-        <style>
-            .transparent-tooltip {
-                text-overflow: ellipsis;
-                overflow: hidden; 
-                width: 50px; 
-                height: 1em; 
-                white-space: nowrap;
-            }
-        </style>
-        <script> 
-            element = document.getElementById('osm-map');
-            //element.style = 'height:'.concat(window.innerHeight, 'px;');
-            element.style = 'height: 800px;';
-            var southWest = L.latLng(52.42791052543574, 13.243731349843626),
-                northEast = L.latLng(52.60222351729074, 13.555910816201685),
-                bounds = L.latLngBounds(southWest, northEast);
-            var map = L.map(element, {
-                    minZoom: 14,
-                    maxBounds: bounds
-                });
-            L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {}).addTo(map);
-            
-            <?php 
-            
-            echo "map.setView(['".$lon."', '".$lat."'], 17)";
+                            if(!empty($_GET["ldi"])){
+                                echo '<button type="submit" name="change" value="True" class="add">Salva le modifiche</button>';
+                            }
+                            else{
+                                echo '<button style="" type="submit" name="change" value="add" class="add">Aggiungi</button>';
+                            }     
+                        ?>       
+                </form>
+                <form action="access/editLdiDB.php" method="POST" style="width:80%;">
+                    <button type="submit" class="del" name="del" value="<?php echo $id;?>" >
+                        Elimina
+                    </button>
+                </form>
+            </div>
+        </div>    
 
-                if($esiste){
-                    $query = "SELECT * FROM tipo where id = ".$mainTipo."";
-                    $result = $conn->query($query);
-                    $result = $result->fetch_array();
-                    echo "
-                    var Icon".$mainTipo." = L.icon({
-                        iconUrl: '../assets/mapsIcon/".$result["image"]."',
-                        iconSize:     [38, 95],
-                    });";
-                    echo " var marker = L.marker(
-                        ['".$lon."', '".$lat."'],
-                        {
-                            draggable:true,
-                            icon: Icon".$mainTipo."
-                        }
-                        ).addTo(map).bindTooltip(`".$name."`, {
-                            permanent: true, 
-                            direction : 'bottom',
-                            className: 'transparent-tooltip',
-                            offset: [0, 10]
-                            });
-                        ";
+        <div class="right">
+            <p ></p>
+            <p ></p>
+            <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
+            <link href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" rel="stylesheet"/>
+            <div id="osm-map"></div>
+            <style>
+                .transparent-tooltip {
+                    text-overflow: ellipsis;
+                    overflow: hidden; 
+                    width: 50px; 
+                    height: 1em; 
+                    white-space: nowrap;
                 }
-                else{
-                    echo "
-                        var IconNew = L.icon({
-                            iconUrl: '../assets/mapsIcon/noImg.svg',
+            </style>
+            <script> 
+                element = document.getElementById('osm-map');
+                //element.style = 'height:'.concat(window.innerHeight, 'px;');
+                element.style = 'height: 100vh;';
+                var southWest = L.latLng(52.42791052543574, 13.243731349843626),
+                    northEast = L.latLng(52.60222351729074, 13.555910816201685),
+                    bounds = L.latLngBounds(southWest, northEast);
+                var map = L.map(element, {
+                        minZoom: 14,
+                        maxBounds: bounds
+                    });
+                L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {}).addTo(map);
+                
+                <?php 
+                
+                echo "map.setView(['".$lon."', '".$lat."'], 17)";
+
+                    if($esiste){
+                        $query = "SELECT * FROM tipo where id = ".$mainTipo."";
+                        $result = $conn->query($query);
+                        $result = $result->fetch_array();
+                        echo "
+                        var Icon".$mainTipo." = L.icon({
+                            iconUrl: '../assets/mapsIcon/".$result["image"]."',
                             iconSize:     [38, 95],
                         });";
-                    echo " var marker = L.marker(
-                        ['".$lon."', '".$lat."'],
-                        {
-                            draggable:true,
-                            icon: IconNew 
-                        }
-                        ).addTo(map).bindTooltip(`".$name."`, {
-                            permanent: true, 
-                            direction : 'bottom',
-                            className: 'transparent-tooltip',
-                            offset: [0, 10]
-                            });
-                        ";
+                        echo " var marker = L.marker(
+                            ['".$lon."', '".$lat."'],
+                            {
+                                draggable:true,
+                                icon: Icon".$mainTipo."
+                            }
+                            ).addTo(map).bindTooltip(`".$name."`, {
+                                permanent: true, 
+                                direction : 'bottom',
+                                className: 'transparent-tooltip',
+                                offset: [0, 10]
+                                });
+                            ";
+                    }
+                    else{
+                        echo "
+                            var IconNew = L.icon({
+                                iconUrl: '../assets/mapsIcon/noImg.svg',
+                                iconSize:     [38, 95],
+                            });";
+                        echo " var marker = L.marker(
+                            ['".$lon."', '".$lat."'],
+                            {
+                                draggable:true,
+                                icon: IconNew 
+                            }
+                            ).addTo(map).bindTooltip(`".$name."`, {
+                                permanent: true, 
+                                direction : 'bottom',
+                                className: 'transparent-tooltip',
+                                offset: [0, 10]
+                                });
+                            ";
+                    }
+
+
+
+                    /*
+                    .bindPopup('<img src=`".$row["image"]."`  width=`500` height=`600`>');
+                    bindTooltip(`".$row["name"]."`, {
+                        permanent: true, 
+                        direction : 'bottom',
+                        className: 'transparent-tooltip',
+                        offset: [0, 10]
+                    })*/
+                ?>
+                marker.on('dragend', function(event){
+                    //alert('drag ended');
+                    var marker = event.target;
+                    var location = marker.getLatLng();
+                    var lat = location.lat;
+                    var lon = location.lng;
+                    addToTextBox(lat,lon);
+                    //alert(lat);
+                    //retrieved the position
+                });
+                function addToTextBox(lt,ln){
+                    document.getElementById('lat').value = lt;
+                    document.getElementById('lng').value = ln;
+                    
                 }
-
-
-
-                /*
-                .bindPopup('<img src=`".$row["image"]."`  width=`500` height=`600`>');
-                bindTooltip(`".$row["name"]."`, {
-                    permanent: true, 
-                    direction : 'bottom',
-                    className: 'transparent-tooltip',
-                    offset: [0, 10]
-                })*/
-            ?>
-            marker.on('dragend', function(event){
-                //alert('drag ended');
-                var marker = event.target;
-                var location = marker.getLatLng();
-                var lat = location.lat;
-                var lon = location.lng;
-                addToTextBox(lat,lon);
-                //alert(lat);
-                //retrieved the position
-            });
-            function addToTextBox(lt,ln){
-                document.getElementById('lat').value = lt;
-                document.getElementById('lng').value = ln;
                 
-            }
-            
-            /*
-            window.addEventListener('resize', function(event) {
-                element = document.getElementById('osm-map');
-                element.style = 'height:'.concat(window.innerHeight, 'px;');
-            }, true);*/
-        </script>
+                /*
+                window.addEventListener('resize', function(event) {
+                    element = document.getElementById('osm-map');
+                    element.style = 'height:'.concat(window.innerHeight, 'px;');
+                }, true);*/
+            </script>
+    </div>        
         
     </body>
 </html>
