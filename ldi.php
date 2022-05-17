@@ -47,6 +47,8 @@
         </div>
     </div>
 
+    <div class="clickable"></div>
+
     <div class="hid-box">
             <div class="open">
                 <span>Panoramica</span>
@@ -54,20 +56,29 @@
             <div class="titleDiv">
                 <h2><?php echo strtoupper($ldi["name"])?></h2>
             </div>
+            <div class="titleDiv descriptionDiv">
+                <span>
+                    dfdfsdf aaaaaasgf dfdfsdf aaaaaasgf dfdfsdf dfdfsdf aaaaaasgf dfdfsdf aaaaaasgf dfdfsdf dfdfsdf aaaaaasgf dfdfsdf aaaaaasgf dfdfsdfdfdfsdf aaaaaasgf dfdfsdf aaaaaasgf dfdfsdf
+                </span>
+            </div>
+            <div class="titleDiv audioDiv">
+                <audio controls><source src="#" type="audio/mp3"><source src="#" type="audio/wav">Your browser does not support the audio element.</audio>
+            </div>
         </div>
     </body>
      
     <script>
-        aperto = true
-        $( ".open" ).click(function() {
-            if(aperto){
+        $(".clickable").css("display", "none");
+
+        $( ".hid-box" ).click(function() {
                 $(".hid-box").css("top", "35%");
-                aperto = false
-            }
-            else{
+                $(".clickable").css("display", "block");
+        });
+
+        $( ".clickable" ).click(function() {
                 $(".hid-box").css("top", "calc(100vh - 100px)");
+                $(".clickable").css("display", "none");
                 aperto = true
-            }
         });
 
         const shareData = {
