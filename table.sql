@@ -72,7 +72,7 @@ INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (8,2);
 INSERT INTO `ldi`(`name`, `description`, `lon`, `lat`, `image`,`mainTipo`) VALUES ("Memoriale sovietico (Tiergarten)","Descrizione","52.5166195461566","13.371907227215877","9.jpg","2");
 INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (9,2);
 INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (9,3);
-INSERT INTO `ldi`(`name`, `description`, `lon`, `lat`, `image`,`mainTipo`) VALUES ("Museo del Muro (East Side)","Museo dedidcato al ex muro di berlino","52.507394540273374","13.390616285939664","10.jpg","5");
+INSERT INTO `ldi`(`name`, `description`, `lon`, `lat`, `image`,`mainTipo`) VALUES ("Museo del Muro (East Side)","Museo dedidcato al ex muro di berlino","52.50269845047007", "13.445295162790392","10.jpg","5");
 INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (10,2);
 INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (10,5);
 INSERT INTO `ldi`(`name`, `description`, `lon`, `lat`, `image`,`mainTipo`) VALUES ("Memoriale per le vittime degli omicidi nazionalsocialisti per 'eutanasia'","DESCRIZIONE","52.51055121632733","13.369435937906566","11.jpg","2");
