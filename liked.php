@@ -40,7 +40,10 @@
                             echo '<div class="imageGallery notFirst">';
                             $i=0;
                         }
-                        echo '<a class="'.$tipo[$i].'" style="background-image: url(assets/berlinPhotosProva/'.$row["image"].');"></a>';
+                        echo '
+                        <a href="ldi.php?ldi='.$row["id"].'" class="'.$tipo[$i].'" style="background-image: url(assets/berlinPhotosProva/'.$row["image"].');">
+
+                        </a>';                        
                         $i++;
                         if($i==6){
                             echo '</div>';

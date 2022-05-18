@@ -27,6 +27,7 @@
                 $conLike = true;
             }
         }
+ 
         //echo "<img style='height: 100%; width: 100%;' src='assets/berlinPhotosProva/".$ldi["image"]."' alt=''>";
     }
 
@@ -53,11 +54,13 @@
         <div class="topDiv"> 
             <form class="liked" method="post">
             <?php
-            if(!$conLike) {
-              echo  '<a id="like" ><img id="likeImg" src="assets/icon/whiteLike.svg" style="height: 25px; width: 25px;" alt=""></a>';
-            }
-            else {
-              echo  '<a id="like" ><img id="likeImg" src="assets/icon/preferOn.svg" style="height: 25px; width: 25px;" alt=""></a>';
+            if(isset($conLike)){
+                if(!$conLike) {
+                echo  '<a id="like" ><img id="likeImg" src="assets/icon/whiteLike.svg" style="height: 25px; width: 25px;" alt=""></a>';
+                }
+                else {
+                echo  '<a id="like" ><img id="likeImg" src="assets/icon/preferOn.svg" style="height: 25px; width: 25px;" alt=""></a>';
+                }
             }
            ?>
                 </form>
