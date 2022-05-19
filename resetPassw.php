@@ -11,7 +11,8 @@
 ?>
 <!DOCTYPE html>
 <html lang="it">
-    <head>
+   <head>
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
         <title>Last</title>
     </head>
     <body>

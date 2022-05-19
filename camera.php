@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang=”it”>
-	<head>
+	        <head>
+
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
 		<meta charset="utf-8">
     <script src="html5-qrcode.min.js"></script>
 		<meta http-equiv="x-ua-compatible" content="ie=edge">

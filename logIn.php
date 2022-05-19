@@ -10,14 +10,14 @@
 ?>
 <!DOCTYPE html>
 <html lang="it">
-    <head>
+   <head>
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
         <meta name="viewport" content="width=device-width" />
         <link rel="stylesheet" href="css/navBar.css">
         <link rel="stylesheet" href="css/cardsMenu.css">
         <link rel="stylesheet" href="css/textFormat.css">
         <link rel="stylesheet" href="css/loginRegister.css">
         <link rel="stylesheet" href="css/components.css">
-        <link rel="icon" type="image/x-icon" href="images/favicon.ico">
         <title>Last</title>
     </head>
     <body>

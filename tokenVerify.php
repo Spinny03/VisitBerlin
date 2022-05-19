@@ -11,12 +11,12 @@
 ?>
 <!DOCTYPE html>
 <html lang="it">
-    <head>
+   <head>
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
         <meta name="viewport" content="width=device-width" />
         <link rel="stylesheet" href="css/styles.css">
         <link rel="stylesheet" href="css/formStyles.css">
         <link rel="stylesheet" href="css/scrollBarStyles.css">
-        <link rel="icon" type="image/x-icon" href="images/favicon.ico">
         <title>Last</title>
     </head>
     <body>
