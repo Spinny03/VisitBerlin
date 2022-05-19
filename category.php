@@ -103,9 +103,16 @@
                             $i=0;
                         }
                         echo '
-                        <a href="ldi.php?ldi='.$row["id"].'" class="'.$tipo[$i].'" style="background-image: url(assets/berlinPhotosProva/'.$row["image"].');">
-
-                        </a>';
+                        <a href="ldi.php?ldi='.$row["id"].'" class="'.$tipo[$i].'" style="background-image: url(assets/berlinPhotosProva/'.$row["image"].');">';
+                            if(!empty($_SESSION["user"])){
+                                $query13 = "SELECT * FROM visitati WHERE ldi_id = ".$row["id"]." AND email = '".$_SESSION["user"]."';";
+                                $result13 = $conn->query($query13);
+                                if($result13->num_rows == 1){
+                                    $row13 = $result13->fetch_assoc();
+                                    echo '<img src="assets/icon/tick.svg" alt="" >';
+                                }
+                            }
+                        echo '</a>';
                         $i++;
                         if($i==6){
                             echo '</div>';

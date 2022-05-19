@@ -17,6 +17,7 @@ CREATE TABLE tipo(
     `name` varchar(255),
     `image` varchar(255)
 );
+
 CREATE TABLE tipo_ldi(
     `ldi_id` int REFERENCES ldi(id),
     `tipo_id` int REFERENCES tipo(id),
@@ -36,6 +37,12 @@ CREATE TABLE username(
 CREATE TABLE preferiti(
     `email` varchar(255) NOT NULL REFERENCES username(email) ,
     `ldi_id` int NOT NULL REFERENCES ldi(id),
+    primary key(`email`, `ldi_id`)
+);
+CREATE TABLE visitati(
+    `email` varchar(255) NOT NULL REFERENCES username(email) ,
+    `ldi_id` int NOT NULL REFERENCES ldi(id),
+    `data` timestamp,
     primary key(`email`, `ldi_id`)
 );
 INSERT INTO `username`(`email`, `firstName`, `surname`, `notice`, `pasw`) VALUES ("filippo.spinella.2003@calvino.edu.it","Filippo0","Spinella0",1,"19513fdc9da4fb72a4a05eb66917548d3c90ff94d5419e1f2363eea89dfee1dd");
@@ -128,3 +135,4 @@ INSERT INTO `preferiti`(`ldi_id`,`email`) VALUES (7,"filippo.spinella.2003@calvi
 INSERT INTO `preferiti`(`ldi_id`,`email`) VALUES (17,"filippo.spinella.2003@calvino.edu.it");
 INSERT INTO `preferiti`(`ldi_id`,`email`) VALUES (9,"filippo.spinella.2003@calvino.edu.it");
 INSERT INTO `preferiti`(`ldi_id`,`email`) VALUES (21,"filippo.spinella.2003@calvino.edu.it");
+INSERT INTO `visitati`(`ldi_id`,`email`) VALUES (1,"filippo.spinella2003@hotmail.com");

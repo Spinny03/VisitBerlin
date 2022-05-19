@@ -101,6 +101,24 @@
                                 </div>
                                 <div  style="background-color: #ffab5c;"class="cardBottom">
                                     <span class="cardTitle">Tutto</span>
+                                    ';
+                                        if(!empty($_SESSION["user"])){
+                                            $query13 = "SELECT * FROM visitati WHERE email = '".$_SESSION["user"]."';";
+                                            $result13 = $conn->query($query13);
+                                            $query14 = "SELECT * FROM ldi;";
+                                            $result14 = $conn->query($query14);
+                    
+                                            if($result13->num_rows > 0 && $result14->num_rows > 0){
+                                                $perc = $result13->num_rows  / $result14->num_rows;
+                                                $perc = $perc * 100;
+                                                echo '<progress id="file" value="'.$perc.'" max="100"></progress><span class="cardTitle">'.$result13->num_rows.'/'.$result14->num_rows.' </span>';
+                                            }
+                                            if($result13->num_rows == 0){
+                                                echo '<progress id="file" value="0" max="100"></progress><span class="cardTitle">'.$result13->num_rows.'/'.$result14->num_rows.' </span>';
+
+                                            }  
+                                        }
+                        echo  '     
                                 </div>
                             </a>
                         </div>';
@@ -151,8 +169,24 @@
                                         </div>
                                     </div>
                                     <div class="cardBottom">
-                                        <span class="cardTitle">'.$row["name"].'</span>
-                                    </div>
+                                        <span class="cardTitle">'.$row["name"].' </span>';
+                                        if(!empty($_SESSION["user"])){
+                                            $query13 = "SELECT * FROM visitati, tipo_ldi WHERE tipo_ldi.ldi_id = visitati.ldi_id AND tipo_ldi.tipo_id = ".$row["id"]." AND email = '".$_SESSION["user"]."';";
+                                            $result13 = $conn->query($query13);
+                                            $query14 = "SELECT * FROM tipo_ldi WHERE tipo_id = ".$row["id"].";";
+                                            $result14 = $conn->query($query14);
+                    
+                                            if($result13->num_rows > 0 && $result14->num_rows > 0){
+                                                $perc = $result13->num_rows  / $result14->num_rows;
+                                                $perc = $perc * 100;
+                                                echo '<progress id="file" value="'.$perc.'" max="100"></progress><span class="cardTitle">'.$result13->num_rows.'/'.$result14->num_rows.' </span>';
+                                            }
+                                            if($result13->num_rows == 0){
+                                                echo '<progress id="file" value="0" max="100"></progress><span class="cardTitle">'.$result13->num_rows.'/'.$result14->num_rows.' </span>';
+
+                                            }  
+                                        }
+                        echo  '     </div>
                                 </a>
                             </div>';
                     }
