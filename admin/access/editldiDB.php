@@ -336,10 +336,13 @@
             $target_dir = "../../assets/audioldi/";
             $target_file = $target_dir . basename($_FILES["afile"]["name"]);
             $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-            move_uploaded_file($_FILES["afile"]["tmp_name"], $target_file);
-            $oldname = "../../assets/audioldi/".htmlspecialchars(basename( $_FILES["afile"]["name"]));
-            $newname = "../../assets/audioldi/new.". $imageFileType;
-            rename($oldname, $newname);
+            if($imageFileType == "mp3" && $imageFileType == "wav" ) {
+                move_uploaded_file($_FILES["afile"]["tmp_name"], $target_file);
+                $oldname = "../../assets/audioldi/".htmlspecialchars(basename( $_FILES["afile"]["name"]));
+                $newname = "../../assets/audioldi/new.". $imageFileType;
+                rename($oldname, $newname);
+            }
+
         }
     }
     header("Location: ../editldi.php");

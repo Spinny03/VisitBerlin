@@ -128,7 +128,7 @@
                 <form id="pform" action="access/editldiDB.php" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="idldi" value="<?php echo $id;?>">
                     <img width="200" height="200" src="<?php echo $img; ?>" class="profilePhotoBig">
-                    <label class="photoBtn" for="apply"><input class="inPhoto" type="file" name="pfile" id="apply" accept="image/*">Modifica</label>
+                    <label class="photoBtn" for="apply"><input class="inPhoto" type="file" name="pfile" id="apply" accept=".png,.jpg,.gif,.jpeg">Modifica</label>
                     <button type="submit" name="change" value="False" class="photoBtn" style="border: 1px solid red;">Rimuovi</button>
                 </form>
                 <script>
@@ -142,7 +142,7 @@
                 <form id="afile" action="access/editldiDB.php" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="audio" value="<?php echo $id;?>">
                     <audio controls><source src="<?php echo $audio;?>" type="audio/mp3"><source src="<?php echo $audio;?>" type="audio/wav">Your browser does not support the audio element.</audio>
-                    <label for="audioFile"><input type="file" name="afile" id="audioFile" accept="audio/mpeg*" class="">Modifica</label>
+                    <label for="audioFile"><input type="file" name="afile" id="audioFile" accept=".wav,.mp3" class="">Modifica</label>
                     <button type="submit" name="change" value="False" class="audioBtn" style="border: 1px solid red;">Rimuovi</button>
                 </form>
                 <script>
