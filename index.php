@@ -100,7 +100,7 @@
                                     </div>
                                 </div>
                                 <div  style="background-color: #ffab5c;"class="cardBottom">
-                                    <span class="cardTitle">Tutto</span>
+                                    <span class="cardTitle" style="margin-right: 5px;">Tutto</span>
                                     ';
                                         if(!empty($_SESSION["user"])){
                                             $query13 = "SELECT * FROM visitati WHERE email = '".$_SESSION["user"]."';";
@@ -169,8 +169,8 @@
                                         </div>
                                     </div>
                                     <div class="cardBottom">
-                                        <span class="cardTitle">'.$row["name"].' </span>';
-                                        if(!empty($_SESSION["user"])){
+                                        <span class="cardTitle" style="margin-right: 5px;">'.$row["name"].' </span>';
+                                        if(isset($_SESSION["user"])){
                                             $query13 = "SELECT * FROM visitati, tipo_ldi WHERE tipo_ldi.ldi_id = visitati.ldi_id AND tipo_ldi.tipo_id = ".$row["id"]." AND email = '".$_SESSION["user"]."';";
                                             $result13 = $conn->query($query13);
                                             $query14 = "SELECT * FROM tipo_ldi WHERE tipo_id = ".$row["id"].";";

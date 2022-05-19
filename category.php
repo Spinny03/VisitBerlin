@@ -103,13 +103,20 @@
                             $i=0;
                         }
                         echo '
-                        <a href="ldi.php?ldi='.$row["id"].'" class="'.$tipo[$i].'" style="background-image: url(assets/berlinPhotosProva/'.$row["image"].');">';
+                        <a href="ldi.php?ldi='.$row["id"].'" class="'.$tipo[$i].'" style="background-image: url(assets/berlinPhotosProva/'.$row["image"].');" id="div'.$row["id"].'">';
                             if(!empty($_SESSION["user"])){
                                 $query13 = "SELECT * FROM visitati WHERE ldi_id = ".$row["id"]." AND email = '".$_SESSION["user"]."';";
                                 $result13 = $conn->query($query13);
                                 if($result13->num_rows == 1){
                                     $row13 = $result13->fetch_assoc();
-                                    echo '<img src="assets/icon/tick.svg" alt="" >';
+                                    //echo '<img src="assets/icon/tick.svg" alt="" class="tickImg">';
+                                    echo '
+                                    <style>
+                                        #div'.$row["id"].'{
+                                            border: 2px solid #0583d2; 
+                                        }
+                                    </style>
+                                    ';
                                 }
                             }
                         echo '</a>';
