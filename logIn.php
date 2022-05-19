@@ -11,6 +11,7 @@
 <!DOCTYPE html>
 <html lang="it">
        <head>
+       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
         <meta name="viewport" content="width=device-width" />

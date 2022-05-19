@@ -20,7 +20,7 @@
     <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <script src="jquery-2.1.4.min.js"></script>
-    
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
         <link rel="stylesheet" href="css/navBar.css">
         <link rel="stylesheet" href="css/cardsMenu.css">
         <link rel="stylesheet" href="css/textFormat.css">
@@ -79,8 +79,9 @@
                 <a href="account.php"><img src="assets/icon/profileOff.svg" alt="" class="icon"></a>
                 </div>
             </nav>
-    </div>
-        <div class="loader-wrapper">
+        </div>
+
+    <div class="loader-wrapper">
         <span class="loader"><span class="loader-inner"></span></span>
     </div>
 

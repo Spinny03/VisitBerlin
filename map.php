@@ -18,6 +18,7 @@
 <!DOCTYPE html>
 <html lang="it">
        <head>
+        <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
         <meta charset="UTF-8">
@@ -37,7 +38,7 @@
         <link href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" rel="stylesheet"/>
         <div id="osm-map"></div>
         <style>
-            .transparent-tooltip {
+            .transparent {
                 text-overflow: ellipsis;
                 overflow: hidden; 
                 width: 50px; 
@@ -99,7 +100,7 @@
                             }).bindTooltip(`".$row["name"]."`, {
                                 permanent: true, 
                                 direction : 'bottom',
-                                className: 'transparent-tooltip',
+                                className: 'transparent',
                                 offset: [0, 10]
                               });
                             ";
