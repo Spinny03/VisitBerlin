@@ -15,7 +15,7 @@
             $del = "UPDATE username SET `image` = '' WHERE email = '".$_SESSION["user"]."'";
             $conn->query($del); 
         }
-        header("Location: ../account.php");
+        //header("Location: ../account.php");
         $conn->close();
         exit();
     }
@@ -55,7 +55,7 @@
         } 
     }
 
-    header("Location: ../account.php");
+    //header("Location: ../account.php");
     $conn->close();
     exit();
 ?>

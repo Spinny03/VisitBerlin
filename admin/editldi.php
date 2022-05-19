@@ -19,7 +19,7 @@
         $query = "SELECT * FROM ldi WHERE ldi.id = ".$_GET["ldi"];
         $result = $conn->query($query);
         if($result->num_rows <= 0){
-            header("Location: editLdi.php");
+            header("Location: editldi.php");
             $conn->close();
             exit();
 
@@ -28,7 +28,7 @@
         $ldi = $result->fetch_assoc();    
         $img = "../assets/berlinPhotosProva/".$ldi["image"];
         if(!empty($ldi["audio"])){
-            $audio = "../assets/audioLdi/".$ldi["audio"];
+            $audio = "../assets/audioldi/".$ldi["audio"];
         }
         else{
             $audio = "";
@@ -38,16 +38,16 @@
         $description = $ldi["description"];
         $lon = $ldi["lon"];
         $lat = $ldi["lat"];
-        $mainTipo = $ldi["mainTipo"];
+        $maintipo = $ldi["maintipo"];
       }  
     else{    
         $img = "../assets/add.svg"; 
         $audio = "";     
-        if(file_exists("../assets/audioLdi/new.mp3")){
-            $audio = "../assets/audioLdi/new.mp3";
+        if(file_exists("../assets/audioldi/new.mp3")){
+            $audio = "../assets/audioldi/new.mp3";
         }    
-        if(file_exists("../assets/audioLdi/new.wav")){
-            $audio = "../assets/audioLdi/new.wav";
+        if(file_exists("../assets/audioldi/new.wav")){
+            $audio = "../assets/audioldi/new.wav";
         } 
         if(file_exists("../assets/berlinPhotosProva/new.jpg")){
             $img = "../assets/berlinPhotosProva/new.jpg";
@@ -66,7 +66,7 @@
         $description = "";
         $lon = "52.51715250163406";
         $lat = "13.389735939802097";
-        $mainTipo = "";
+        $maintipo = "";
 
     }   
 
@@ -88,7 +88,7 @@
         <link rel="stylesheet" href="../css/textFormat.css">
         <link rel="stylesheet" href="../css/imageGallery.css">
         <link rel="stylesheet" href="../css/components.css">
-        <link rel="stylesheet" href="css/editLdi.css">
+        <link rel="stylesheet" href="css/editldi.css">
         <title>Admin</title>
     </head>
     <body>
@@ -98,7 +98,7 @@
                     $query = "SELECT * FROM ldi";
                     $result = $conn->query($query);
                     echo  '     
-                    <a href="editLdi.php">   
+                    <a href="editldi.php">   
                         <div class="item">
                             <div class="menuImage image" style="background-image: url(../assets/add.svg);">
                             </div>
@@ -110,7 +110,7 @@
                     if($result->num_rows > 0){
                         while($row = $result->fetch_assoc()){
                             echo  '     
-                            <a href="editLdi.php?ldi='.$row["id"].'">   
+                            <a href="editldi.php?ldi='.$row["id"].'">   
                                 <div class="item">
                                     <div class="menuImage image" style="background-image: url(../assets/berlinPhotosProva/'.$row["image"].');">
                                     </div>
@@ -125,8 +125,8 @@
 
             </div>
             <div class="ldiContainer">
-                <form id="pform" action="access/editLdiDB.php" method="POST" enctype="multipart/form-data">
-                    <input type="hidden" name="idLdi" value="<?php echo $id;?>">
+                <form id="pform" action="access/editldiDB.php" method="POST" enctype="multipart/form-data">
+                    <input type="hidden" name="idldi" value="<?php echo $id;?>">
                     <img width="200" height="200" src="<?php echo $img; ?>" class="profilePhotoBig">
                     <label class="photoBtn" for="apply"><input class="inPhoto" type="file" name="pfile" id="apply" accept="image/*">Modifica</label>
                     <button type="submit" name="change" value="False" class="photoBtn" style="border: 1px solid red;">Rimuovi</button>
@@ -139,7 +139,7 @@
                 </script>
 
     <!-- mp3 audio file input -->
-                <form id="afile" action="access/editLdiDB.php" method="POST" enctype="multipart/form-data">
+                <form id="afile" action="access/editldiDB.php" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="audio" value="<?php echo $id;?>">
                     <audio controls><source src="<?php echo $audio;?>" type="audio/mp3"><source src="<?php echo $audio;?>" type="audio/wav">Your browser does not support the audio element.</audio>
                     <label for="audioFile"><input type="file" name="afile" id="audioFile" accept="audio/mpeg*" class="">Modifica</label>
@@ -190,7 +190,7 @@
         <!-- QRCode -->
 
 
-                <form action="access/editLdiDB.php" method="POST" class="innerForm">
+                <form action="access/editldiDB.php" method="POST" class="innerForm">
                     <input type="hidden" name="ldi" value="<?php echo $id;?>">
                     <input type="text" name="name" value="<?php echo $name;?>">
                     <textarea name="description" value="<?php echo $description;?>" rows="10"></textarea>
@@ -203,14 +203,14 @@
                         echo "<br><h3>Icon:</h3>";
                         if($result->num_rows > 0){
                             while($row = $result->fetch_assoc()){
-                                if($row["id"] == $mainTipo){
-                                    echo '<div style="width:100%;"><input type="radio" name="mainTipo" value="'.$row["id"].'" checked required>'.$row["name"].'<br></div>';
+                                if($row["id"] == $maintipo){
+                                    echo '<div style="width:100%;"><input type="radio" name="maintipo" value="'.$row["id"].'" checked required>'.$row["name"].'<br></div>';
                                 }else{
-                                    echo '<div style="width:100%;"><input type="radio" name="mainTipo" value="'.$row["id"].'" required>'.$row["name"].'<br></div>';
+                                    echo '<div style="width:100%;"><input type="radio" name="maintipo" value="'.$row["id"].'" required>'.$row["name"].'<br></div>';
                                 }
                             }
                         }
-                        echo "<br><h3>Tipo:</h3>";
+                        echo "<br><h3>tipo:</h3>";
                             $query = "SELECT * FROM tipo;";
                             $result = $conn->query($query);
 
@@ -239,7 +239,7 @@
                             }     
                         ?>       
                 </form>
-                <form action="access/editLdiDB.php" method="POST" style="width:80%;">
+                <form action="access/editldiDB.php" method="POST" style="width:80%;">
                     <button type="submit" class="del" name="del" value="<?php echo $id;?>" >
                         Elimina
                     </button>
@@ -280,11 +280,11 @@
                 echo "map.setView(['".$lon."', '".$lat."'], 17)";
 
                     if($esiste){
-                        $query = "SELECT * FROM tipo where id = ".$mainTipo."";
+                        $query = "SELECT * FROM tipo where id = ".$maintipo."";
                         $result = $conn->query($query);
                         $result = $result->fetch_array();
                         echo "
-                        var Icon".$mainTipo." = L.icon({
+                        var Icon".$maintipo." = L.icon({
                             iconUrl: '../assets/mapsIcon/".$result["image"]."',
                             iconSize:     [38, 95],
                         });";
@@ -292,7 +292,7 @@
                             ['".$lon."', '".$lat."'],
                             {
                                 draggable:true,
-                                icon: Icon".$mainTipo."
+                                icon: Icon".$maintipo."
                             }
                             ).addTo(map).bindTooltip(`".$name."`, {
                                 permanent: true, 

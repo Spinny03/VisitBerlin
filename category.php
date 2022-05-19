@@ -57,7 +57,7 @@
                 $result = $conn->query($query);
                 if($result->num_rows > 0){
                     while($row = $result->fetch_assoc()){ 
-                        $query = "SELECT * FROM ldi WHERE mainTipo = ".$row["id"]." ORDER BY RAND() LIMIT 1";
+                        $query = "SELECT * FROM ldi WHERE maintipo = ".$row["id"]." ORDER BY RAND() LIMIT 1";
                         $result1 = $conn->query($query);
                         if($result1->num_rows > 0){
                             $rowIm1 = mysqli_fetch_array($result1);

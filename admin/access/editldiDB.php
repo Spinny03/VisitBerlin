@@ -20,14 +20,14 @@
         $conn->query($sql); 
         $sql = 'DELETE FROM tipo_ldi WHERE ldi_id = "'.$_POST["del"].'";';
         $conn->query($sql); 
-        header("Location: ../editLdi.php");
+        header("Location: ../editldi.php");
         $conn->close();
         exit();
     }
     //modifica
     elseif(isset($_POST["change"]) && $_POST["change"]  == "True"){
         echo "18";
-        if(!empty($_POST["name"])  || !empty($_POST["description"] || !empty($_POST["lon"]) || !empty($_POST["lat"]) || !empty($_POST["mainTipo"]))){
+        if(!empty($_POST["name"])  || !empty($_POST["description"] || !empty($_POST["lon"]) || !empty($_POST["lat"]) || !empty($_POST["maintipo"]))){
             echo "20";
             $delPhoto = 'SELECT `image` FROM ldi WHERE id = "'.$_POST["ldi"].'";';
             $result = $conn->query($delPhoto); 
@@ -49,8 +49,8 @@
                 $sql .= 'lat = "'.$_POST["lat"].'",';
             }
 
-            if(!empty($_POST["mainTipo"])){
-                $sql .= 'mainTipo = "'.$_POST["mainTipo"].'",';
+            if(!empty($_POST["maintipo"])){
+                $sql .= 'maintipo = "'.$_POST["maintipo"].'",';
             }
             $cut = "DELETE FROM tipo_ldi WHERE ldi_id = '".$_POST["ldi"]."';";
             echo $cut;
@@ -78,7 +78,7 @@
                 rename($oldname, $newname);
                 $conn->query('UPDATE ldi SET `image` ="'.$id["id"].".". $imageFileType.'" WHERE id="'.$id["id"].'";');
             }
-            header("Location: ../editLdi.php?ldi=".$id["id"]);
+            header("Location: ../editldi.php?ldi=".$id["id"]);
             $conn->close();
             exit();
         }
@@ -86,7 +86,7 @@
     //aggiungi
     elseif(isset($_POST["change"]) && $_POST["change"] == "add"){
         echo "60";
-        if(!empty($_POST["name"])  || !empty($_POST["description"] || !empty($_POST["lon"]) || !empty($_POST["lat"]) || !empty($_POST["mainTipo"]))){
+        if(!empty($_POST["name"])  || !empty($_POST["description"] || !empty($_POST["lon"]) || !empty($_POST["lat"]) || !empty($_POST["maintipo"]))){
             echo "62";
             $sql = "";
             if(!empty($_POST["name"])){
@@ -105,8 +105,8 @@
                 $sql .= 'lat = "'.$_POST["lat"].'",';
             }
 
-            if(!empty($_POST["mainTipo"])){
-                $sql .= 'mainTipo = "'.$_POST["mainTipo"].'",';
+            if(!empty($_POST["maintipo"])){
+                $sql .= 'maintipo = "'.$_POST["maintipo"].'",';
             }
             $sql = substr($sql, 0, -1);
             $conn->query("INSERT INTO ldi SET ".$sql.";");
@@ -168,35 +168,35 @@
             }
 
 
-            if(file_exists("../../assets/audioLdi/new.mp3")){
+            if(file_exists("../../assets/audioldi/new.mp3")){
                 $sql = 'UPDATE ldi SET `audio` = "'.$result["id"].'.mp3" WHERE id = "'.$result["id"].'"';
                 $conn->query($sql);
-                rename('../../assets/audioLdi/new.mp3', '../../assets/audioLdi/'.$result["id"].'.mp3');
+                rename('../../assets/audioldi/new.mp3', '../../assets/audioldi/'.$result["id"].'.mp3');
             }
-            elseif(file_exists("../../assets/audioLdi/new.wav")){
+            elseif(file_exists("../../assets/audioldi/new.wav")){
                 $sql = 'UPDATE ldi SET `audio` = "'.$result["id"].'.wav" WHERE id = "'.$result["id"].'"';
                 $conn->query($sql);
-                rename('../../assets/audioLdi/new.wav', '../../assets/audioLdi/'.$result["id"].'.wav');
+                rename('../../assets/audioldi/new.wav', '../../assets/audioldi/'.$result["id"].'.wav');
             }
             
         }
     }
     //imagine
-    elseif(isset($_POST["idLdi"])){ 
+    elseif(isset($_POST["idldi"])){ 
         echo "115";
-        if($_POST["idLdi"] != "new"){ 
+        if($_POST["idldi"] != "new"){ 
             echo "117";
             if(!empty($_POST["change"]) && $_POST["change"] == "False" ){
                 echo "132";
-                $old ="SELECT `image` FROM ldi WHERE id = '".$_POST["idLdi"]."'";
+                $old ="SELECT `image` FROM ldi WHERE id = '".$_POST["idldi"]."'";
                 $oldphoto = $conn->query($old);
                 $oldphoto = mysqli_fetch_assoc($oldphoto); 
                 if(!empty($oldphoto["image"]) && $oldphoto["image"] != "NoImg.png"){
                     unlink("../../assets/berlinPhotosProva/".$oldphoto["image"]);
-                    $del = "UPDATE ldi SET `image` = 'NoImg.png' WHERE id = '".$_POST["idLdi"]."'";
+                    $del = "UPDATE ldi SET `image` = 'NoImg.png' WHERE id = '".$_POST["idldi"]."'";
                     $conn->query($del);
                 }
-                header("Location: ../editLdi.php?ldi=".$_POST["idLdi"]);
+                header("Location: ../editldi.php?ldi=".$_POST["idldi"]);
                 $conn->close();
                 exit();
             }
@@ -222,22 +222,22 @@
             }
             
             if ($uploadOk != 0) {
-                $old = "SELECT `image` FROM ldi WHERE id = '".$_POST["idLdi"]."'";
+                $old = "SELECT `image` FROM ldi WHERE id = '".$_POST["idldi"]."'";
                 $oldphoto = $conn->query($old);
                 $oldphoto = mysqli_fetch_assoc($oldphoto); 
                 if(!empty($oldphoto["image"]) && $oldphoto["image"] != "NoImg.png"){
                     unlink("../../assets/berlinPhotosProva/".$oldphoto["image"]);
                 }
                 if (move_uploaded_file($_FILES["pfile"]["tmp_name"], $target_file)) {
-                    $sql = "UPDATE ldi SET `image` = '".$_POST["idLdi"] .".". $imageFileType. "' WHERE id = '".$_POST["idLdi"]."'";
+                    $sql = "UPDATE ldi SET `image` = '".$_POST["idldi"] .".". $imageFileType. "' WHERE id = '".$_POST["idldi"]."'";
                     $conn->query($sql);
                 } 
             }
         
             $oldname = "../../assets/berlinPhotosProva/".htmlspecialchars(basename( $_FILES["pfile"]["name"]));
-            $newname = "../../assets/berlinPhotosProva/".$_POST["idLdi"] .".". $imageFileType;
+            $newname = "../../assets/berlinPhotosProva/".$_POST["idldi"] .".". $imageFileType;
             rename($oldname, $newname);
-            header("Location: ../editLdi.php?ldi=".$_POST["idLdi"]);
+            header("Location: ../editldi.php?ldi=".$_POST["idldi"]);
             $conn->close();
             exit();
         }
@@ -275,17 +275,17 @@
                 $oldphoto = $conn->query($old);
                 $oldphoto = mysqli_fetch_assoc($oldphoto); 
                 if(!empty($oldphoto["audio"])){
-                    unlink("../../assets/audioLdi/".$oldphoto["audio"]);
+                    unlink("../../assets/audioldi/".$oldphoto["audio"]);
                     $del = "UPDATE ldi SET `audio` = null WHERE id = '".$_POST["audio"]."'";
                     $conn->query($del);
                 }
-                header("Location: ../editLdi.php?ldi=".$_POST["audio"]);
+                header("Location: ../editldi.php?ldi=".$_POST["audio"]);
                 $conn->close();
                 exit();
             }
         
         
-            $target_dir = "../../assets/audioLdi/";
+            $target_dir = "../../assets/audioldi/";
             $target_file = $target_dir . basename($_FILES["afile"]["name"]);
             $uploadOk = 1;
             $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
@@ -309,7 +309,7 @@
                 $oldphoto = $conn->query($old);
                 $oldphoto = mysqli_fetch_assoc($oldphoto); 
                 if(!empty($oldphoto["audio"]) && $oldphoto["audio"] != "NoImg.png"){
-                    unlink("../../assets/audioLdi/".$oldphoto["audio"]);
+                    unlink("../../assets/audioldi/".$oldphoto["audio"]);
                 }
                 if (move_uploaded_file($_FILES["afile"]["tmp_name"], $target_file)) {
                     $sql = "UPDATE ldi SET `audio` = '".$_POST["audio"] .".". $imageFileType. "' WHERE id = '".$_POST["audio"]."'";
@@ -317,32 +317,32 @@
                 } 
             }
         
-            $oldname = "../../assets/audioLdi/".htmlspecialchars(basename( $_FILES["afile"]["name"]));
-            $newname = "../../assets/audioLdi/".$_POST["audio"] .".". $imageFileType;
+            $oldname = "../../assets/audioldi/".htmlspecialchars(basename( $_FILES["afile"]["name"]));
+            $newname = "../../assets/audioldi/".$_POST["audio"] .".". $imageFileType;
             rename($oldname, $newname);
-            header("Location: ../editLdi.php?ldi=".$_POST["audio"]);
+            header("Location: ../editldi.php?ldi=".$_POST["audio"]);
             $conn->close();
             exit();
         }
         else{
             echo "173";
-            if(file_exists("../../assets/audioLdi/new.mp3")){
-                unlink("../../assets/audioLdi/new.mp3");
+            if(file_exists("../../assets/audioldi/new.mp3")){
+                unlink("../../assets/audioldi/new.mp3");
             }
-            if( file_exists("../../assets/audioLdi/new.wav")){
-                unlink("../../assets/audioLdi/new.wav");
+            if( file_exists("../../assets/audioldi/new.wav")){
+                unlink("../../assets/audioldi/new.wav");
             }
 
-            $target_dir = "../../assets/audioLdi/";
+            $target_dir = "../../assets/audioldi/";
             $target_file = $target_dir . basename($_FILES["afile"]["name"]);
             $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
             move_uploaded_file($_FILES["afile"]["tmp_name"], $target_file);
-            $oldname = "../../assets/audioLdi/".htmlspecialchars(basename( $_FILES["afile"]["name"]));
-            $newname = "../../assets/audioLdi/new.". $imageFileType;
+            $oldname = "../../assets/audioldi/".htmlspecialchars(basename( $_FILES["afile"]["name"]));
+            $newname = "../../assets/audioldi/new.". $imageFileType;
             rename($oldname, $newname);
         }
     }
-    header("Location: ../editLdi.php");
+    header("Location: ../editldi.php");
     $conn->close();
     exit();
 ?>

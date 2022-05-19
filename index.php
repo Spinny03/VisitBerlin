@@ -12,7 +12,7 @@
     $conn->query("USE Last");
     if(isset($_POST["searchBtn"])){
         $search_query = preg_replace("#[^a-z 0-9?!]#i", "", $_POST["searchbar"]);
-        $sql = "SELECT * FROM LDI WHERE `name` LIKE '%".$search_query."%'";
+        $sql = "SELECT * FROM ldi WHERE `name` LIKE '%".$search_query."%'";
         $result = $conn->query($sql);
         if($result->num_rows == 1){
             $row = $result->fetch_assoc();
@@ -63,7 +63,7 @@
         <h1>Categorie</h1>
         <div class="cardsContainer">
             <?php 
-                $sql = 'SELECT * FROM LDI ORDER BY RAND() LIMIT 3';
+                $sql = 'SELECT * FROM ldi ORDER BY RAND() LIMIT 3';
                 $all = $conn->query($sql);
                 if($all->num_rows > 0){
                     if($all->num_rows >= 1){
@@ -108,7 +108,7 @@
                 $tipo = $conn->query($sql); 
                 if($tipo->num_rows > 0){
                     while($row = $tipo->fetch_assoc()){ 
-                        $sql = 'SELECT * FROM LDI, tipo_ldi WHERE LDI.id = tipo_ldi.ldi_id AND tipo_ldi.tipo_id ='.$row["id"].' ORDER BY RAND() LIMIT 3';
+                        $sql = 'SELECT * FROM ldi, tipo_ldi WHERE ldi.id = tipo_ldi.ldi_id AND tipo_ldi.tipo_id ='.$row["id"].' ORDER BY RAND() LIMIT 3';
                         $foto = $conn->query($sql);
                         if($foto->num_rows > 0){
                             if($foto->num_rows >= 1){

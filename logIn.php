@@ -43,7 +43,7 @@
                 <div class="log">
                     <h1>Accedi</h1>
                     <span>Accedi con i dati che hai inserito durante la registrazione.</span>
-                    <form action="access/loginDB.php" method="POST">
+                    <form action="access/logInDB.php" method="POST">
                         <label for="email"><b>Email</b></label>
                         <input type="text" placeholder="nome@esempio.com" name="email" 
                             <?php

@@ -19,7 +19,7 @@
         $conn->query($sql); 
         $sql = 'DELETE FROM tipo_ldi WHERE ldi_id = "'.$_POST["del"].'";';
         $conn->query($sql); 
-        $sql = 'DELETE FROM ldi WHERE mainTipo = "'.$_POST["del"].'";';
+        $sql = 'DELETE FROM ldi WHERE maintipo = "'.$_POST["del"].'";';
         $conn->query($sql); 
         header("Location: ../editType.php");
         $conn->close();
@@ -107,21 +107,21 @@
             }
         }
     }
-    elseif(isset($_POST["idLdi"])){ 
+    elseif(isset($_POST["idldi"])){ 
         echo "115";
-        if($_POST["idLdi"] != "new"){ 
+        if($_POST["idldi"] != "new"){ 
             echo "117";
             if(!empty($_POST["change"]) && $_POST["change"] == "False" ){
                 echo "132";
-                $old ="SELECT `image` FROM tipo WHERE id = '".$_POST["idLdi"]."'";
+                $old ="SELECT `image` FROM tipo WHERE id = '".$_POST["idldi"]."'";
                 $oldphoto = $conn->query($old);
                 $oldphoto = mysqli_fetch_assoc($oldphoto); 
                 if(!empty($oldphoto["image"]) && $oldphoto["image"] != "NoImg.svg"){
                     unlink("../../assets/mapsIcon/".$oldphoto["image"]);
-                    $del = "UPDATE tipo SET `image` = 'NoImg.svg' WHERE id = '".$_POST["idLdi"]."'";
+                    $del = "UPDATE tipo SET `image` = 'NoImg.svg' WHERE id = '".$_POST["idldi"]."'";
                     $conn->query($del);
                 }
-                header("Location: ../editType.php?ldi=".$_POST["idLdi"]);
+                header("Location: ../editType.php?ldi=".$_POST["idldi"]);
                 $conn->close();
                 exit();
             }
@@ -147,22 +147,22 @@
             }
             
             if ($uploadOk != 0) {
-                $old = "SELECT `image` FROM tipo WHERE id = '".$_POST["idLdi"]."'";
+                $old = "SELECT `image` FROM tipo WHERE id = '".$_POST["idldi"]."'";
                 $oldphoto = $conn->query($old);
                 $oldphoto = mysqli_fetch_assoc($oldphoto); 
                 if(!empty($oldphoto["image"]) && $oldphoto["image"] != "NoImg.svg"){
                     unlink("../../assets/mapsIcon/".$oldphoto["image"]);
                 }
                 if (move_uploaded_file($_FILES["pfile"]["tmp_name"], $target_file)) {
-                    $sql = "UPDATE tipo SET `image` = '".$_POST["idLdi"] .".". $imageFileType. "' WHERE id = '".$_POST["idLdi"]."'";
+                    $sql = "UPDATE tipo SET `image` = '".$_POST["idldi"] .".". $imageFileType. "' WHERE id = '".$_POST["idldi"]."'";
                     $conn->query($sql);
                 } 
             }
         
             $oldname = "../../assets/mapsIcon/".htmlspecialchars(basename( $_FILES["pfile"]["name"]));
-            $newname = "../../assets/mapsIcon/".$_POST["idLdi"] .".". $imageFileType;
+            $newname = "../../assets/mapsIcon/".$_POST["idldi"] .".". $imageFileType;
             rename($oldname, $newname);
-            header("Location: ../editType.php?ldi=".$_POST["idLdi"]);
+            header("Location: ../editType.php?ldi=".$_POST["idldi"]);
             $conn->close();
             exit();
         }
