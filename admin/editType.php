@@ -96,7 +96,7 @@
             ?>
         </div>
         <form id="pform" action="access/editTypeDB.php" method="POST" enctype="multipart/form-data">
-            <input type="hidden" name="idLdi" value="<?php echo $id;?>">
+            <input type="hidden" name="idldi" value="<?php echo $id;?>">
             <img width="200" height="200" src="<?php echo $img; ?>" class="profilePhotoBig">
             <label class="photoBtn" for="apply"><input class="inPhoto" type="file" name="pfile" id="apply" accept="image/*">Modifica</label>
             <button type="submit" name="change" value="False" class="photoBtn removeBtn">Rimuovi</button>
