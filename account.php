@@ -33,6 +33,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="jquery-2.1.4.min.js"></script>
         <link rel="stylesheet" href="css/navBar.css">
         <link rel="stylesheet" href="css/cardsMenu.css">
         <link rel="stylesheet" href="css/textFormat.css">
@@ -47,7 +48,7 @@
                 <div class="pSettings">
                     <form id="pform" action="access/photoDB.php" method="POST" enctype="multipart/form-data">
                         <img width="200" height="200" src="'.$link.'" class="profilePhotoBig">
-                        <label class="photoBtn" for="apply" style="font-size:14px"><input class="inPhoto" type="file" name="pfile" id="apply" accept="image/*">Modifica</label>
+                        <label class="photoBtn" for="apply" style="font-size:14px"><input class="inPhoto" type="file" name="pfile" id="apply" accept=".png,.jpg,.gif,.jpeg">Modifica</label>
                         <button type="submit" name="change" value="False" class="photoBtn">Rimuovi</button>
                         
                     </form>
@@ -146,6 +147,18 @@
                 </div>
             </nav>
         </div>
+        </div>
+        
+    <div class="loader-wrapper">
+        <span class="loader"><span class="loader-inner"></span></span>
+    </div>
+
     </body>
+
+    <script >
+        $(window).on("load",function(){
+          $(".loader-wrapper").fadeOut("slow");
+        });
+    </script>
     <?php $conn->close(); ?>
 </html>

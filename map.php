@@ -91,7 +91,7 @@
                         echo "L.marker(
                             ['".$row["lon"]."', '".$row["lat"]."'],
                             {
-                                icon: Icon".$row["mainTipo"]."
+                                icon: Icon".$row["maintipo"]."
                             }
                             ).addTo(map).on('click', function(e) {
                                 window.location.href = 'ldi.php?ldi=".$row["id"]."';

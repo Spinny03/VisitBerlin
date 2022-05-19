@@ -6,7 +6,7 @@ if ($conn->connect_error){
 $conn->query("USE Last");
 
 function Get_user_avatar($id, $connect){
-    $query = "SELECT `image` FROM LDI WHERE `id` = '".$id."'";
+    $query = "SELECT `image` FROM ldi WHERE `id` = '".$id."'";
 	$statement = $connect->query($query);
     if($statement->num_rows > 0){
         while($row = $statement->fetch_assoc()){
@@ -41,7 +41,7 @@ if(isset($_POST["query"]))
 	$condition = substr($condition, 0, -4);
 
 	$query = "
-	SELECT * FROM LDI 
+	SELECT * FROM ldi 
     WHERE ".$condition."  
     LIMIT 10
 	";
