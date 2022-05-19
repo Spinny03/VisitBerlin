@@ -78,6 +78,16 @@
             <div class="titleDiv">
                 <h2><?php echo strtoupper($ldi["name"])?></h2>
             </div>
+            <div class="infoDiv">
+                <div>
+                    <span class="smallTitle">Categoria principale:</span>
+                    <span> <b> Musei</b></span>
+                </div>
+                <div>
+                    <span class="smallTitle">Sottocategorie:</span>
+                    <span>Musei Musei MuseiMusei</span>
+                </div>
+            </div>
             <div class="titleDiv descriptionDiv">
                 <span>
                     dfdfsdf aaaaaasgf dfdfsdf aaaaaasgf dfdfsdf dfdfsdf aaaaaasgf dfdfsdf aaaaaasgf dfdfsdf dfdfsdf aaaaaasgf dfdfsdf aaaaaasgf dfdfsdfdfdfsdf aaaaaasgf dfdfsdf aaaaaasgf dfdfsdf
@@ -125,6 +135,7 @@
                     method:"POST",
                     data:{metti:"<?php echo $_GET["ldi"];?>"},
                     success:function(data){
+
                         document.getElementById('likeImg').src ='assets/icon/preferOn.svg';                    }
                 });
             }

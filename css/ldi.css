@@ -81,12 +81,42 @@ body{
 
 
 .audioDiv{
-    position: absolute;
-    top: calc(75% - 140px);
     width: 100%;
 }
 
-span{
+.descriptionDiv{
+    height: 20%;
+    align-items: flex-start;
+    border-bottom: 1px solid black;
+    width: 80%;
+    margin: auto;
+}
+
+.descriptionDiv span{
     width: 80%;
     max-width: 75ch;
+    margin-top: 15px;
+}
+
+.infoDiv{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid black;
+    width: 80%;
+    margin: auto;
+}
+
+.infoDiv div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.smallTitle{
+    font-size: .8rem;
+    color: #9b9b9b;
 }
