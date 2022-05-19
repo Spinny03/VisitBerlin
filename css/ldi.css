@@ -15,7 +15,15 @@ body{
     transition: all .4s ease-out;
     height: 100%;
     border-radius: 33px 33px 0px 0px;
+}
+
+.box{
+    background-color: white;
     position: relative;
+    transition: all .4s ease-out;
+    height: 100%;
+    border-radius: 33px 33px 0px 0px;
+    overflow: scroll;
 }
 
 .open{

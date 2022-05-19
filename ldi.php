@@ -77,6 +77,7 @@
             <div class="open">
                 <span>Panoramica</span>
             </div>
+        <div class="box">
             <div class="titleDiv">
                 <h2><?php echo strtoupper($ldi["name"])?></h2>
             </div>
@@ -99,6 +100,7 @@
                 <audio controls><source src="#" type="audio/mp3"><source src="#" type="audio/wav">Your browser does not support the audio element.</audio>
             </div>
         </div>
+    </div>
     </body>
      
     <script>
