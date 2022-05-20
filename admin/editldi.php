@@ -166,7 +166,7 @@
                 <script> 
                     <?php 
                         if($esiste){
-                        echo 'var qrcode = new QRCode(document.getElementById("qrcode"), "localhost/Last/ldi.php?ldi='.$id.'")';
+                        echo 'var qrcode = new QRCode(document.getElementById("qrcode"), "visitberlin.altervista.org/ldi.php?ldi='.$id.'")';
                         }
                     ?> 
                     function downloadURI(uri, name){

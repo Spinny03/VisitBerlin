@@ -120,7 +120,7 @@
         const shareData = {
             title: 'Last',
             text: 'Viene a vedere questa opera su Last!',
-            url: "http://localhost/Last/ldi.php?ldi=<?php echo $_GET["ldi"];?>"
+            url: "visitberlin.altervista.org/ldi.php?ldi=<?php echo $_GET["ldi"];?>"
         }
 
         $( "#share" ).click(async () => {

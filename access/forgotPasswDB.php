@@ -18,7 +18,8 @@
         mail(
             $email,
             "Recupero password ".$token,
-            "Ciao!\n\nQuesto è il codice di recupero. ".$token."\n\nGrazie,\n\nLast"	
+            "Ciao!\n\nQuesto è il codice di recupero. ".$token."\n\nGrazie,\n\nLast",
+            "From: Last <noreply@last.com>"		
         );
         $conn->query("UPDATE username SET token='".$token."' WHERE email='".$email."';");
         header("Location: ../tokenVerify.php");

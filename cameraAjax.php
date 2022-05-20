@@ -5,8 +5,8 @@
 	}
 	$conn->query("USE my_visitberlin");
 
-	if(isset($_POST["link"]) && substr($_POST["link"],strlen("localhost/Last/ldi.php?ldi=",),strlen($_POST["link"])!=0)){
-		$link = substr($_POST["link"],strlen("localhost/Last/ldi.php?ldi=",),strlen($_POST["link"]));
+	if(isset($_POST["link"]) && substr($_POST["link"],strlen("visitberlin.altervista.org/ldi.php?ldi=",),strlen($_POST["link"])!=0)){
+		$link = substr($_POST["link"],strlen("visitberlin.altervista.org/ldi.php?ldi=",),strlen($_POST["link"]));
 		$query = "SELECT * FROM `ldi` WHERE `id` = '$link'";
 		$result = $conn->query($query);
 		if($result->num_rows == 1){

@@ -16,7 +16,9 @@
             mail(
                 $email,
                 "Password Modificata",
-                "Ciao!\n\nÈ stata modificata la tua password, se non sei stato tu contatacci.\n\nGrazie,\n\nLast"	
+                "Ciao!\n\nÈ stata modificata la tua password, se non sei stato tu contatacci.\n\nGrazie,\n\nLast",
+                "From: Last <noreply@last.com>"		
+            
             );
             $conn->query("UPDATE username SET pasw='".hash("sha256",$psw)."' WHERE email='".$email."';");
             header("Location: ../logIn.php");
