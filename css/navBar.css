@@ -70,3 +70,19 @@ body {
 .icon:hover{
     transform: scale(1.1);
 }
+
+
+/*media queries*/
+@media screen and (min-width: 1200px){
+    body{
+        width: 40%;
+        margin: auto;
+    }
+    .divWrapper{
+        width: 40%;
+        margin: auto;
+    }
+    .camera{
+        display: none;
+    }
+}

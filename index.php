@@ -101,7 +101,7 @@
                                 <div  style="background-color: #ffab5c;"class="cardBottom">
                                     <span class="cardTitle" style="margin-right: 5px;">Tutto</span>
                                     ';
-                                        if(!empty($_SESSION["user"])){
+                                        if(isset($_SESSION["user"])){
                                             $query13 = "SELECT * FROM visitati WHERE email = '".$_SESSION["user"]."';";
                                             $result13 = $conn->query($query13);
                                             $query14 = "SELECT * FROM ldi;";
@@ -114,7 +114,6 @@
                                             }
                                             if($result13->num_rows == 0){
                                                 echo '<progress id="file" value="0" max="100"></progress><span class="cardTitle">'.$result13->num_rows.'/'.$result14->num_rows.' </span>';
-
                                             }  
                                         }
                         echo  '     

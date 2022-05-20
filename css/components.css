@@ -128,3 +128,9 @@ button{
   position: absolute;
   z-index: 1001;
 }
+
+@media screen and (min-width: 1200px){
+  .countryList{
+    width: 38%;
+  }
+}
