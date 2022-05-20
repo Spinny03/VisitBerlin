@@ -37,8 +37,8 @@
                     }
                 ?>
                 <form action="access/tokenVerifyDB.php" method="POST">
-                    <label for="email"><b>Token</b></label>
-                    <input type="text" placeholder="123456" name="email" required>
+                    <label for="token"><b>Token</b></label>
+                    <input type="text" placeholder="123456" name="token" required>
                     <button type="submit" name="login" class="logbtn">conferma</button>
                 </form>
                 <a href="<?php echo $_SERVER["HTTP_REFERER"] ?>" class="Link">indietro</a>
