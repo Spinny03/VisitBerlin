@@ -42,7 +42,7 @@
         <link rel="stylesheet" href="css/cardsMenu.css">
         <link rel="stylesheet" href="css/textFormat.css">
         <link rel="stylesheet" href="css/components.css">
-        <title>Home</title>
+        <title>Visit Berlin</title>
     </head>
     <body>
 <!-- barra di ricerca-->

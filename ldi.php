@@ -46,7 +46,7 @@
     <script src="jquery-2.1.4.min.js"></script>
 
     <link rel="stylesheet" href="css/ldi.css">
-    <title>Document</title>
+    <title><?php echo $ldi["name"]?></title>
 </head>
     <body style="background-image:url('assets/berlinPhotosProva/<?php echo $ldi["image"]?>');">
     <!--    NON SO PERCHE MA ROMPE TUTTO spinella -->

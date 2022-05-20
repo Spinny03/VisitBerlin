@@ -17,7 +17,7 @@
         <meta name="viewport" content="width=device-width" />
         <link rel="stylesheet" href="css/loginRegister.css">
         <link rel="stylesheet" href="css/navBar.css">
-        <title>Last</title>
+        <title>Token</title>
     </head>
     <body>
 

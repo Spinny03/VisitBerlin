@@ -19,7 +19,7 @@
         <link rel="stylesheet" href="css/textFormat.css">
         <link rel="stylesheet" href="css/loginRegister.css">
         <link rel="stylesheet" href="css/components.css">
-        <title>Last</title>
+        <title>Sign Up</title>
     </head>
     <body>
         <?php 

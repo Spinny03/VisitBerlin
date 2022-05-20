@@ -40,7 +40,7 @@
         <link rel="stylesheet" href="css/textFormat.css">
         <link rel="stylesheet" href="css/account.css">
         <link rel="stylesheet" href="css/components.css">
-        <title>PROFILO</title>
+        <title>Profilo</title>
     </head>
     <body>
         <?php 
