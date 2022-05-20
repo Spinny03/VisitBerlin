@@ -3,7 +3,7 @@ $conn = new mysqli("localhost", "root", "");
 if ($conn->connect_error){
     exit("Connessione fallita: " . $conn->connect_error);
 }
-$conn->query("USE Last");
+$conn->query("USE my_visitberlin");
 
 function Get_user_avatar($id, $connect){
     $query = "SELECT `image` FROM ldi WHERE `id` = '".$id."'";

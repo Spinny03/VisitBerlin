@@ -11,7 +11,7 @@
     if ($conn->connect_error){
         exit("Connessione fallita: " . $conn->connect_error);
     }
-    $conn->query("USE Last");
+    $conn->query("USE my_visitberlin");
 
     $_SESSION["prevPage"] = $_SERVER['REQUEST_URI'];
 ?>

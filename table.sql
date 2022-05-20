@@ -1,5 +1,5 @@
-CREATE DATABASE Last;
-USE Last;
+CREATE Database my_visitberlin;
+USE my_visitberlin;
 CREATE TABLE ldi(
     `id` int PRIMARY KEY AUTO_INCREMENT,
     `name` varchar(255),
@@ -24,7 +24,7 @@ CREATE TABLE tipo_ldi(
     PRIMARY KEY (`ldi_id`, `tipo_id`)
 );
 CREATE TABLE username(
-    `email` varchar(255) PRIMARY KEY,
+    `email` varchar(100) PRIMARY KEY,
     `firstName` varchar(255),
     `surname` varchar(255),
     `notice` TINYINT(1),
@@ -35,12 +35,12 @@ CREATE TABLE username(
     `pasw` varchar(255) NOT NULL
 );
 CREATE TABLE preferiti(
-    `email` varchar(255) NOT NULL REFERENCES username(email) ,
+    `email` varchar(100) NOT NULL REFERENCES username(email) ,
     `ldi_id` int NOT NULL REFERENCES ldi(id),
     primary key(`email`, `ldi_id`)
 );
 CREATE TABLE visitati(
-    `email` varchar(255) NOT NULL REFERENCES username(email) ,
+    `email` varchar(100) NOT NULL REFERENCES username(email) ,
     `ldi_id` int NOT NULL REFERENCES ldi(id),
     `data` timestamp,
     primary key(`email`, `ldi_id`)

@@ -9,7 +9,7 @@
     if ($conn->connect_error){
         exit("Connessione fallita: " . $conn->connect_error);
     }
-    $conn->query("USE Last");
+    $conn->query("USE my_visitberlin");
     if(!empty($_SESSION["user"])){
         $data = $conn->query('SELECT * FROM username WHERE email ="'.$_SESSION["user"].'";');
         $data = mysqli_fetch_assoc($data); 

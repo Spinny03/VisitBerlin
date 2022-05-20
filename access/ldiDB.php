@@ -5,7 +5,7 @@
     if ($conn->connect_error){
         exit("Connessione fallita: " . $conn->connect_error);
     }
-    $conn->query("USE Last");
+    $conn->query("USE my_visitberlin");
 
 
     if(isset($_SESSION["user"])){
@@ -19,7 +19,7 @@
         exit("Connessione fallita: " . $conn->connect_error);
     }
 
-    $conn->query("USE Last");
+    $conn->query("USE my_visitberlin");
 
     echo '<script>console.log("dentro")</script>';
 

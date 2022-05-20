@@ -5,7 +5,7 @@
     if ($conn->connect_error){
         exit("Connessione fallita: " . $conn->connect_error);
     }
-    $conn->query("USE Last");
+    $conn->query("USE my_visitberlin");
     if(!empty($_POST["change"]) && $_POST["change"] == "False"){
         $old ="SELECT `image` FROM username WHERE email = '".$_SESSION["user"]."'";
         $oldphoto = $conn->query($old);

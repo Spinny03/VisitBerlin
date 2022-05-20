@@ -3,7 +3,7 @@
 	if ($conn->connect_error){
 		exit("Connessione fallita: " . $conn->connect_error);
 	}
-	$conn->query("USE Last");
+	$conn->query("USE my_visitberlin");
 
 	if(isset($_POST["link"]) && substr($_POST["link"],strlen("localhost/Last/ldi.php?ldi=",),strlen($_POST["link"])!=0)){
 		$link = substr($_POST["link"],strlen("localhost/Last/ldi.php?ldi=",),strlen($_POST["link"]));

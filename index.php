@@ -9,7 +9,7 @@
     if ($conn->connect_error){
         exit("Connessione fallita: " . $conn->connect_error);
     }
-    $conn->query("USE Last");
+    $conn->query("USE my_visitberlin");
     if(isset($_POST["searchBtn"])){
         $search_query = preg_replace("#[^a-z 0-9?!]#i", "", $_POST["searchbar"]);
         $sql = "SELECT * FROM ldi WHERE `name` LIKE '%".$search_query."%'";

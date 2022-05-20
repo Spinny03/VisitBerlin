@@ -5,7 +5,7 @@
     if ($conn->connect_error){
         exit("Connessione fallita: " . $conn->connect_error);
     }
-    $conn->query("USE Last");
+    $conn->query("USE my_visitberlin");
     
     $email = $_POST["email"];
     $_SESSION["userLogin"] = $email;

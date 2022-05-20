@@ -13,7 +13,7 @@
     if ($conn->connect_error){
         exit("Connessione fallita: " . $conn->connect_error);
     }
-    $conn->query("USE Last");
+    $conn->query("USE my_visitberlin");
     $esiste = false;
     if(!empty($_GET["ldi"])){
         $query = "SELECT * FROM ldi WHERE ldi.id = ".$_GET["ldi"];
