@@ -56,7 +56,11 @@
                     minZoom: 14,
                     maxBounds: bounds
                 });
-            L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {}).addTo(map);
+            /*
+            https://{s}.tile.openstreetmap.de/{z}/{x}/{y}.png
+            https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}
+            */
+            L.tileLayer('https://{s}.tile.openstreetmap.de/{z}/{x}/{y}.png', {}).addTo(map);
             <?php 
                 if(!empty($_GET["ldi"])){
                     $id = $_GET["ldi"];
