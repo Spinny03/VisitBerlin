@@ -1,0 +1,102 @@
+.cardsContainer{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin: 0.5rem;
+  list-style-type: none;
+  margin-bottom: 110px;
+  /*background-color:aqua;*/
+}
+
+.card{
+  position: relative;
+  /*display: none;*/
+  min-height: 225px;
+  height: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  text-decoration: none;
+  padding: 0;
+  /*border: 1px solid black;*/
+  box-shadow: 0px 0px 10px 0px #b3b3b3;
+  transition: 100ms ease-in;
+}
+
+.card:hover{
+  transform: scale(1.005);
+}
+
+.cardBottom{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 27%;
+  background-color: white;
+  display: flex;
+  align-items: center;
+}
+
+.imageGallery{
+  width: 100%;
+  height: 73%;
+  max-height: 73%;
+  background-color:blueviolet;
+
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 50% 50%;
+  position: relative;
+}
+
+.image{
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.big{
+  grid-row-start: 1;
+  grid-row-end: 3;
+}
+
+.leftScrollMenu{
+  margin-left: auto;
+  margin-right: auto;
+  width: auto;
+  max-width: 100%;
+  background-color: transparent;
+  display: flex;
+  gap: 0.5rem;
+  overflow:scroll;
+  margin: 0.5rem;
+}
+.leftScrollMenu a{
+  text-decoration: none;
+}
+
+
+.item{
+  min-width: 110px;
+  height: 110px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  cursor: pointer;
+  position: relative;
+  margin: 5px;
+}
+
+.menuImage{
+  height: 70%;
+  width: 100%;
+  border-radius: 1rem;
+  box-shadow: 0px 2px 8px 0px #b3b3b3;;
+}
+
+.bottomText{
+  height: 30%;
+  width: 100%;
+  display: flex;
+}

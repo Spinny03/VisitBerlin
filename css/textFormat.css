@@ -1,0 +1,21 @@
+.cardTitle{
+    margin-left: 1rem;
+    font-weight: 500;
+}
+
+.smallText{
+    font-weight: 400;
+    font-size: 0.9rem;
+    color: #979EA6;
+    margin-top: 3px;
+}
+::placeholder {
+    color: black;
+    opacity: 1;
+    font-weight: lighter;
+}
+
+h2, h1{
+    margin-left: 10px;
+    font-weight: 500;
+}

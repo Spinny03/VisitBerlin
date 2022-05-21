@@ -1,0 +1,71 @@
+.imageGallery{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(1, 1fr);;
+    background-color: transparent;
+    /*height: calc(2 * 100vw);*/
+    margin-bottom: 110px;
+    gap: 1rem;
+    width: calc(100vw - 1rem);
+    margin: 0px 0.5rem 110px 0.5rem;
+    grid-template-areas: 
+    "a a"
+    "b c"
+    "d c"
+    "e f";
+}
+
+.notFirst{
+    margin-top: -95px;
+}
+
+.imageGallery a{
+    border-radius: 1rem;
+    min-height: 50vw;
+    box-shadow: 0px 0px 10px 0px #b3b3b3;
+    position: relative;
+}
+.imageGallery .topImage{
+    grid-area: a;
+}
+.imageGallery .left1{
+    grid-area: b;
+}
+.imageGallery .left2{
+    grid-area: d;
+}
+.imageGallery .bigRight{
+    grid-area: c;
+}
+.imageGallery .bottomLeft{
+    grid-area: e;
+}
+.imageGallery .bottomRight{
+    grid-area: f;
+}
+
+.tickImg{
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: 30px;
+    height: 30px;
+}
+
+/*
+    "topImage topImage"
+    "left1 bigRight"
+    "left2 bigRight"
+    "bottomLeft bottomRight";
+*/
+
+@media screen and (min-width: 1000px){
+    .imageGallery{
+        width: 100%;
+        margin: auto;
+        margin-bottom: 110px;
+    }
+    .imageGallery a{
+        min-height: 20vw;
+    }
+}

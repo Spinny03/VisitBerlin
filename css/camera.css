@@ -1,0 +1,18 @@
+body{
+    margin: 0;
+}
+
+#qr-reader{
+    border: 0;
+    background-color: aqua;
+}
+
+#qr-reader__scan_region{
+    height: 100vh;
+    width: 100vw;
+}
+
+video{
+    height: 100vh;
+    width: 100vw;
+}
