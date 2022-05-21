@@ -75,7 +75,7 @@
 <html lang="it">
        <head>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+        <link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
         <meta charset="UTF-8">
     
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -195,7 +195,7 @@
                 <form action="access/editldiDB.php" method="POST" class="innerForm">
                     <input type="hidden" name="ldi" value="<?php echo $id;?>">
                     <input type="text" name="name" value="<?php echo $name;?>">
-                    <textarea name="description" value="<?php echo $description;?>" rows="10"></textarea>
+                    <textarea name="description" rows="10"><?php echo $description;?></textarea>
                     <input id = "lat" type="text" name="lon" value="<?php echo $lon;?>">
                     <input id = "lng" type="text" name="lat" value="<?php echo $lat;?>">
 
