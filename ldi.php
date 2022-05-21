@@ -50,7 +50,7 @@
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
+    <link rel="stylesheet" href="css/components.css">
 
     <script src="jquery-2.1.4.min.js"></script>
 
@@ -130,6 +130,9 @@
                 ?>
         </div>
     </div>
+    <div class="loader-wrapper">
+        <span class="loader"><span class="loader-inner"></span></span>
+    </div>
     </body>
      
     <script>
@@ -147,8 +150,8 @@
         });
 
         const shareData = {
-            title: 'Last',
-            text: 'Viene a vedere questa opera su Last!',
+            title: 'Visit Berlin',
+            text: 'Viene a vedere questa opera su Visit Berlin!',
             url: "visitberlin.altervista.org/ldi.php?ldi=<?php echo $_GET["ldi"];?>"
         }
 
@@ -184,5 +187,9 @@
         });
 
     </script>
-
+    <script>
+        $(window).on("load",function(){
+          $(".loader-wrapper").fadeOut("slow");
+        });
+    </script>
 </html>

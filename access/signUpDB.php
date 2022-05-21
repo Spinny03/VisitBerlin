@@ -28,8 +28,8 @@
         mail(
             $email,
             "Grazie per eserti registrato!",
-            "Ciao!\n\nTi ringraziamo per esserti registrato su Last.\n\nGrazie,\n\nLast",
-            "From: Last <noreply@last.com>"	
+            "Ciao!\n\nTi ringraziamo per esserti registrato su Last.\n\nGrazie,\n\nVisit Berlin",
+            "From: Visit Berlin <noreply@visitberlin.com>"	
         );
         $conn->query("INSERT INTO username (email, pasw) VALUES ('".$email."', '".hash("sha256",$psw)."');");
         header("Location: ../logIn.php");

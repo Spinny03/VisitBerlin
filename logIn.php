@@ -14,6 +14,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
         <meta name="viewport" content="width=device-width" />
+        <script src="jquery-2.1.4.min.js"></script>
         <link rel="stylesheet" href="css/navBar.css">
         <link rel="stylesheet" href="css/cardsMenu.css">
         <link rel="stylesheet" href="css/textFormat.css">
@@ -79,5 +80,14 @@
                 </div>
             </nav>
         </div>
+        <div class="loader-wrapper">
+        <span class="loader"><span class="loader-inner"></span></span>
+    </div>
+
+    <script>
+        $(window).on("load",function(){
+          $(".loader-wrapper").fadeOut("slow");
+        });
+    </script>
     </body>
 </html>

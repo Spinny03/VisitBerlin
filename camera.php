@@ -8,6 +8,7 @@
 		<meta http-equiv="x-ua-compatible" content="ie=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <script src="jquery-2.1.4.min.js"></script>
+    <link rel="stylesheet" href="css/components.css">
     <title>Camera</title>
 	</head>
 	<body>
@@ -85,5 +86,15 @@
       color: #fff;
     }
   </style>
+  <!-- Non va -->
+      <div class="loader-wrapper">
+          <span class="loader"><span class="loader-inner"></span></span>
+      </div>
+
+      <script>
+          $(window).on("load",function(){
+          $(".loader-wrapper").fadeOut("slow");
+          });
+      </script>
   	</body>
 </html>

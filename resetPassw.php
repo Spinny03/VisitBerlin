@@ -14,6 +14,8 @@
        <head>
        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+        <script src="jquery-2.1.4.min.js"></script>
+        <link rel="stylesheet" href="css/components.css">
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
         <title>Reset Password</title>
     </head>
@@ -43,5 +45,14 @@
                 </div>
             </div>
         </div>
+        <div class="loader-wrapper">
+        <span class="loader"><span class="loader-inner"></span></span>
+    </div>
+
+    <script>
+        $(window).on("load",function(){
+          $(".loader-wrapper").fadeOut("slow");
+        });
+    </script>
     </body>
 </html>

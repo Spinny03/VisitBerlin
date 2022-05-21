@@ -126,7 +126,7 @@
                 $message .= " Grazie per averci scelto!\n\n";
                 $message .= "Cordiali saluti,\n\n";
                 $message .= "Il team di Last";
-                $headers = "From: Last <noreply@last.com>";
+                $headers = "From: Visit Berlin <noreply@visitberlin.com>";
                 mail($to, $subject, $message, $headers);
             }
 
