@@ -60,7 +60,7 @@
       }
     }
     var html5QrcodeScanner = new Html5QrcodeScanner(
-      "qr-reader", { fps: 100, qrbox: 500 });
+      "qr-reader", { fps: 60, qrbox: 500 });
     html5QrcodeScanner.render(onScanSuccess);  
   </script>
 

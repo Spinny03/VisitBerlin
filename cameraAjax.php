@@ -4,7 +4,6 @@
 		exit("Connessione fallita: " . $conn->connect_error);
 	}
 	$conn->query("USE my_visitberlin");
-
 	if(isset($_POST["link"]) && substr($_POST["link"],strlen("visitberlin.altervista.org/ldi.php?ldi=",),strlen($_POST["link"])!=0)){
 		$link = substr($_POST["link"],strlen("visitberlin.altervista.org/ldi.php?ldi=",),strlen($_POST["link"]));
 		$query = "SELECT * FROM `ldi` WHERE `id` = '$link'";
@@ -15,8 +14,7 @@
 			$name = $row["name"];
 			$description = $row["description"];
 			$image = $row["image"];
-			
-			echo $name;
+			echo "<a href='ldi.php?ldi=".$id."&scan=1'>".$name."</a>";
 		}
 		else{
 			echo "qr code non valido";

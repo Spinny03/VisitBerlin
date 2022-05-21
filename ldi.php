@@ -21,6 +21,10 @@
         $result1 = $conn->query($query);
         $tipo = $result1->fetch_assoc();
         if(!empty($_SESSION["user"])){
+            if(!empty($_GET["scan"])){
+                $sql = "INSERT INTO visitati (`ldi_id`, `email`) VALUES ('".$_GET["ldi"]."', '".$_SESSION["user"]."')";
+                $conn->query($sql);
+            }
             $query = "SELECT * FROM preferiti WHERE email = '".$_SESSION["user"]."' AND ldi_id = '".$_GET["ldi"]."';";
             $result = $conn->query($query);
             if($result->num_rows == 0){
