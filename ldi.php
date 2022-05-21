@@ -17,6 +17,9 @@
         $query = "SELECT * FROM ldi WHERE ldi.id = ".$_GET["ldi"];
         $result = $conn->query($query);
         $ldi = $result->fetch_assoc();
+        $query = "SELECT * FROM tipo WHERE tipo.id = ".$ldi["maintipo"];
+        $result1 = $conn->query($query);
+        $tipo = $result1->fetch_assoc();
         if(!empty($_SESSION["user"])){
             $query = "SELECT * FROM preferiti WHERE email = '".$_SESSION["user"]."' AND ldi_id = '".$_GET["ldi"]."';";
             $result = $conn->query($query);
@@ -30,7 +33,9 @@
  
         //echo "<img style='height: 100%; width: 100%;' src='assets/berlinPhotosProva/".$ldi["image"]."' alt=''>";
     }
-
+    if(empty($_SESSION["prevPage"])){
+        $_SESSION["prevPage"] = "index.php";
+    }
 ?>
 
 
@@ -84,21 +89,41 @@
             <div class="infoDiv">
                 <div>
                     <span class="smallTitle">Categoria principale:</span>
-                    <span> <b> Musei</b></span>
+                    <span> <b><?php echo $tipo["name"]?></b></span>
                 </div>
                 <div>
-                    <span class="smallTitle">Sottocategorie:</span>
-                    <span>Musei Musei MuseiMusei</span>
+
+                    <?php 
+                        $querySot = "SELECT * FROM tipo_ldi, tipo  WHERE tipo_ldi.tipo_id = tipo.id AND  tipo_ldi.ldi_id = '".$_GET["ldi"]."' AND tipo_ldi.tipo_id != '".$ldi["maintipo"]."'";
+                        $resultSot = $conn->query($querySot);
+                        if($resultSot->num_rows > 0){
+                            echo '<span class="smallTitle">Sottocategorie:</span>
+                                    <span>';
+                            while($row = $resultSot->fetch_assoc()){
+                                echo '<b>'.$row["name"].'</b> ';
+                            }
+                            echo '</span>';
+                        }
+                    ?>
+                    
                 </div>
             </div>
             <div class="titleDiv descriptionDiv">
                 <span>
-                    dfdfsdf aaaaaasgf dfdfsdf aaaaaasgf dfdfsdf dfdfsdf aaaaaasgf dfdfsdf aaaaaasgf dfdfsdf dfdfsdf aaaaaasgf dfdfsdf aaaaaasgf dfdfsdfdfdfsdf aaaaaasgf dfdfsdf aaaaaasgf dfdfsdf
+                    <?php echo $ldi["description"]?>                
                 </span>
             </div>
-            <div class="titleDiv audioDiv">
-                <audio controls><source src="#" type="audio/mp3"><source src="#" type="audio/wav">Your browser does not support the audio element.</audio>
-            </div>
+                <?php 
+                    if(!empty($ldi["audio"])){
+                        echo '
+                            <div class="titleDiv audioDiv">
+                                <audio controls>
+                                    <source src="assets/audioLdi/'.$ldi["audio"].'" type="audio/mpeg">
+                                    <source src="assets/audioLdi/'.$ldi["audio"].'" type="audio/wav">
+                                </audio>
+                            </div>';
+                    }
+                ?>
         </div>
     </div>
     </body>
