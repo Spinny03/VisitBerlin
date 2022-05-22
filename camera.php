@@ -66,17 +66,17 @@
     const qrCodeSuccessCallback = (decodedText, decodedResult) => {
         onScanSuccess(decodedText, decodedResult);
     };
-    const config = { fps: 10, qrbox: 250 };
+    const config = { fps: 60, qrbox: { width: 1000, height: 400 } };
     html5QrCode.start({ facingMode: "environment" }, config, qrCodeSuccessCallback);
   </script>
 
   <style>
-    /*video{
-      width: 100vw !important; 
-      height: 100vh;
-      position: fixed;
+    video{
+      width: 150% !important; 
+      /*height: 100vh;
+      position: fixed;*/
       object-fit: cover;
-    }*/
+    }
     *{
       margin: 0;
       overflow: hidden;
