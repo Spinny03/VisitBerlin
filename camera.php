@@ -63,8 +63,26 @@
     }
     var html5QrcodeScanner = new Html5QrcodeScanner(
       "qr-reader", { fps: 5, qrbox: 1000 });
-    html5QrcodeScanner.render(onScanSuccess); 
+      const qrCodeSuccessCallback = (decodedText, decodedResult) => {
+        if (decodedText !== lastResult) {
+          ++countResults;
+          lastResult = decodedText;
+          console.log(`Scan result ${decodedText}`, decodedResult);
+          $.ajax({
+              url:"cameraAjax.php",
+              method:"POST",
+              data:{link:lastResult},
+              success:function(data){
+                $( "#header-info" ).hide( "slow" );
+                console.log(data);
+                document.getElementById("header-info").innerHTML = data;
+                $( "#header-info" ).show( "slow" );
+            }
+          });
+      }
+      };
     html5QrcodeScanner.start({ facingMode: "environment" }, config, qrCodeSuccessCallback);
+    html5QrcodeScanner.render(onScanSuccess); 
  
   </script>
 
