@@ -14,7 +14,7 @@
 	<body>
 
     <div id="header-info">ciao</div>
-		<video id="camera--view" autoplay playsinline></video>
+		<!--<video id="camera--view" autoplay playsinline></video>-->
     <!--
     <form action="camera.php" method="post">
       <input type="hidden" name="code" id="code"  value="" placeholder="Scan the code">
