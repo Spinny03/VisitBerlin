@@ -64,7 +64,7 @@
     var html5QrcodeScanner = new Html5QrcodeScanner(
       "qr-reader", { fps: 5, qrbox: 1000 });
     html5QrcodeScanner.render(onScanSuccess); 
-    html5QrCode.start({ facingMode: "environment" }, config, qrCodeSuccessCallback);
+    html5QrcodeScanner.start({ facingMode: "environment" }, config, qrCodeSuccessCallback);
  
   </script>
 
