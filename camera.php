@@ -14,7 +14,7 @@
 	<body>
 
     <div id="header-info"></div>
-		<video id="camera--view" autoplay playsinline></video>
+		<video id="camera--view" style="visibility:hidden;"autoplay playsinline></video>
     <!--
     <form action="camera.php" method="post">
       <input type="hidden" name="code" id="code"  value="" placeholder="Scan the code">
@@ -39,7 +39,7 @@
 
     window.addEventListener("load", cameraStart, false);
   </script>
-  <div id="qr-reader" style="width:100%; height:100vh; visibility:hidden;"></div>
+  <div id="qr-reader" style="width:100%; height:100vh; "></div>
   <div id="qr-reader-results"></div>
   <script>
     var resultContainer = document.getElementById('qr-reader-results');
