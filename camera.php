@@ -8,7 +8,7 @@
 		<meta http-equiv="x-ua-compatible" content="ie=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <script src="jquery-2.1.4.min.js"></script>
-    <link rel="stylesheet" href="css/components.css">
+    <!--<link rel="stylesheet" href="css/components.css">-->
     <title>Camera</title>
 	</head>
 	<body>
@@ -40,7 +40,6 @@
     window.addEventListener("load", cameraStart, false);*/
   </script>
   <div id="qr-reader" style="width:100%; height:100vh; "></div>
-  <div id="qr-reader-results"></div>
   <script>
     var lastResult, countResults = 0;
     function onScanSuccess(decodedText, decodedResult) {
@@ -62,25 +61,36 @@
           });
       }
     }
-
+    let qrboxFunction = function(viewfinderWidth, viewfinderHeight) {
+    let minEdgePercentage = 0.7; // 70%
+    let minEdgeSize = Math.min(viewfinderWidth, viewfinderHeight);
+    let qrboxSize = Math.floor(minEdgeSize * minEdgePercentage);
+    return {
+        width: qrboxSize,
+        height: qrboxSize
+    };
+}
     const html5QrCode = new Html5Qrcode("qr-reader");
     const qrCodeSuccessCallback = (decodedText, decodedResult) => {
         onScanSuccess(decodedText, decodedResult);
     };
-    const config = { fps: 60, qrbox: { width: 1000, height: 400 } };
+    const config = { fps: 15, qrbox: qrboxFunction, aspectRatio: window.innerWidth / window.innerHeight };
     html5QrCode.start({ facingMode: "environment" }, config, qrCodeSuccessCallback);
+    
+    window.addEventListener('resize', function(event) {
+      html5QrCode.c
+            }, true);
   </script>
 
   <style>
     video{
-      width: 150% !important; 
+      width: 100% !important; 
       /*height: 100vh;
-      position: fixed;*/
-      object-fit: cover;
+      position: fixed;
+      object-fit: cover;*/
     }
     *{
       margin: 0;
-      overflow: hidden;
     }
     #header-info {
       position: absolute;
@@ -125,7 +135,6 @@
     }
 
   </style>
-  <!-- Non va -->
       <div class="loader-wrapper">
           <span class="loader"><span class="loader-inner"></span></span>
       </div>
