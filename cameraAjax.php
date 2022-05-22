@@ -14,6 +14,7 @@
 			$name = $row["name"];
 			$description = $row["description"];
 			$image = $row["image"];
+			echo '<div class="smallImage" style="background-image: url(assets/berlinPhotosProva/'.$image.');"></div>';
 			echo "<a href='ldi.php?ldi=".$id."&scan=1'>".$name."</a>";
 		}
 		else{

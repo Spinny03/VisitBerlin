@@ -12,7 +12,7 @@
     <title>Camera</title>
 	</head>
 	<body>
-
+    <a href="index.php"><img src="assets/icon/back.svg" alt="" class="backIcon"></a>
     <div id="header-info">ciao</div>
 		<!--<video id="camera--view" autoplay playsinline></video>-->
     <!--
@@ -57,6 +57,7 @@
                 console.log(data);
                 document.getElementById("header-info").innerHTML = data;
                 $( "#header-info" ).show( "slow" );
+                $('#header-info').css('display', 'flex');
             }
           });
       }
@@ -97,11 +98,32 @@
       border-radius: 20px;
       display: none;
       text-align: center;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+
     }
     #header-info a{
         text-decoration: none;
         color: #FF4D3C;
     }
+    .smallImage{
+      min-width: 30px;
+      height: 30px;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      display: inline-block;
+      border-radius: 10px;
+    }
+
+    .backIcon{
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 100;
+    }
+
   </style>
   <!-- Non va -->
       <div class="loader-wrapper">
