@@ -33,7 +33,7 @@
         <link rel="stylesheet" href="css/textFormat.css">
         <title>Mappa</title>
     </head>
-    <body>
+    <body style="width: 100%;">
         <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
         <link href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" rel="stylesheet"/>
         <div id="osm-map"></div>
