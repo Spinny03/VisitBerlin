@@ -77,9 +77,8 @@
     const config = { fps: 15, qrbox: qrboxFunction, aspectRatio: window.innerWidth / window.innerHeight };
     html5QrCode.start({ facingMode: "environment" }, config, qrCodeSuccessCallback);
     
-    window.addEventListener('resize', function(event) {
-      html5QrCode.c
-            }, true);
+
+
   </script>
 
   <style>
@@ -89,8 +88,12 @@
       position: fixed;
       object-fit: cover;*/
     }
+
     *{
       margin: 0;
+    }
+    body{
+      overflow: hidden;
     }
     #header-info {
       position: absolute;
@@ -147,6 +150,7 @@
 
       </script>
       <script eval>
+        
           $(window).on("load",function(){
           $(".loader-wrapper").fadeOut("slow");
           });
