@@ -22,7 +22,7 @@
     -->
 
   <script>
-    var constraints = { video: { facingMode: "environment" }, audio: false };
+    /*var constraints = { video: { facingMode: "environment" }, audio: false };
     var track = null;
     const cameraView = document.querySelector("#camera--view");
     function cameraStart() {
@@ -37,7 +37,7 @@
             });
     }
 
-    window.addEventListener("load", cameraStart, false);
+    window.addEventListener("load", cameraStart, false);*/
   </script>
   <div id="qr-reader" style="width:100%; height:100vh; "></div>
   <div id="qr-reader-results"></div>
@@ -63,7 +63,7 @@
       }
     }
     var html5QrcodeScanner = new Html5QrcodeScanner(
-      "qr-reader", { fps: 60, qrbox: 1000 });
+      "qr-reader", { fps: 5, qrbox: 1000 });
     html5QrcodeScanner.render(onScanSuccess);  
   </script>
 
