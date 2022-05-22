@@ -42,7 +42,6 @@
   <div id="qr-reader" style="width:100%; height:100vh; "></div>
   <div id="qr-reader-results"></div>
   <script>
-    var resultContainer = document.getElementById('qr-reader-results');
     var lastResult, countResults = 0;
     function onScanSuccess(decodedText, decodedResult) {
       if (decodedText !== lastResult) {
@@ -64,7 +63,9 @@
     }
     var html5QrcodeScanner = new Html5QrcodeScanner(
       "qr-reader", { fps: 5, qrbox: 1000 });
-    html5QrcodeScanner.render(onScanSuccess);  
+    html5QrcodeScanner.render(onScanSuccess); 
+    html5QrCode.start({ facingMode: "environment" }, config, qrCodeSuccessCallback);
+ 
   </script>
 
   <style>
