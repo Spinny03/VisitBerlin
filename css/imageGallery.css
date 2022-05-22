@@ -59,7 +59,7 @@
     "bottomLeft bottomRight";
 */
 
-@media screen and (min-width: 1000px){
+@media screen and (min-width: 1200px){
     .imageGallery{
         width: 100%;
         margin: auto;
@@ -68,4 +68,8 @@
     .imageGallery a{
         min-height: 20vw;
     }
+    .notFirst{
+        margin-top: -95px;
+    }
+    
 }

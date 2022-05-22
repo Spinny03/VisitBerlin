@@ -13,7 +13,7 @@
 	</head>
 	<body>
 
-    <div id="header-info"></div>
+    <div id="header-info">ciao</div>
 		<video id="camera--view" autoplay playsinline></video>
     <!--
     <form action="camera.php" method="post">
@@ -54,14 +54,16 @@
               method:"POST",
               data:{link:lastResult},
               success:function(data){
+                $( "#header-info" ).hide( "slow" );
                 console.log(data);
                 document.getElementById("header-info").innerHTML = data;
+                $( "#header-info" ).show( "slow" );
             }
           });
       }
     }
     var html5QrcodeScanner = new Html5QrcodeScanner(
-      "qr-reader", { fps: 60, qrbox: 500 });
+      "qr-reader", { fps: 60, qrbox: 1000 });
     html5QrcodeScanner.render(onScanSuccess);  
   </script>
 
@@ -78,12 +80,24 @@
     }
     #header-info {
       position: absolute;
-      top: 0;
+      top: 20px;
+      left: 0; 
+      right: 0; 
+      margin-left: auto; 
+      margin-right: auto; 
       z-index: 3;
-      background-color: #4caf50;
+      background-color: #fafafa;
       max-width: 600px;
-      padding: 25px 25px 25px 75px;
-      color: #fff;
+      padding: 12px 25px 12px 25px;
+      color: #FF4D3C;
+      width: 200px;
+      border-radius: 20px;
+      display: none;
+      text-align: center;
+    }
+    #header-info a{
+        text-decoration: none;
+        color: #FF4D3C;
     }
   </style>
   <!-- Non va -->
@@ -91,10 +105,15 @@
           <span class="loader"><span class="loader-inner"></span></span>
       </div>
 
-      <script>
+      <script eval>
           $(window).on("load",function(){
           $(".loader-wrapper").fadeOut("slow");
           });
+
+          window.onload = function(){
+			      document.getElementById('qr-reader__camera_permission_button').click();
+          };
+
       </script>
   	</body>
 </html>
