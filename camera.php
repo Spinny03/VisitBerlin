@@ -68,8 +68,6 @@
     };
     const config = { fps: 10, qrbox: { width: 250, height: 250 } };
     html5QrCode.start({ facingMode: "environment" }, config, qrCodeSuccessCallback);
-    html5QrCode.start({ deviceId: { exact: cameraId} }, config, qrCodeSuccessCallback);
-
   </script>
 
   <style>
@@ -115,9 +113,6 @@
           $(".loader-wrapper").fadeOut("slow");
           });
 
-          window.onload = function(){
-			      document.getElementById('qr-reader__camera_permission_button').click();
-          };
 
       </script>
       <script eval>
