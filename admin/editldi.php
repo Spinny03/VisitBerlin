@@ -28,7 +28,7 @@
         $ldi = $result->fetch_assoc();    
         $img = "../assets/berlinPhotosProva/".$ldi["image"];
         if(!empty($ldi["audio"])){
-            $audio = "../assets/audioldi/".$ldi["audio"];
+            $audio = "../assets/audioLdi/".$ldi["audio"];
         }
         else{
             $audio = "";
@@ -43,11 +43,11 @@
     else{    
         $img = "../assets/add.svg"; 
         $audio = "";     
-        if(file_exists("../assets/audioldi/new.mp3")){
-            $audio = "../assets/audioldi/new.mp3";
+        if(file_exists("../assets/audioLdi/new.mp3")){
+            $audio = "../assets/audioLdi/new.mp3";
         }    
-        if(file_exists("../assets/audioldi/new.wav")){
-            $audio = "../assets/audioldi/new.wav";
+        if(file_exists("../assets/audioLdi/new.wav")){
+            $audio = "../assets/audioLdi/new.wav";
         } 
         if(file_exists("../assets/berlinPhotosProva/new.jpg")){
             $img = "../assets/berlinPhotosProva/new.jpg";

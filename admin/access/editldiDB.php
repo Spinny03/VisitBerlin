@@ -168,15 +168,15 @@
             }
 
 
-            if(file_exists("../../assets/audioldi/new.mp3")){
+            if(file_exists("../../assets/audioLdi/new.mp3")){
                 $sql = 'UPDATE ldi SET `audio` = "'.$result["id"].'.mp3" WHERE id = "'.$result["id"].'"';
                 $conn->query($sql);
-                rename('../../assets/audioldi/new.mp3', '../../assets/audioldi/'.$result["id"].'.mp3');
+                rename('../../assets/audioLdi/new.mp3', '../../assets/audioLdi/'.$result["id"].'.mp3');
             }
-            elseif(file_exists("../../assets/audioldi/new.wav")){
+            elseif(file_exists("../../assets/audioLdi/new.wav")){
                 $sql = 'UPDATE ldi SET `audio` = "'.$result["id"].'.wav" WHERE id = "'.$result["id"].'"';
                 $conn->query($sql);
-                rename('../../assets/audioldi/new.wav', '../../assets/audioldi/'.$result["id"].'.wav');
+                rename('../../assets/audioLdi/new.wav', '../../assets/audioLdi/'.$result["id"].'.wav');
             }
             
         }
@@ -275,7 +275,7 @@
                 $oldphoto = $conn->query($old);
                 $oldphoto = mysqli_fetch_assoc($oldphoto); 
                 if(!empty($oldphoto["audio"])){
-                    unlink("../../assets/audioldi/".$oldphoto["audio"]);
+                    unlink("../../assets/audioLdi/".$oldphoto["audio"]);
                     $del = "UPDATE ldi SET `audio` = null WHERE id = '".$_POST["audio"]."'";
                     $conn->query($del);
                 }
@@ -285,7 +285,7 @@
             }
         
         
-            $target_dir = "../../assets/audioldi/";
+            $target_dir = "../../assets/audioLdi/";
             $target_file = $target_dir . basename($_FILES["afile"]["name"]);
             $uploadOk = 1;
             $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
@@ -309,7 +309,7 @@
                 $oldphoto = $conn->query($old);
                 $oldphoto = mysqli_fetch_assoc($oldphoto); 
                 if(!empty($oldphoto["audio"]) && $oldphoto["audio"] != "NoImg.png"){
-                    unlink("../../assets/audioldi/".$oldphoto["audio"]);
+                    unlink("../../assets/audioLdi/".$oldphoto["audio"]);
                 }
                 if (move_uploaded_file($_FILES["afile"]["tmp_name"], $target_file)) {
                     $sql = "UPDATE ldi SET `audio` = '".$_POST["audio"] .".". $imageFileType. "' WHERE id = '".$_POST["audio"]."'";
@@ -317,8 +317,8 @@
                 } 
             }
         
-            $oldname = "../../assets/audioldi/".htmlspecialchars(basename( $_FILES["afile"]["name"]));
-            $newname = "../../assets/audioldi/".$_POST["audio"] .".". $imageFileType;
+            $oldname = "../../assets/audioLdi/".htmlspecialchars(basename( $_FILES["afile"]["name"]));
+            $newname = "../../assets/audioLdi/".$_POST["audio"] .".". $imageFileType;
             rename($oldname, $newname);
             header("Location: ../editldi.php?ldi=".$_POST["audio"]);
             $conn->close();
@@ -326,20 +326,20 @@
         }
         else{
             echo "173";
-            if(file_exists("../../assets/audioldi/new.mp3")){
-                unlink("../../assets/audioldi/new.mp3");
+            if(file_exists("../../assets/audioLdi/new.mp3")){
+                unlink("../../assets/audioLdi/new.mp3");
             }
-            if( file_exists("../../assets/audioldi/new.wav")){
-                unlink("../../assets/audioldi/new.wav");
+            if( file_exists("../../assets/audioLdi/new.wav")){
+                unlink("../../assets/audioLdi/new.wav");
             }
 
-            $target_dir = "../../assets/audioldi/";
+            $target_dir = "../../assets/audioLdi/";
             $target_file = $target_dir . basename($_FILES["afile"]["name"]);
             $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
             if($imageFileType == "mp3" && $imageFileType == "wav" ) {
                 move_uploaded_file($_FILES["afile"]["tmp_name"], $target_file);
-                $oldname = "../../assets/audioldi/".htmlspecialchars(basename( $_FILES["afile"]["name"]));
-                $newname = "../../assets/audioldi/new.". $imageFileType;
+                $oldname = "../../assets/audioLdi/".htmlspecialchars(basename( $_FILES["afile"]["name"]));
+                $newname = "../../assets/audioLdi/new.". $imageFileType;
                 rename($oldname, $newname);
             }
 
