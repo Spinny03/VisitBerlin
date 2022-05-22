@@ -120,10 +120,6 @@
           $(".loader-wrapper").fadeOut("slow");
           });
 
-            
-        window.onload = function(){
-			document.getElementById('qr-reader__camera_permission_button').click();
-        };
       </script>
   	</body>
 </html>
