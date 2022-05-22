@@ -123,7 +123,7 @@
                 $message = "Ciao ".$row["firstName"]." ".$row["surname"]."!\n\n";
                 $message .= "Abbiamo aggiunto: ".$_POST["name"].".\n\n";
                 $message .= "visitberlin.altervista.org/ldi.php?ldi=".$result["id"]." \n\n";
-                $message .= " Grazie per averci scelto!\n\n";
+                $message .= "Grazie per averci scelto!\n\n";
                 $message .= "Cordiali saluti,\n\n";
                 $message .= "Il team di Last";
                 $headers = "From: Visit Berlin <noreply@visitberlin.com>";
