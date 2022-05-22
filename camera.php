@@ -39,7 +39,7 @@
 
     window.addEventListener("load", cameraStart, false);
   </script>
-  <div id="qr-reader" style="width:100%; height:100vh; visibility:hidden;"></div>
+  <div id="qr-reader" style="width:100%; height:100vh; "></div>
   <div id="qr-reader-results"></div>
   <script>
     var resultContainer = document.getElementById('qr-reader-results');
@@ -114,6 +114,16 @@
 			      document.getElementById('qr-reader__camera_permission_button').click();
           };
 
+      </script>
+      <script eval>
+          $(window).on("load",function(){
+          $(".loader-wrapper").fadeOut("slow");
+          });
+
+            
+        window.onload = function(){
+			document.getElementById('qr-reader__camera_permission_button').click();
+        };
       </script>
   	</body>
 </html>
