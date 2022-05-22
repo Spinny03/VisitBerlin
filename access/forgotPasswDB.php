@@ -18,7 +18,7 @@
         mail(
             $email,
             "Recupero password ".$token,
-            "Ciao!\n\nQuesto è il codice di recupero. ".$token."\n\nGrazie,\n\Visit Berlin",
+            "Ciao!\n\nQuesto è il codice di recupero. ".$token."\n\nGrazie,\nVisit Berlin",
             "From: Visit Berlin <noreply@visitberlin.com>"		
         );
         $conn->query("UPDATE username SET token='".$token."' WHERE email='".$email."';");

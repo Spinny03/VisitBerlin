@@ -8,10 +8,10 @@
 		<meta http-equiv="x-ua-compatible" content="ie=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <script src="jquery-2.1.4.min.js"></script>
-    <!--<link rel="stylesheet" href="css/components.css">-->
+    <link rel="stylesheet" href="css/components.css">
     <title>Camera</title>
 	</head>
-	<body>
+	<body> 
     <a href="index.php"><img src="assets/icon/back.svg" alt="" class="backIcon"></a>
     <div id="header-info">ciao</div>
 		<!--<video id="camera--view" autoplay playsinline></video>-->
@@ -62,7 +62,7 @@
       }
     }
     let qrboxFunction = function(viewfinderWidth, viewfinderHeight) {
-    let minEdgePercentage = 0.7; // 70%
+    let minEdgePercentage = 0.6; // 70%
     let minEdgeSize = Math.min(viewfinderWidth, viewfinderHeight);
     let qrboxSize = Math.floor(minEdgeSize * minEdgePercentage);
     return {

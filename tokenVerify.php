@@ -43,7 +43,6 @@
                     <input type="text" placeholder="123456" name="token" required>
                     <button type="submit" name="login" class="logbtn">conferma</button>
                 </form>
-                <a href="<?php echo $_SERVER["HTTP_REFERER"] ?>" class="Link">indietro</a>
             </div>  
         </div>
         <div class="divWrapper">
