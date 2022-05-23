@@ -39,7 +39,7 @@
 
     window.addEventListener("load", cameraStart, false);*/
   </script>
-  <div id="qr-reader" style="width:100%; height:100vh; "></div>
+  <div id="qr-reader" style=" height:100%; "></div>
   <script>
     var lastResult, countResults = 0;
     function onScanSuccess(decodedText, decodedResult) {
@@ -87,9 +87,7 @@
     };
     const config = { fps: 15,  qrbox : qrboxFunction , videoConstraints: {
               facingMode: 'environment',
-              aspectRatio: width < 600
-                ? mobileAspectRatio
-                : aspectRatio,
+              aspectRatio: window.innerWidth / window.innerHeight
             },};
     html5QrCode.start({ facingMode: "environment" }, config, qrCodeSuccessCallback);
     
@@ -99,10 +97,10 @@
 
   <style>
     video{
-      width: 100% !important;
-      height: 99.4% !important;
-      position: fixed;
-      object-fit: cover;
+      height: 100% !important;
+      width: 100vw !important;
+      /*position: fixed;
+      object-fit: cover;*/
     }
 
     *{
