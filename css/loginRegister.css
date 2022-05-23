@@ -41,7 +41,8 @@ span{
     font-weight: 300;
 }
 .bottom{
-    position: absolute;
+    margin-top: 20px;
+    /*position: absolute;*/
     bottom: 110px;
     display: flex;
     flex-direction: column;
