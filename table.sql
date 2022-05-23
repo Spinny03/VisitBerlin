@@ -32,6 +32,7 @@ CREATE TABLE username(
     `gps` TINYINT(1),
     `token` int, 
     `image` varchar(255),
+    `admin` TINYINT(1) DEFAULT 0,
     `pasw` varchar(255) NOT NULL
 );
 CREATE TABLE preferiti(
@@ -46,7 +47,7 @@ CREATE TABLE visitati(
     primary key(`email`, `ldi_id`)
 );
 INSERT INTO `username`(`email`, `firstName`, `surname`, `notice`, `pasw`) VALUES ("filippo.spinella.2003@calvino.edu.it","Filippo0","Spinella0",1,"19513fdc9da4fb72a4a05eb66917548d3c90ff94d5419e1f2363eea89dfee1dd");
-INSERT INTO `username`(`email`, `firstName`, `surname`, `notice`, `pasw`) VALUES ("fili.spin2003@gmail.com","Filippo1","Spinella1",1,"19513fdc9da4fb72a4a05eb66917548d3c90ff94d5419e1f2363eea89dfee1dd");
+INSERT INTO `username`(`admin`, `email`, `firstName`, `surname`, `notice`, `pasw`) VALUES (1,"fili.spin2003@gmail.com","Filippo1","Spinella1",1,"19513fdc9da4fb72a4a05eb66917548d3c90ff94d5419e1f2363eea89dfee1dd");
 INSERT INTO `username`(`email`, `firstName`, `surname`, `notice`, `pasw`) VALUES ("filippo.spinella2003@hotmail.com","Filippo2","Spinella2",0,"19513fdc9da4fb72a4a05eb66917548d3c90ff94d5419e1f2363eea89dfee1dd");
 
 INSERT INTO `tipo`(`name`, `image`, `description`) VALUES ("StreetArts", "1.svg", "Arte di strada"); 
