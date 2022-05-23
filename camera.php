@@ -9,6 +9,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <script src="jquery-2.1.4.min.js"></script>
     <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/navBar.css">
     <title>Camera</title>
 	</head>
 	<body> 
@@ -83,7 +84,7 @@
     const qrCodeSuccessCallback = (decodedText, decodedResult) => {
         onScanSuccess(decodedText, decodedResult);
     };
-    const config = { fps: 15, qrbox: qrboxFunction, videoConstraints: {
+    const config = { fps: 15,  qrbox : 250 , videoConstraints: {
               facingMode: 'environment',
               aspectRatio: width < 600
                 ? mobileAspectRatio
@@ -97,10 +98,10 @@
 
   <style>
     video{
-      width: 100% !important; 
-      /*height: 100vh;
+      width: 100% !important;
+      height: 99.5% !important;
       position: fixed;
-      object-fit: cover;*/
+      object-fit: cover;
     }
 
     *{
@@ -170,5 +171,18 @@
           });
 
       </script>
+              <div class="divWrapper">
+            <a href="camera.php" class="camera"><img src="assets/icon/camShoot.svg" alt="" class="icon"></a>
+            <nav class="bottomNav">
+                <div class="insideNav">
+                <a href="map.php"><img src="assets/icon/searchOff.svg" alt="" class="icon"></a>
+                <a href="index.php"><img src="assets/icon/boardsOff.svg" alt="" class="icon"></a>
+                </div>
+                <div class="insideNav">
+                <a href="liked.php"><img src="assets/icon/preferOff.svg" alt="" class="icon"></a>
+                <a href="account.php"><img src="assets/icon/profileOff.svg" alt="" class="icon"></a>
+                </div>
+            </nav>
+        </div>
   	</body>
 </html>
