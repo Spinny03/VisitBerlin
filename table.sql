@@ -71,7 +71,7 @@ INSERT INTO `ldi`(`name`, `description`, `lon`, `lat`, `image`, `audio`, `mainti
 INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (5,3);
 INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (5,5);
 INSERT INTO `ldi`(`name`, `description`, `lon`, `lat`, `image`, `audio`, `maintipo`) VALUES ("Torre dell'acqua di Prenzlauer Berg","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla a velit vitae lorem volutpat consectetur vel in mi. In sit amet felis et dolor semper ullamcorper eu vel diam. Pellentesque ultrices, sem eget suscipit hendrerit, ","52.534187788678985","13.418663585412373","6.jpg", "6.mp3", "3");
-INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (6,1);
+INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (6,3);
 INSERT INTO `ldi`(`name`, `description`, `lon`, `lat`, `image`, `audio`, `maintipo`) VALUES ("Monumento ai soldati polacchi e agli antifascisti tedeschi","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla a velit vitae lorem volutpat consectetur vel in mi. In sit amet felis et dolor semper ullamcorper eu vel diam. Pellentesque ultrices, sem eget suscipit hendrerit, ","52.52874531071378","13.437773436423308","7.jpg", "7.mp3", "2");
 INSERT INTO `tipo_ldi`(`ldi_id`,`tipo_id`) VALUES (7,2);
 INSERT INTO `ldi`(`name`, `description`, `lon`, `lat`, `image`, `audio`, `maintipo`) VALUES ("Memoriale agli omosessuali perseguitati sotto il nazismo","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla a velit vitae lorem volutpat consectetur vel in mi. In sit amet felis et dolor semper ullamcorper eu vel diam. Pellentesque ultrices, sem eget suscipit hendrerit, ","52.513251728691856","13.376121538989821","8.jpg", "8.mp3", "2");

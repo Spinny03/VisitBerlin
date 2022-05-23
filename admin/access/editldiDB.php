@@ -53,8 +53,9 @@
                 $sql .= 'maintipo = "'.$_POST["maintipo"].'",';
             }
             $cut = "DELETE FROM tipo_ldi WHERE ldi_id = '".$_POST["ldi"]."';";
-            echo $cut;
             $conn->query($cut);
+            $main = "INSERT INTO tipo_ldi SET ldi_id = '".$_POST["ldi"]."', tipo_id = '".$_POST["maintipo"]."';";
+            $conn->query($main);
             if(isset($_POST["tipo"])){
                 foreach($_POST["tipo"] as $tipo){
                     $add = "INSERT INTO tipo_ldi SET ldi_id = '".$_POST["ldi"]."', tipo_id = '".$tipo."';";

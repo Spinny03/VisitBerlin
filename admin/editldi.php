@@ -89,7 +89,6 @@
         <link rel="stylesheet" href="../css/cardsMenu.css">
         <link rel="stylesheet" href="../css/textFormat.css">
         <link rel="stylesheet" href="../css/imageGallery.css">
-        <link rel="stylesheet" href="../css/components.css">
         <link rel="stylesheet" href="css/editldi.css">
         <title>Admin</title>
     </head>
