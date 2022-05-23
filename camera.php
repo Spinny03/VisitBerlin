@@ -61,6 +61,15 @@
           });
       }
     }
+    const width = window.innerWidth
+          const height = window.innerHeight
+          const aspectRatio = width / height
+          const reverseAspectRatio = height / width
+
+          const mobileAspectRatio = reverseAspectRatio > 1.5
+            ? reverseAspectRatio + (reverseAspectRatio * 12 / 100)
+            : reverseAspectRatio
+
     let qrboxFunction = function(viewfinderWidth, viewfinderHeight) {
     let minEdgePercentage = 0.6; // 70%
     let minEdgeSize = Math.min(viewfinderWidth, viewfinderHeight);
@@ -74,7 +83,12 @@
     const qrCodeSuccessCallback = (decodedText, decodedResult) => {
         onScanSuccess(decodedText, decodedResult);
     };
-    const config = { fps: 15, qrbox: qrboxFunction, aspectRatio: window.innerHeigh / window.tinnerWidth };
+    const config = { fps: 15, qrbox: qrboxFunction, videoConstraints: {
+              facingMode: 'environment',
+              aspectRatio: width < 600
+                ? mobileAspectRatio
+                : aspectRatio,
+            },};
     html5QrCode.start({ facingMode: "environment" }, config, qrCodeSuccessCallback);
     
 
