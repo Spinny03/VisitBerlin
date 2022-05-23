@@ -61,6 +61,7 @@
           });
       }
     }
+    console.log(window.innerHeight)
     const width = window.innerWidth
           const height = window.innerHeight
           const aspectRatio = width / height
@@ -71,8 +72,9 @@
             : reverseAspectRatio
 
     let qrboxFunction = function(viewfinderWidth, viewfinderHeight) {
+      console.log(viewfinderHeight)
     let minEdgePercentage = 0.6; // 70%
-    let minEdgeSize = Math.min(viewfinderWidth, viewfinderHeight);
+    let minEdgeSize = Math.min(window.innerWidth, window.innerHeight);
     let qrboxSize = Math.floor(minEdgeSize * minEdgePercentage);
     return {
         width: qrboxSize,
@@ -83,7 +85,7 @@
     const qrCodeSuccessCallback = (decodedText, decodedResult) => {
         onScanSuccess(decodedText, decodedResult);
     };
-    const config = { fps: 15,  qrbox : 250 , videoConstraints: {
+    const config = { fps: 15,  qrbox : qrboxFunction , videoConstraints: {
               facingMode: 'environment',
               aspectRatio: width < 600
                 ? mobileAspectRatio
@@ -107,7 +109,7 @@
       margin: 0;
     }
     body{
-      overflow: hidden;
+      overflow: hidden !important;
     }
     #header-info {
       position: absolute;
