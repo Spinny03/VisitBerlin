@@ -84,7 +84,7 @@
                                 if(isset($data["email"])){
                                     echo "value='".$data["email"]."'";
                                 }
-        echo '              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+        echo '              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" readonly>
                         </div>
                         <span class="choice">Notifiche email
                             <label class="switch" id="emailSwitch">

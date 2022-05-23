@@ -20,7 +20,7 @@
         //aggiorna il nome e il cognome dell utente nel database
         $query = "UPDATE username SET `firstName` = '".$_POST["name"]."', `surname` = '".$_POST["surname"]."' WHERE `email` = '".$_SESSION["user"]."';";
         $statement = $conn->query($query);
-        header("Location: ../index.php");
+        header("Location: ../account.php");
         exit();
     }
     if(isset($_POST["check"]) && isset($_SESSION["user"]) && $_POST["check"] == "true"){
