@@ -87,7 +87,9 @@
     };
     const config = { fps: 15,  qrbox : qrboxFunction , videoConstraints: {
               facingMode: 'environment',
-              aspectRatio: window.innerWidth / window.innerHeight
+              aspectRatio: width < 600
+                ? mobileAspectRatio
+                : aspectRatio,
             },};
     html5QrCode.start({ facingMode: "environment" }, config, qrCodeSuccessCallback);
     
