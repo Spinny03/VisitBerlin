@@ -87,20 +87,8 @@
         echo '              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
                         </div>
                         <span class="choice">Notifiche email
-                            <label class="switch">
-                                <input type="checkbox" checked>
-                                <span class="slider round"></span>
-                            </label>
-                        </span>
-                        <span class="choice">Posizione durante ultilizzo app: 
-                            <label class="switch">
-                                <input type="checkbox" checked>
-                                <span class="slider round"></span>
-                            </label>
-                        </span>
-                        <span class="choice">Modalità notte
-                            <label class="switch">
-                                <input type="checkbox" checked>
+                            <label class="switch" id="emailSwitch">
+                                <input type="checkbox" id="emailSwitchBox">
                                 <span class="slider round"></span>
                             </label>
                         </span>
@@ -157,9 +145,55 @@
     </body>
 
     <script >
+        $.ajax({
+                    url:"access/accountDB.php",
+                    method:"POST",
+                    data:{control:"true"},
+                    success:function(data){
+                        console.log(data);
+                        if(data == "true"){
+                            $("#emailSwitchBox").attr('checked', true);
+                            //console.log("checked");
+                        }
+                        else{
+                            $("#emailSwitchBox").attr('checked', false);
+                            //console.log("unchecked");
+                        }                  
+                    }
+        });
+
+
         $(window).on("load",function(){
           $(".loader-wrapper").fadeOut("slow");
         });
+
+        $('#emailSwitch').on('change', function(){
+            if($(this).find('input').is(':checked')){
+                //$(this).find('input').prop('checked', false);
+                //console.log("checked");
+                $.ajax({
+                    url:"access/accountDB.php",
+                    method:"POST",
+                    data:{check:"true"},
+                    success:function(data){
+                        //console.log("ciao checked");                  
+                    }
+                });
+            }
+            else{
+                //$(this).find('input').prop('checked', true);
+                //console.log("unchecked");
+                $.ajax({
+                    url:"access/accountDB.php",
+                    method:"POST",
+                    data:{check:"false"},
+                    success:function(data){
+                        //console.log("ciao unchecked");                  
+                    }
+                });
+            }
+        });
+
     </script>
     <?php $conn->close(); ?>
 </html>

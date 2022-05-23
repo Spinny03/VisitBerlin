@@ -93,7 +93,7 @@
         <link rel="stylesheet" href="css/editldi.css">
         <title>Admin</title>
     </head>
-    <body>
+    <body style="width:100%">
     <div class="left">
         <div class="leftScrollMenu">
                 <?php 

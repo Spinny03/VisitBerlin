@@ -86,4 +86,7 @@ body {
     .camera{
         display: none;
     }
+    .insideNav{
+        width: 50%;
+    }
 }
