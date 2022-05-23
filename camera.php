@@ -74,7 +74,14 @@
     const qrCodeSuccessCallback = (decodedText, decodedResult) => {
         onScanSuccess(decodedText, decodedResult);
     };
-    const config = { fps: 15, qrbox: qrboxFunction, aspectRatio: window.innerWidth / window.innerHeight };
+    const aspect = window.outerWidth / window.outerHeight;
+    if(window.outerWidth < window.outerHeight){
+      const aspect = window.outerWidth / window.outerHeight;
+    }
+    else{
+      const aspect = window.outerHeight / window.outerWidth;
+    }
+    const config = { fps: 15, qrbox: qrboxFunction, aspectRatio: aspect };
     html5QrCode.start({ facingMode: "environment" }, config, qrCodeSuccessCallback);
     
 
