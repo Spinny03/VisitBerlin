@@ -1,3 +1,15 @@
+<?php 
+    session_start(); 
+    if((empty($_SESSION["admin"]) && empty($_COOKIE["admin"]))){
+        header("Location: logIn.php");
+        exit();
+    }
+    if(empty($_SESSION["admin"])){
+        if(isset($_COOKIE["admin"])){
+            $_SESSION["admin"] = $_COOKIE["admin"];
+        }
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +22,7 @@
 <body>
     <div class="nav">
         <h1>Pannello di controllo</h1>
-        <a href="#">esci</a>
+        <a href="access/accountDB.php?change=logOUT">esci</a>
     </div>
     <div class="flex">
         <a href="editldi.php">Modifica luoghi di interesse</a>

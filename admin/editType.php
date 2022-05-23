@@ -1,14 +1,14 @@
 <?php
-    session_start();/*
+    session_start();
     if((empty($_SESSION["admin"]) && empty($_COOKIE["admin"]))){
-        header("Location: home.php");
+        header("Location: logIn.php");
         exit();
     }
     if(empty($_SESSION["admin"])){
         if(isset($_COOKIE["admin"])){
             $_SESSION["admin"] = $_COOKIE["admin"];
         }
-    }*/
+    }
     $conn = new mysqli("localhost", "root", "");
     if ($conn->connect_error){
         exit("Connessione fallita: " . $conn->connect_error);
