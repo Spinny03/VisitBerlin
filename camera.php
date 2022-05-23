@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang=”it”>
 	<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
 		<meta charset="utf-8">
     <script src="html5-qrcode.min.js"></script>
-		<meta http-equiv="x-ua-compatible" content="ie=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
     <script src="jquery-2.1.4.min.js"></script>
     <link rel="stylesheet" href="css/components.css">
     <link rel="stylesheet" href="css/navBar.css">
@@ -99,7 +98,7 @@
   <style>
     video{
       width: 100% !important;
-      height: 99.5% !important;
+      height: 99.4% !important;
       position: fixed;
       object-fit: cover;
     }
