@@ -64,9 +64,10 @@
         <link rel="stylesheet" href="../css/textFormat.css">
         <link rel="stylesheet" href="../css/imageGallery.css">
         <link rel="stylesheet" href="../css/components.css">
+        <link rel="stylesheet" href="css/editldi.css">
         <title>Admin</title>
     </head>
-    <body>
+    <body style="display: block; width:100%;">
     <div class="leftScrollMenu">
             <?php 
                 $query = "SELECT * FROM tipo";
@@ -92,7 +93,7 @@
                                     <span class="smallText">'.$row["name"].'</span>
                                 </div>
                             </div>
-                            </a>';
+                        </a>';
                     }
                 }
             ?>
@@ -101,7 +102,7 @@
             <input type="hidden" name="idldi" value="<?php echo $id;?>">
             <img width="200" height="200" src="<?php echo $img; ?>" class="profilePhotoBig">
             <label class="photoBtn" for="apply"><input class="inPhoto" type="file" name="pfile" id="apply" accept="image/*">Modifica</label>
-            <button type="submit" name="change" value="False" class="photoBtn removeBtn">Rimuovi</button>
+            <button type="submit" name="change" value="False" class="photoBtn removeBtn" style="border: 1px solid #b8382f;">Rimuovi</button>
         </form>
         <script>
             document.getElementById("apply").onchange = function() {
@@ -110,21 +111,48 @@
         </script>
         <form action="access/editTypeDB.php" method="POST">
             <input type="hidden" name="ldi" value="<?php echo $id;?>">
-            <input type="text" name="name" value="<?php echo $name;?>">
-            <input type="text" name="description" value="<?php echo $description;?>">
+            <input type="text" name="name" value="<?php echo $name;?>" placeholder="nome">
+            <textarea type="text" name="description" value="<?php echo $description;?>" placeholder="descrizione" rows="3"></textarea>
                 <?php 
                     if(!empty($_GET["ldi"])){
-                        echo '<button type="submit" name="change" value="True" class="logbtn">Salva le modifiche</button>';
+                        echo '<button type="submit" name="change" value="True" class="green">Salva le modifiche</button>';
                     }
                     else{
-                        echo '<button style="background-color: green;" type="submit" name="change" value="add" class="logbtn">Aggiungi</button>';
+                        echo '<button style="" type="submit" name="change" value="add" class="green">Aggiungi</button>';
                     }     
                 ?>       
         </form>
         <form action="access/editTypeDB.php" method="POST">
-            <button type="submit" class="itemNumber formBtn" name="del" value="<?php echo $id;?>" style="background-color: white; margin-left:10px;">
+            <button type="submit" class="elimina" name="del" value="<?php echo $id;?>" style="">
                 Elimina
             </button>
         </form>
     </body>
+    <style>
+        form{
+            margin-top: .25rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap:.25rem;
+        }
+        .elimina{
+            background-color: red;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 12px 16px;
+            margin-top: .25rem;
+            width: 50%;
+        }
+        .green{
+            background-color: green;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 12px 16px;
+            margin-top: .25rem;
+            width: 50%;
+        }
+    </style>
 </html>
