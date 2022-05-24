@@ -143,7 +143,7 @@
                 <form id="afile" action="access/editldiDB.php" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="audio" value="<?php echo $id;?>">
                     <audio controls><source src="<?php echo $audio;?>" type="audio/mp3"><source src="<?php echo $audio;?>" type="audio/wav">Your browser does not support the audio element.</audio>
-                    <label for="audioFile"><input type="file" name="afile" id="audioFile" accept=".wav,.mp3" class="">Modifica</label>
+                    <label class="photoBtn" for="audioFile"><input type="file" name="afile" id="audioFile" accept=".wav,.mp3" class="inPhoto">Modifica</label>
                     <button type="submit" name="change" value="False" class="audioBtn" style="border: 1px solid red;">Rimuovi</button>
                 </form>
                 <script>
