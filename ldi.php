@@ -76,10 +76,10 @@
             <?php
             if(isset($conLike)){
                 if(!$conLike) {
-                echo  '<a id="like" ><img id="likeImg" src="assets/icon/whiteLike.svg" style="height: 25px; width: 25px;" alt=""></a>';
+                echo  '<a id="like" ><img id="likeImg" src="assets/icon/whiteLike.svg" style="height: 25px; width: 25px; cursor: pointer;" alt=""></a>';
                 }
                 else {
-                echo  '<a id="like" ><img id="likeImg" src="assets/icon/preferOn.svg" style="height: 25px; width: 25px;" alt=""></a>';
+                echo  '<a id="like" ><img id="likeImg" src="assets/icon/preferOn.svg" style="height: 25px; width: 25px; cursor: pointer;" alt=""></a>';
                 }
             }
            ?>

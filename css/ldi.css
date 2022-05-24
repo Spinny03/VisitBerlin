@@ -9,6 +9,7 @@ body{
 }
 
 .hid-box{
+    cursor: default;
     background-color: white;
     top: calc(100vh - 100px);
     position: relative;

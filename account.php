@@ -40,6 +40,7 @@
         <link rel="stylesheet" href="css/textFormat.css">
         <link rel="stylesheet" href="css/account.css">
         <link rel="stylesheet" href="css/components.css">
+        
         <title>Profilo</title>
     </head>
     <body>
@@ -94,9 +95,9 @@
                         </span>
 
                         <div class="btnDiv"> 
-                            <button type="submit" name="change" value="False" class="logbtn">Annulla modifiche</button>
-                            <button type="submit" name="change" value="True" class="logbtn">Salva le modifiche</button>
-                            <button type="submit" name="change" value="logOUT" class="removeBtn genBtn">Esci</button>
+                            <button style="cursor: pointer;" type="submit" name="change" value="False" class="logbtn">Annulla modifiche</button>
+                            <button style="cursor: pointer;" type="submit" name="change" value="True" class="logbtn">Salva le modifiche</button>
+                            <button style="cursor: pointer;" type="submit" name="change" value="logOUT" class="removeBtn genBtn">Esci</button>
                         </div>
                     </form>
                 </div>';

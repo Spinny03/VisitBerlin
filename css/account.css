@@ -116,6 +116,7 @@ label{
 }
 
 .notLogged{
+    cursor: pointer;
     font-size: 1.5rem;
     font-family: 'lora';
     font-weight: bold;
