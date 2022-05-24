@@ -12,7 +12,7 @@
     $conn->query("USE my_visitberlin");
     if(empty($_GET["categ"]) && empty($_GET["query"])){
         $typeName = "Tutto";
-        $typeDescription = "Tutte i luoghi di interesse";
+        $typeDescription = "Tutti i luoghi di interesse";
     }
     elseif(!empty($_GET["categ"])){
         $query = "SELECT * FROM tipo WHERE tipo.id = ".$_GET["categ"];
