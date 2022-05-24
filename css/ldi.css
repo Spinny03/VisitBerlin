@@ -97,6 +97,7 @@ body{
     border-bottom: 1px solid black;
     width: 80%;
     margin: auto;
+    overflow: scroll;
 }
 
 .descriptionDiv span{
@@ -129,4 +130,7 @@ body{
 }
 
 @media screen and (min-width: 1200px){
+    .descriptionDiv{
+        overflow: hidden;
+    }
 }
