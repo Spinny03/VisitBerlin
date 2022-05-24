@@ -1,5 +1,6 @@
 <?php 
     session_start(); 
+    
     if(empty($_SESSION["user"])){
         if(isset($_COOKIE["user"])){
             $_SESSION["user"] = $_COOKIE["user"];
@@ -12,8 +13,16 @@
     $conn->query("USE my_visitberlin");
     if(empty($_GET["ldi"])){
         header("Location: index.php");
+        $conn->close();
+        exit();
     }
     else{
+        $controllo = $conn->query("SELECT * FROM ldi WHERE id = ".$_GET["ldi"]);
+        if($controllo->num_rows == 0){
+            header("Location: index.php");
+            $conn->close();
+            exit();
+        }
         $query = "SELECT * FROM ldi WHERE ldi.id = ".$_GET["ldi"];
         $result = $conn->query($query);
         $ldi = $result->fetch_assoc();

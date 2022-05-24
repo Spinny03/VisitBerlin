@@ -10,11 +10,18 @@
         exit("Connessione fallita: " . $conn->connect_error);
     }
     $conn->query("USE my_visitberlin");
+    
     if(empty($_GET["categ"]) && empty($_GET["query"])){
         $typeName = "Tutto";
         $typeDescription = "Tutte i luoghi di interesse";
     }
     elseif(!empty($_GET["categ"])){
+        $controllo = $conn->query("SELECT * FROM tipo WHERE id = ".$_GET["categ"]);
+        if($controllo->num_rows == 0){
+            header("Location: category.php");
+            $conn->close();
+            exit();
+        }
         $query = "SELECT * FROM tipo WHERE tipo.id = ".$_GET["categ"];
         $result = $conn->query($query);
         $type = $result->fetch_assoc();
