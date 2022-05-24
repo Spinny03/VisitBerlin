@@ -192,11 +192,11 @@
 
 
                 <form action="access/editldiDB.php" method="POST" class="innerForm">
-                    <input type="hidden" name="ldi" value="<?php echo $id;?>">
-                    <input type="text" name="name" value="<?php echo $name;?>">
-                    <textarea name="description" rows="10"><?php echo $description;?></textarea>
-                    <input id = "lat" type="text" name="lon" value="<?php echo $lon;?>">
-                    <input id = "lng" type="text" name="lat" value="<?php echo $lat;?>">
+                    <input type="hidden" name="ldi" value="<?php echo $id;?>" >
+                    <input type="text" name="name" value="<?php echo $name;?>" required>
+                    <textarea name="description" rows="10" required><?php echo $description;?></textarea>
+                    <input id = "lat" type="text" name="lon" value="<?php echo $lon;?>" required>
+                    <input id = "lng" type="text" name="lat" value="<?php echo $lat;?>" required>
 
                         <?php 
                         $query = "SELECT * FROM tipo;";
