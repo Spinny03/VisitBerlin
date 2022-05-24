@@ -161,7 +161,7 @@
         const shareData = {
             title: 'Visit Berlin',
             text: 'Viene a vedere questa opera su Visit Berlin!',
-            url: "visitberlin.altervista.org/ldi.php?ldi=<?php echo $_GET["ldi"];?>"
+            url: "ldi.php?ldi=<?php echo $_GET["ldi"];?>"
         }
 
         $( "#share" ).click(async () => {

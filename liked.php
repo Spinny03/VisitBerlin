@@ -58,7 +58,7 @@
                     }
                 }
                 else{
-                    echo '<h2>Non hai ancora aggiunto nessuna opere</h2>';
+                    echo '<h2>Non hai ancora aggiunto nessuna opera</h2>';
                 }
             }
             else{
