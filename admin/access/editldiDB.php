@@ -132,7 +132,8 @@
             }
 
             
-
+            $main = "INSERT INTO tipo_ldi SET ldi_id = '".$result["id"]."', tipo_id = '".$_POST["maintipo"]."';";
+            $conn->query($main);
 
             if(isset($_POST["tipo"])){
                 foreach($_POST["tipo"] as $tipo){
