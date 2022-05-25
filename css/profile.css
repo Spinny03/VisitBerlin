@@ -2,7 +2,9 @@ body{
     position: relative;
     margin-bottom: 110px;
 }
-
+.profilePhotoBig{
+    border-radius: 20px;
+}
 .upperDiv{
     display: grid;
     grid-template-columns: 1fr 2fr;

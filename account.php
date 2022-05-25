@@ -46,7 +46,8 @@
     <body>
         <?php 
             if(!empty($_SESSION["user"])){
-                echo '<h2>Impostazioni Account</h2>
+                echo '<a href="profile.php"><img src="assets/icon/back.svg" alt=""  class="backIcon"></a>
+                <h2>Impostazioni Account</h2>
                 <div class="pSettings">
                     <form id="pform" action="access/photoDB.php" method="POST" enctype="multipart/form-data">
                         <img width="200" height="200" src="'.$link.'" class="profilePhotoBig">
