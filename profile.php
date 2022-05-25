@@ -1,5 +1,6 @@
 <?php 
     session_start(); 
+    $_SESSION["prevPage"] = $_SERVER['REQUEST_URI'];
     if(empty($_SESSION["user"])){
         if(isset($_COOKIE["user"])){
             $_SESSION["user"] = $_COOKIE["user"];
@@ -71,7 +72,14 @@
     <title>Document</title>
 </head>
 <body>
+    
     <div class="container-fluid">
+        <?php 
+            if(!empty($_GET["username"])){
+                echo '<a href="profile.php"><img src="assets/icon/back.svg" alt="" style="margin:0;" class="backIcon"></a>';
+            }
+        ?>
+
         <form class="searchBar" method="post" style="margin-top: 20px;">
             <div class="input-group">
                 <input type="text" class="form-control" id="searchbar" name="searchbar" placeholder="Search" autocomplete="off" required/>
