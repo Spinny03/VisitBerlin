@@ -78,7 +78,7 @@
                 </div>
                 <div class="insideNav">
                 <a href="liked.php"><img src="assets/icon/preferOff.svg" alt="" class="icon"></a>
-                <a href="account.php"><img src="assets/icon/profileOn.svg" alt="" class="icon"></a>
+                <a href="profile.php"><img src="assets/icon/profileOn.svg" alt="" class="icon"></a>
                 </div>
             </nav>
         </div>
