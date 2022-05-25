@@ -112,7 +112,7 @@
         <form action="access/editTypeDB.php" method="POST">
             <input type="hidden" name="ldi" value="<?php echo $id;?>">
             <input type="text" name="name" value="<?php echo $name;?>" placeholder="nome">
-            <textarea type="text" name="description" value="<?php echo $description;?>" placeholder="descrizione" rows="3"></textarea>
+            <textarea type="text" name="description" placeholder="descrizione" rows="3"><?php echo $description;?></textarea>
                 <?php 
                     if(!empty($_GET["ldi"])){
                         echo '<button type="submit" name="change" value="True" class="green">Salva le modifiche</button>';
@@ -127,6 +127,18 @@
                 Elimina
             </button>
         </form>
+        <div class="divWrapper">
+            <nav class="bottomNav">
+                <div class="insideNav">
+                <a href="editLdi.php"><img src="../assets/icon/searchOff.svg" alt="" class="icon"></a>
+                <a href="editType.php"><img src="../assets/icon/boardsOn.svg" alt="" class="icon"></a>
+            </div>
+            <div class="insideNav"> 
+            <a href="logIn.php"><img src="../assets/icon/login.svg" width="25" height="25" alt="" class="icon"></a>
+                <a href="access/accountDB.php?change=logOUT"><img src="../assets/icon/logout.svg" width="25" height="25" alt="" class="icon"></a>
+            </div>
+            </nav>
+        </div>
     </body>
     <style>
         form{

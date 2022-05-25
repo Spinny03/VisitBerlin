@@ -13,7 +13,7 @@
                 setcookie('admin', null, -1, '/');
             }
             $_SESSION["admin"] = "";
-            header("Location: ../index.php");
+            header("Location: ../logIn.php");
             exit();
     }
     $conn->close();
