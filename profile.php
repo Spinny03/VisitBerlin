@@ -33,7 +33,7 @@
         }
     }
     else{
-        header('location: index.php');
+        header('location: account.php');
     }
     
     if(isset($_POST["searchBtn"])){
