@@ -8,7 +8,9 @@
     position: absolute;
     width: 1px;
 }
-
+body{
+    margin-bottom: 110px;
+}
 #pform{
     display: flex;
     align-items: center;

@@ -28,7 +28,7 @@
                 setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); 
             } 
             $_SESSION["admin"] = $email;
-            header("Location: ../index.php");
+            header("Location: ../editLdi.php");
         }
         else{
             $_SESSION["paswFail"] = True;

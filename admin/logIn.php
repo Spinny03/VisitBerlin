@@ -4,8 +4,6 @@
         if(!empty($_COOKIE["admin"]) && empty($_SESSION["admin"])){
             $_SESSION["admin"] = $_COOKIE["admin"];
         }
-        header("Location: logIn.php");
-        exit();
     }
 ?>
 <!DOCTYPE html>

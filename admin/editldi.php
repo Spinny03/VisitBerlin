@@ -358,6 +358,20 @@
                 }, true);*/
             </script>
     </div>        
-        
+        <div class="divWrapper">
+            <nav class="bottomNav">
+                <div class="insideNav">
+                <a href="editLdi.php"><img src="../assets/icon/searchOn.svg" alt="" class="icon"></a>
+                <a href="editType.php"><img src="../assets/icon/boardsOff.svg" alt="" class="icon"></a>
+            </div>
+            <div class="insideNav"> 
+                <a href="logIn.php"><img src="../assets/icon/login.svg" width="25" height="25" alt="" class="icon"></a>
+                <a href="access/accountDB.php?change=logOUT"><img src="../assets/icon/logout.svg" width="25" height="25" alt="" class="icon"></a>
+            </div>
+            </nav>
+        </div>
+        <div class="loader-wrapper">
+        <span class="loader"><span class="loader-inner"></span></span>
+    </div>
     </body>
 </html>
