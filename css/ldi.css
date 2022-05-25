@@ -32,9 +32,9 @@ body{
     text-decoration: none;
     background: linear-gradient(270deg, #FD814A -12.71%, #FC5C4C 121.19%);
     color: white;
-    left: 25vw;
+    left: 25%;
     top: calc((-20px - 1rem) / 2);
-    width: 50vw;
+    width: 50%;
     border-radius: 10px;
     z-index: 101;
     display: flex;
@@ -55,10 +55,11 @@ body{
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    
-    
+    background-color: rgb(187 187 187 / 60%);
+    /*filter: blur(20px);*/
+    border-radius: 20px;
+    padding: 10px;
     gap: 15px;
-    height: 80px;
 }
 
 .outerTopDiv{
@@ -133,5 +134,17 @@ body{
 @media screen and (min-width: 1200px){
     .descriptionDiv{
         overflow: hidden;
+    }
+    body{
+        width: 40%;
+        margin: auto;
+    }
+    .outerTopDiv{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 80px;
+        position: absolute;
+        width: calc(40% - 15px);
     }
 }

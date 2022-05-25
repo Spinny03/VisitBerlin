@@ -72,18 +72,19 @@
     <div class="outerTopDiv">
             <a href="<?php  echo $_SESSION["prevPage"]?>"><img src="assets/icon/back.svg" alt="" class="backIcon"></a>
         <div class="topDiv"> 
-            <form class="liked" method="post">
+            
             <?php
             if(isset($conLike)){
+                echo '<form class="liked" method="post">';
                 if(!$conLike) {
                 echo  '<a id="like" ><img id="likeImg" src="assets/icon/whiteLike.svg" style="height: 25px; width: 25px; cursor: pointer;" alt=""></a>';
                 }
                 else {
                 echo  '<a id="like" ><img id="likeImg" src="assets/icon/preferOn.svg" style="height: 25px; width: 25px; cursor: pointer;" alt=""></a>';
                 }
+                echo '</form>';
             }
            ?>
-                </form>
             <a href="#" id="share"><img src="assets/icon/share.svg" style="height: 25px; width: 25px;" alt=""></a>
             <a href="map.php?ldi=<?php  echo $_GET["ldi"];?>" ><img src="assets/mapsIcon/noImgWhite.svg" style="height: 25px; width: 25px;" alt=""></a>
         </div>
