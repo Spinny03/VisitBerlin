@@ -14,13 +14,21 @@
 
     if(!empty($_GET["username"])){
         $data = $conn->query('SELECT * FROM username WHERE email ="'.$_GET["username"].'";');
-        $data = mysqli_fetch_assoc($data); 
-        if(!empty($data["image"])){
-        $link = "assets/userPhoto/".$data["image"];
-        }else{
-            $link = "assets/icon/profileOff.svg";
+        if($data->num_rows == 1){
+            $data = mysqli_fetch_assoc($data); 
+            if(!empty($data["image"])){
+            $link = "assets/userPhoto/".$data["image"];
+            }else{
+                $link = "assets/icon/profileOff.svg";
+            }
+            $usermail = $_GET["username"];
         }
-        $usermail = $_GET["username"];
+        else{
+            header('location: profile.php');
+            $conn->close();
+            exit();
+        }
+
     }
     elseif(!empty($_SESSION["user"])){
         $data = $conn->query('SELECT * FROM username WHERE email ="'.$_SESSION["user"].'";');
