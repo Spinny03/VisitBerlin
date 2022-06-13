@@ -1,5 +1,5 @@
 # Progetto Finale
-Progetto minimo: Luoghi di interesse di Genova
+Progetto minimo: Luoghi di interesse di Berlino
 
 Progetto massimo: Gestore di luoghi di interesse citta e musei 
 
